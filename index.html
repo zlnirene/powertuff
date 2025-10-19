@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midnight Fiction</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: radial-gradient(
+          circle at top,
+          #4f1c51 58%,
+          #210f37 100%
+        );
+        color: #fff;
+      }
+
+      .nav-link {
+        color: #e5cfcf;
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen">
+    <!-- Navbar -->
+    <nav
+      class="flex justify-between items-center px-8 py-4 bg-transparent"
+    >
+      <div class="flex items-center space-x-2">
+        <img src="logo.png" alt="Midnight Fiction Logo" class="w-10 h-10" />
+        <h1 class="text-2xl font-semibold">Midnight Fiction</h1>
+      </div>
+
+      <ul class="flex space-x-8 text-base font-medium">
+        <li><a href="#" class="nav-link font-semibold text-[#e3b9b1]">Home</a></li>
+        <li><a href="#" class="nav-link">Category</a></li>
+        <li><a href="#" class="nav-link">New Arrivals</a></li>
+        <li><a href="#" class="nav-link">Contact Us</a></li>
+      </ul>
+
+      <div class="flex space-x-5 text-xl">
+        <button>🛒</button>
+        <button>⭐</button>
+      </div>
+    </nav>
+
+    <!-- Section Utama (Highlight Produk) -->
+    <section
+      class="mx-auto mt-10 max-w-5xl bg-[#FAF4EE]/80 rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up"
+    >
+      <img
+        src="product.jpg"
+        alt="Product Highlight"
+        class="w-full md:w-1/2 rounded-xl object-cover"
+      />
+
+      <div class="flex flex-col justify-center w-full md:w-1/2">
+        <ul class="space-y-3 text-[#4F1C51]">
+          <li><a href="#" class="underline hover:text-white">PPULBATU Keychain Pre-Order</a></li>
+          <li><a href="#" class="underline hover:text-white">Hapa Kristin Back To School</a></li>
+          <li><a href="#" class="underline hover:text-white">Hapa Kristin Jang Wonyoung PC Event</a></li>
+          <li><a href="#" class="underline hover:text-white">TOMORROW X TOGETHER Collab</a></li>
+        </ul>
+      </div>
+    </section>
+        <!-- EVENT Section -->
+    <section class="mx-auto mt-16 max-w-5xl fade-up">
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center space-x-4">
+          <span
+            class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full"
+            >EVENT</span
+          >
+          <a href="#" class="text-[#f9e4e4] hover:text-white font-medium"
+            >See All</a
+          >
+        </div>
+      </div>
+
+      <!-- Event Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-white/10 rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="event1.jpg"
+            alt="PPULBATU Keychain Event"
+            class="w-full h-52 object-cover"
+          />
+          <div class="p-6 text-center">
+            <h3 class="text-lg font-semibold mb-3 text-white">
+              PPULBATU Keychain Pre-Order Event
+            </h3>
+            <a
+              href="#"
+              class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition"
+              >SEE DETAILS</a
+            >
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white/10 rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="event2.jpg"
+            alt="Hapa Kristin Event"
+            class="w-full h-52 object-cover"
+          />
+          <div class="p-6 text-center">
+            <h3 class="text-lg font-semibold mb-3 text-white">
+              Hapa Kristin Jang Wonyoung PC Event
+            </h3>
+            <a
+              href="#"
+              class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition"
+              >SEE DETAILS</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- PRE-ORDER Section -->
+    <section class="mx-auto mt-20 max-w-6xl fade-up">
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span
+            class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full"
+            >PRE-ORDER</span
+          >
+        </div>
+        <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
+      </div>
+
+      <!-- Product Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pb-[200px]">
+        <!-- Product Card 1 -->
+        <div
+          class="bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6"
+        >
+          <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+            <img
+              src="keychain1.png"
+              alt="Keychain 1"
+              class="w-28 h-28 mx-auto object-contain"
+            />
+          </div>
+          <h3 class="text-[#4f1c51] font-medium mb-1">
+            Lorem Ipsum Dolor Sic Amet ...
+          </h3>
+          <p class="font-bold text-[#4f1c51]">$45</p>
+          <button
+            class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition"
+          >
+            BUY NOW
+          </button>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div
+          class="bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6"
+        >
+          <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+            <img
+              src="keychain2.png"
+              alt="Keychain 2"
+              class="w-28 h-28 mx-auto object-contain"
+            />
+          </div>
+          <h3 class="text-[#4f1c51] font-medium mb-1">
+            Lorem Ipsum Dolor Sic Amet ...
+          </h3>
+          <p class="font-bold text-[#4f1c51]">$45</p>
+          <button
+            class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition"
+          >
+            BUY NOW
+          </button>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div
+          class="bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6"
+        >
+          <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+            <img
+              src="keychain3.png"
+              alt="Keychain 3"
+              class="w-28 h-28 mx-auto object-contain"
+            />
+          </div>
+          <h3 class="text-[#4f1c51] font-medium mb-1">
+            Lorem Ipsum Dolor Sic Amet ...
+          </h3>
+          <p class="font-bold text-[#4f1c51]">$45</p>
+          <button
+            class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition"
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+    </section>
+
+    
+<!-- FOOTER -->
+<section class="relative bg-[#210F37] z-0">
+  <!-- Wave transition dari ungu ke cream -->
+  <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+  </div>
+</section>
+
+<footer class="bg-[#FAF4EE] text-[#2e0f3f] pt-20 pb-10 z-10">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 text-sm">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:underline">Terms of Use</a></li>
+          <li><a href="#" class="hover:underline">Terms of Use for Paid Service</a></li>
+          <li><a href="#" class="hover:underline">Child and Youth Protection Policy</a></li>
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <ul class="space-y-2">
+          <li><a href="#" class="font-semibold">Who is Midnight Fiction?</a></li>
+          <li><a href="#" class="hover:underline">Gift Cards</a></li>
+          <li><a href="#" class="hover:underline">Store Locator</a></li>
+          <li><a href="#" class="hover:underline">FAQ</a></li>
+          <li><a href="#" class="hover:underline">Returns & Refunds</a></li>
+          <li><a href="#" class="hover:underline">Shipping</a></li>
+        </ul>
+      </div>
+
+      <div class="flex justify-center md:justify-end items-start">
+        <div class="text-center md:text-right">
+          <h2 class="text-2xl font-semibold leading-tight">🌙 Midnight<br>Fiction</h2>
+          <p class="text-xs mt-4">2025 © Midnight Fiction All Rights Reserved</p>
+          <div class="flex justify-center md:justify-end gap-4 mt-3 text-lg">
+            <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+        <script>
+      // Animasi saat scroll (fade-up)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("opacity-100", "translate-y-0");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      document.querySelectorAll(".fade-up").forEach((el) => {
+        el.classList.add(
+          "opacity-0",
+          "translate-y-5",
+          "transition-all",
+          "duration-700"
+        );
+        observer.observe(el);
+      });
+    </script>
+
+  </body>
+</html>
