@@ -33,6 +33,24 @@
       .nav-link:hover {
         color: #ffffff;
       }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      #productScroll {
+        transition: scroll-left 0.4s ease-in-out;
+      }
+
     </style>
   </head>
 
@@ -216,7 +234,140 @@
       </div>
     </section>
 
-    
+<!-- ALL PRODUCT Section -->
+<section class="mx-auto mt-12 mb-32 max-w-6xl fade-up relative">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-8 px-2">
+    <div>
+      <span
+        class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full"
+        >ALL PRODUCT</span
+      >
+    </div>
+    <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
+  </div>
+
+  <!-- Wrapper for both rows -->
+  <div class="space-y-16 relative">
+    <!-- Full height smooth shadows -->
+    <div
+      id="leftShadow"
+      class="pointer-events-none absolute top-0 left-0 h-full w-28 bg-gradient-to-r from-[#4F1C51] via-[#4F1C51]/70 to-transparent opacity-0 transition-opacity duration-700 z-[5]"
+    ></div>
+    <div
+      id="rightShadow"
+      class="pointer-events-none absolute top-0 right-0 h-full w-28 bg-gradient-to-l from-[#4F1C51] via-[#4F1C51]/70 to-transparent opacity-100 transition-opacity duration-700 z-[5]"
+    ></div>
+
+    <!-- ROW 1 -->
+    <div class="relative group">
+      <button
+        class="scroll-btn hidden group-hover:flex absolute -left-12 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-10 hover:bg-white/30 hover:scale-110 transition-all duration-300"
+        data-target="productScroll1"
+        data-direction="left"
+      >
+        ◀
+      </button>
+      <button
+        class="scroll-btn hidden group-hover:flex absolute -right-12 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-10 hover:bg-white/30 hover:scale-110 transition-all duration-300"
+        data-target="productScroll1"
+        data-direction="right"
+      >
+        ▶
+      </button>
+
+      <div
+        id="productScroll1"
+        class="flex gap-6 overflow-x-auto scroll-smooth pb-6 px-2 no-scrollbar snap-x snap-mandatory"
+      ></div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="relative group">
+      <button
+        class="scroll-btn hidden group-hover:flex absolute -left-12 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-10 hover:bg-white/30 hover:scale-110 transition-all duration-300"
+        data-target="productScroll2"
+        data-direction="left"
+      >
+        ◀
+      </button>
+      <button
+        class="scroll-btn hidden group-hover:flex absolute -right-12 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-10 hover:bg-white/30 hover:scale-110 transition-all duration-300"
+        data-target="productScroll2"
+        data-direction="right"
+      >
+        ▶
+      </button>
+
+      <div
+        id="productScroll2"
+        class="flex gap-6 overflow-x-auto scroll-smooth pb-6 px-2 no-scrollbar snap-x snap-mandatory"
+      ></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // generate product cards
+    const makeProducts = (id, start) => {
+      const container = document.getElementById(id);
+      const products = Array.from({ length: 10 }).map((_, i) => ({
+        name: `Product ${i + start}`,
+        price: `$${(Math.random() * 50 + 10).toFixed(2)}`,
+        img: `keychain${((i + start) % 3) + 1}.png`,
+      }));
+
+      products.forEach((p) => {
+        const card = document.createElement("div");
+        card.className =
+          "min-w-[250px] snap-start bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 flex-shrink-0 transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl";
+        card.innerHTML = `
+          <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 flex items-center justify-center">
+            <img src="${p.img}" alt="${p.name}" class="w-28 h-28 object-contain" />
+          </div>
+          <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
+          <p class="font-bold text-[#4f1c51]">${p.price}</p>
+          <button
+            class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition-all duration-300"
+          >
+            BUY NOW
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    };
+
+    makeProducts("productScroll1", 1);
+    makeProducts("productScroll2", 11);
+
+    const leftShadow = document.getElementById("leftShadow");
+    const rightShadow = document.getElementById("rightShadow");
+
+    // Scroll button function
+    document.querySelectorAll(".scroll-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const container = document.getElementById(btn.dataset.target);
+        const scrollValue = 320;
+        const direction = btn.dataset.direction === "left" ? -1 : 1;
+        container.scrollBy({ left: direction * scrollValue, behavior: "smooth" });
+      });
+    });
+
+    // Shadow animation
+    const container1 = document.getElementById("productScroll1");
+    const handleShadow = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = container1;
+      leftShadow.style.opacity = scrollLeft > 20 ? "1" : "0";
+      rightShadow.style.opacity =
+        scrollLeft + clientWidth < scrollWidth - 20 ? "1" : "0";
+    };
+
+    container1.addEventListener("scroll", handleShadow);
+    handleShadow();
+  });
+</script>
+
 <!-- FOOTER -->
 <section class="relative bg-[#210F37] z-0">
   <!-- Wave transition dari ungu ke cream -->
