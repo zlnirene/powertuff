@@ -1,341 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Midnight Fiction</title>
 
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- Font -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
     />
 
     <style>
-      body {
+    body {
         font-family: "Poppins", sans-serif;
         background: radial-gradient(
-          circle at top,
-          #4f1c51 58%,
-          #210f37 100%
+        circle at top,
+        #4f1c51 58%,
+        #210f37 100%
         );
         color: #fff;
-      }
+    }
 
-      .nav-link {
+    .nav-link {
         color: #e5cfcf;
         transition: color 0.3s;
-      }
+    }
 
-      .nav-link:hover {
+    .nav-link:hover {
         color: #ffffff;
-      }
+    }
 
-      .no-scrollbar::-webkit-scrollbar {
+    .no-scrollbar::-webkit-scrollbar {
         display: none;
-      }
+    }
 
-      .no-scrollbar {
+    .no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
-      }
+    }
 
-      html {
+    html {
         scroll-behavior: smooth;
-      }
+    }
 
-      #productScroll {
+    #productScroll {
         transition: scroll-left 0.4s ease-in-out;
-      }
+    }
 
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
     </style>
-  </head>
+</head>
 
-  <body class="min-h-screen">
+<body class="min-h-screen">
     <!-- Navbar -->
     <nav
-      class="flex justify-between items-center px-8 py-4 bg-transparent"
+    class="flex justify-between items-center px-8 py-4 bg-transparent"
     >
-      <div class="flex items-center space-x-2">
+    <div class="flex items-center space-x-2">
         <img src="logo.png" alt="Midnight Fiction Logo" class="w-10 h-10" />
         <h1 class="text-2xl font-semibold">Midnight Fiction</h1>
-      </div>
+    </div>
 
-      <ul class="flex space-x-8 text-base font-medium">
+    <ul class="flex space-x-8 text-base font-medium">
         <li><a href="#" class="nav-link font-semibold text-[#e3b9b1]">Home</a></li>
         <li><a href="#" class="nav-link">Category</a></li>
         <li><a href="#" class="nav-link">New Arrivals</a></li>
         <li><a href="#" class="nav-link">Contact Us</a></li>
-      </ul>
+    </ul>
 
-      <div class="flex space-x-5 text-xl">
+    <div class="flex space-x-5 text-xl">
         <button>🛒</button>
         <button>⭐</button>
-      </div>
+    </div>
     </nav>
 
     <!-- Section Utama (Highlight Produk) -->
     <section
-      class="mx-auto mt-10 max-w-5xl bg-[#FAF4EE]/80 rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up"
+    class="mx-auto mt-10 max-w-5xl bg-[#FAF4EE]/80 rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up"
     >
-      <img
+    <img
         src="product.jpg"
         alt="Product Highlight"
         class="w-full md:w-1/2 rounded-xl object-cover"
-      />
+    />
 
-      <div class="flex flex-col justify-center w-full md:w-1/2">
+    <div class="flex flex-col justify-center w-full md:w-1/2">
         <ul class="space-y-3 text-[#4F1C51]">
-          <li><a href="#" class="underline hover:text-white">PPULBATU Keychain Pre-Order</a></li>
-          <li><a href="#" class="underline hover:text-white">Hapa Kristin Back To School</a></li>
-          <li><a href="#" class="underline hover:text-white">Hapa Kristin Jang Wonyoung PC Event</a></li>
-          <li><a href="#" class="underline hover:text-white">TOMORROW X TOGETHER Collab</a></li>
+        <li><a href="#" class="underline hover:text-white">PPULBATU Keychain Pre-Order</a></li>
+        <li><a href="#" class="underline hover:text-white">Hapa Kristin Back To School</a></li>
+        <li><a href="#" class="underline hover:text-white">Hapa Kristin Jang Wonyoung PC Event</a></li>
+        <li><a href="#" class="underline hover:text-white">TOMORROW X TOGETHER Collab</a></li>
         </ul>
-      </div>
+    </div>
     </section>
-        <!-- EVENT Section -->
-    <section class="mx-auto mt-16 max-w-5xl fade-up">
-      <div class="flex justify-between items-center mb-6">
-        <div class="flex items-center space-x-4">
-          <span
-            class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full"
-            >EVENT</span
-          >
-          <a href="#" class="text-[#f9e4e4] hover:text-white font-medium"
-            >See All</a
-          >
-        </div>
-      </div>
+<!-- EVENT Section -->
+<section class="mx-auto mt-16 max-w-6xl fade-up">
+    <div class="flex justify-between items-center mb-6">
+    <div class="flex items-center space-x-4">
+        <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">EVENT</span>
+        <a href="#" class="text-[#f9e4e4] hover:text-white font-medium">See All</a>
+    </div>
+    </div>
 
-      <!-- Event Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Card 1 -->
-        <div class="bg-white/10 rounded-2xl overflow-hidden shadow-lg">
-          <img
-            src="event1.jpg"
-            alt="PPULBATU Keychain Event"
-            class="w-full h-52 object-cover"
-          />
-          <div class="p-6 text-center">
-            <h3 class="text-lg font-semibold mb-3 text-white">
-              PPULBATU Keychain Pre-Order Event
-            </h3>
-            <a
-              href="#"
-              class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition"
-              >SEE DETAILS</a
-            >
-          </div>
+    <!-- Scrollable Cards -->
+    <div class="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-1">
+    <!-- Card 1 -->
+    <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
+        <img src="event1.jpg" alt="PPULBATU Keychain Event" class="w-full h-52 object-cover" />
+        <div class="p-6 text-center">
+        <h3 class="text-lg font-semibold mb-3 text-white">PPULBATU Keychain Pre-Order Event</h3>
+        <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
         </div>
+    </div>
 
-        <!-- Card 2 -->
-        <div class="bg-white/10 rounded-2xl overflow-hidden shadow-lg">
-          <img
-            src="event2.jpg"
-            alt="Hapa Kristin Event"
-            class="w-full h-52 object-cover"
-          />
-          <div class="p-6 text-center">
-            <h3 class="text-lg font-semibold mb-3 text-white">
-              Hapa Kristin Jang Wonyoung PC Event
-            </h3>
-            <a
-              href="#"
-              class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition"
-              >SEE DETAILS</a
-            >
-          </div>
+    <!-- Card 2 -->
+    <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
+        <img src="event2.jpg" alt="Hapa Kristin Event" class="w-full h-52 object-cover" />
+        <div class="p-6 text-center">
+        <h3 class="text-lg font-semibold mb-3 text-white">Hapa Kristin Jang Wonyoung PC Event</h3>
+        <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
         </div>
-      </div>
-    </section>
-    <!-- PRE-ORDER Section -->
-    <section class="mx-auto mt-20 max-w-6xl fade-up">
-      <!-- Header -->
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <span
-            class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full"
-            >PRE-ORDER</span
-          >
-        </div>
-        <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
-      </div>
+    </div>
 
-      <!-- Product Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pb-[200px]">
-        <!-- Product Card 1 -->
-        <div
-          class="bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6"
-        >
-          <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
-            <img
-              src="keychain1.png"
-              alt="Keychain 1"
-              class="w-28 h-28 mx-auto object-contain"
-            />
-          </div>
-          <h3 class="text-[#4f1c51] font-medium mb-1">
-            Lorem Ipsum Dolor Sic Amet ...
-          </h3>
-          <p class="font-bold text-[#4f1c51]">$45</p>
-          <button
-            class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition"
-          >
-            BUY NOW
-          </button>
+    <!-- Card 3 -->
+    <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
+        <img src="event3.jpg" alt="Third Event" class="w-full h-52 object-cover" />
+        <div class="p-6 text-center">
+        <h3 class="text-lg font-semibold mb-3 text-white">Third Event Promotion</h3>
+        <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
         </div>
+    </div>
 
-        <!-- Product Card 2 -->
-        <div
-          class="bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6"
-        >
-          <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
-            <img
-              src="keychain2.png"
-              alt="Keychain 2"
-              class="w-28 h-28 mx-auto object-contain"
-            />
-          </div>
-          <h3 class="text-[#4f1c51] font-medium mb-1">
-            Lorem Ipsum Dolor Sic Amet ...
-          </h3>
-          <p class="font-bold text-[#4f1c51]">$45</p>
-          <button
-            class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition"
-          >
-            BUY NOW
-          </button>
+    <!-- Card 4 -->
+    <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
+        <img src="event4.jpg" alt="Fourth Event" class="w-full h-52 object-cover" />
+        <div class="p-6 text-center">
+        <h3 class="text-lg font-semibold mb-3 text-white">Fourth Limited Edition Event</h3>
+        <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
         </div>
+    </div>
+    </div>
+</section>
 
-        <!-- Product Card 3 -->
-        <div
-          class="bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6"
-        >
-          <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
-            <img
-              src="keychain3.png"
-              alt="Keychain 3"
-              class="w-28 h-28 mx-auto object-contain"
-            />
-          </div>
-          <h3 class="text-[#4f1c51] font-medium mb-1">
-            Lorem Ipsum Dolor Sic Amet ...
-          </h3>
-          <p class="font-bold text-[#4f1c51]">$45</p>
-          <button
-            class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition"
-          >
-            BUY NOW
-          </button>
-        </div>
-      </div>
-    </section>
-
-<!-- ALL PRODUCT Section -->
-<section class="mx-auto mt-12 mb-32 max-w-6xl fade-up relative">
+<!-- PRE-ORDER Section -->
+<section class="mx-auto mt-20 max-w-6xl fade-up">
   <!-- Header -->
-  <div class="flex items-center justify-between mb-8 px-2">
+  <div class="flex items-center justify-between mb-8">
     <div>
-      <span
-        class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full"
-        >ALL PRODUCT</span
-      >
+      <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
+        PRE-ORDER
+      </span>
     </div>
     <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
   </div>
 
-  <!-- Wrapper for both rows -->
-  <div class="space-y-16 relative">
-    <!-- Full height smooth shadows -->
+  <!-- Scrollable Product Cards -->
+  <div
+    class="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pt-[20px] pb-[70px] px-2 scroll-smooth"
+  >
+    <!-- Product Card -->
     <div
-      id="leftShadow"
-      class="pointer-events-none absolute top-0 left-0 h-full w-28 bg-gradient-to-r from-[#4F1C51] via-[#4F1C51]/70 to-transparent opacity-0 transition-opacity duration-700 z-[5]"
-    ></div>
-    <div
-      id="rightShadow"
-      class="pointer-events-none absolute top-0 right-0 h-full w-28 bg-gradient-to-l from-[#4F1C51] via-[#4F1C51]/70 to-transparent opacity-100 transition-opacity duration-700 z-[5]"
-    ></div>
-
-    <!-- ROW 1 -->
-    <div class="relative group">
-      <button
-        class="scroll-btn hidden group-hover:flex absolute -left-12 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-10 hover:bg-white/30 hover:scale-110 transition-all duration-300"
-        data-target="productScroll1"
-        data-direction="left"
-      >
-        ◀
-      </button>
-      <button
-        class="scroll-btn hidden group-hover:flex absolute -right-12 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-10 hover:bg-white/30 hover:scale-110 transition-all duration-300"
-        data-target="productScroll1"
-        data-direction="right"
-      >
-        ▶
-      </button>
-
+      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
       <div
-        id="productScroll1"
-        class="flex gap-6 overflow-x-auto scroll-smooth pb-6 px-2 no-scrollbar snap-x snap-mandatory"
-      ></div>
+        class="bg-[#e9b886] rounded-2xl p-6 mb-4 transition-transform duration-300 hover:scale-105"
+      >
+        <img
+          src="images/cat.jpg"
+          alt="Keychain 1"
+          class="w-28 h-28 mx-auto object-contain select-none"
+        />
+      </div>
+
+      <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+      </h3>
+      <p class="font-bold text-[#4f1c51]">$45</p>
+
+      <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+          BUY NOW
+        </button>
+        <button
+          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
     </div>
 
-    <!-- ROW 2 -->
-    <div class="relative group">
-      <button
-        class="scroll-btn hidden group-hover:flex absolute -left-12 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-10 hover:bg-white/30 hover:scale-110 transition-all duration-300"
-        data-target="productScroll2"
-        data-direction="left"
-      >
-        ◀
-      </button>
-      <button
-        class="scroll-btn hidden group-hover:flex absolute -right-12 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-10 hover:bg-white/30 hover:scale-110 transition-all duration-300"
-        data-target="productScroll2"
-        data-direction="right"
-      >
-        ▶
-      </button>
+    <!-- Product Card 2 -->
+    <div
+      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+        <img
+          src="images/cat.jpg"
+          alt="Keychain 2"
+          class="w-28 h-28 mx-auto object-contain"
+        />
+      </div>
+      <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+      </h3>
+      <p class="font-bold text-[#4f1c51]">$45</p>
+      <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+          BUY NOW
+        </button>
+        <button
+          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    </div>
 
-      <div
-        id="productScroll2"
-        class="flex gap-6 overflow-x-auto scroll-smooth pb-6 px-2 no-scrollbar snap-x snap-mandatory"
-      ></div>
+    <!-- Product Card 3 -->
+    <div
+      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+        <img
+          src="images/cat.jpg"
+          alt="Keychain 3"
+          class="w-28 h-28 mx-auto object-contain"
+        />
+      </div>
+      <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+      </h3>
+      <p class="font-bold text-[#4f1c51]">$45</p>
+      <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+          BUY NOW
+        </button>
+        <button
+          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Card 4 -->
+    <div
+      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+        <img
+          src="images/cat.jpg"
+          alt="Keychain 4"
+          class="w-28 h-28 mx-auto object-contain"
+        />
+      </div>
+      <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+      </h3>
+      <p class="font-bold text-[#4f1c51]">$45</p>
+      <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+          BUY NOW
+        </button>
+        <button
+          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Card 5 -->
+    <div
+      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+        <img
+          src="images/cat.jpg"
+          alt="Keychain 5"
+          class="w-28 h-28 mx-auto object-contain"
+        />
+      </div>
+      <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+      </h3>
+      <p class="font-bold text-[#4f1c51]">$45</p>
+      <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+          BUY NOW
+        </button>
+        <button
+          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
     </div>
   </div>
 </section>
+<!-- ALL PRODUCT Section -->
+<section class="mx-auto mt-12 mb-32 max-w-6xl fade-up">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-8 px-2">
+    <div>
+      <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
+        ALL PRODUCT
+      </span>
+    </div>
+    <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
+  </div>
+
+  <!-- Product Grid -->
+  <div
+    id="allProducts"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center"
+  ></div>
+
+  <!-- See All Button -->
+  <div class="flex justify-center mt-12">
+    <button
+      class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full shadow-md hover:bg-[#4f1c51] hover:text-white transition-all duration-300"
+    >
+      See All
+    </button>
+  </div>
+</section>
+
+<!-- FontAwesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  // Data produk
+  const products = [
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+  ];
+
+  const container = document.getElementById("allProducts");
+
+  products.forEach((product) => {
+    const card = document.createElement("div");
+    card.className =
+      "group w-full max-w-[250px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1";
+
+    card.innerHTML = `
+      <!-- Gambar Produk -->
+      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden">
+        <div class="overflow-hidden">
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+            class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:-translate-y-4"
+          />
+        </div>
+      </div>
+
+      <!-- Nama & Harga -->
+      <h3 class="text-[#4f1c51] font-medium mb-1">${product.name}</h3>
+      <p class="font-bold text-[#4f1c51]">$${product.price}</p>
+
+      <!-- Tombol Buy + Cart -->
+      <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+          <span>BUY NOW</span>
+        </button>
+        <button
+          class="bg-[#e9b886] px-3 py-2 rounded-full hover:scale-110 transition-all duration-300"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
     // generate product cards
     const makeProducts = (id, start) => {
-      const container = document.getElementById(id);
-      const products = Array.from({ length: 10 }).map((_, i) => ({
+    const container = document.getElementById(id);
+    const products = Array.from({ length: 10 }).map((_, i) => ({
         name: `Product ${i + start}`,
         price: `$${(Math.random() * 50 + 10).toFixed(2)}`,
-        img: `keychain${((i + start) % 3) + 1}.png`,
-      }));
+        img: `images/cat${((i + start) % 3) + 1}.jpg`,
+    }));
 
-      products.forEach((p) => {
+    products.forEach((p) => {
         const card = document.createElement("div");
         card.className =
-          "min-w-[250px] snap-start bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 flex-shrink-0 transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl";
+        "min-w-[250px] snap-start bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 flex-shrink-0 transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl";
         card.innerHTML = `
-          <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 flex items-center justify-center">
+        <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 flex items-center justify-center">
             <img src="${p.img}" alt="${p.name}" class="w-28 h-28 object-contain" />
-          </div>
-          <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
-          <p class="font-bold text-[#4f1c51]">${p.price}</p>
-          <button
+        </div>
+        <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
+        <p class="font-bold text-[#4f1c51]">${p.price}</p>
+        <button
             class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition-all duration-300"
-          >
+        >
             BUY NOW
-          </button>
+        </button>
         `;
         container.appendChild(card);
-      });
+    });
     };
 
     makeProducts("productScroll1", 1);
@@ -346,99 +442,110 @@
 
     // Scroll button function
     document.querySelectorAll(".scroll-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
+    btn.addEventListener("click", () => {
         const container = document.getElementById(btn.dataset.target);
         const scrollValue = 320;
         const direction = btn.dataset.direction === "left" ? -1 : 1;
         container.scrollBy({ left: direction * scrollValue, behavior: "smooth" });
-      });
+    });
     });
 
     // Shadow animation
     const container1 = document.getElementById("productScroll1");
     const handleShadow = () => {
-      const { scrollLeft, scrollWidth, clientWidth } = container1;
-      leftShadow.style.opacity = scrollLeft > 20 ? "1" : "0";
-      rightShadow.style.opacity =
+    const { scrollLeft, scrollWidth, clientWidth } = container1;
+    leftShadow.style.opacity = scrollLeft > 20 ? "1" : "0";
+    rightShadow.style.opacity =
         scrollLeft + clientWidth < scrollWidth - 20 ? "1" : "0";
     };
 
     container1.addEventListener("scroll", handleShadow);
     handleShadow();
+});
+
+  const btn = document.getElementById("buyBtn");
+  btn.addEventListener("click", () => {
+    btn.classList.add("scale-95");
+    btn.innerHTML = 'Added!';
+    setTimeout(() => {
+      btn.classList.remove("scale-95");
+      btn.innerHTML = '<span>BUY NOW</span>';
+    }, 2000);
   });
+
 </script>
 
 <!-- FOOTER -->
 <section class="relative bg-[#210F37] z-0">
-  <!-- Wave transition dari ungu ke cream -->
-  <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none">
+<!-- Wave transition dari ungu ke cream -->
+<div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-  </div>
+</div>
 </section>
 
 <footer class="bg-[#FAF4EE] text-[#2e0f3f] pt-20 pb-10 z-10">
-  <div class="max-w-6xl mx-auto px-6 md:px-12 text-sm">
+<div class="max-w-6xl mx-auto px-6 md:px-12 text-sm">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
+    <div>
         <ul class="space-y-2">
-          <li><a href="#" class="hover:underline">Terms of Use</a></li>
-          <li><a href="#" class="hover:underline">Terms of Use for Paid Service</a></li>
-          <li><a href="#" class="hover:underline">Child and Youth Protection Policy</a></li>
-          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+        <li><a href="#" class="hover:underline">Terms of Use</a></li>
+        <li><a href="#" class="hover:underline">Terms of Use for Paid Service</a></li>
+        <li><a href="#" class="hover:underline">Child and Youth Protection Policy</a></li>
+        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
         </ul>
-      </div>
+    </div>
 
-      <div>
+    <div>
         <ul class="space-y-2">
-          <li><a href="#" class="font-semibold">Who is Midnight Fiction?</a></li>
-          <li><a href="#" class="hover:underline">Gift Cards</a></li>
-          <li><a href="#" class="hover:underline">Store Locator</a></li>
-          <li><a href="#" class="hover:underline">FAQ</a></li>
-          <li><a href="#" class="hover:underline">Returns & Refunds</a></li>
-          <li><a href="#" class="hover:underline">Shipping</a></li>
+        <li><a href="#" class="font-semibold">Who is Midnight Fiction?</a></li>
+        <li><a href="#" class="hover:underline">Gift Cards</a></li>
+        <li><a href="#" class="hover:underline">Store Locator</a></li>
+        <li><a href="#" class="hover:underline">FAQ</a></li>
+        <li><a href="#" class="hover:underline">Returns & Refunds</a></li>
+        <li><a href="#" class="hover:underline">Shipping</a></li>
         </ul>
-      </div>
+    </div>
 
-      <div class="flex justify-center md:justify-end items-start">
+    <div class="flex justify-center md:justify-end items-start">
         <div class="text-center md:text-right">
-          <h2 class="text-2xl font-semibold leading-tight">🌙 Midnight<br>Fiction</h2>
-          <p class="text-xs mt-4">2025 © Midnight Fiction All Rights Reserved</p>
-          <div class="flex justify-center md:justify-end gap-4 mt-3 text-lg">
+        <h2 class="text-2xl font-semibold leading-tight">🌙 Midnight<br>Fiction</h2>
+        <p class="text-xs mt-4">2025 © Midnight Fiction All Rights Reserved</p>
+        <div class="flex justify-center md:justify-end gap-4 mt-3 text-lg">
             <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-instagram"></i></a>
             <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-tiktok"></i></a>
             <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-twitter"></i></a>
-          </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
+    </div>
+</div>
 </footer>
 
 
 
         <script>
-      // Animasi saat scroll (fade-up)
-      const observer = new IntersectionObserver(
+    // Animasi saat scroll (fade-up)
+    const observer = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("opacity-100", "translate-y-0");
+            entry.target.classList.add("opacity-100", "translate-y-0");
             }
-          });
+        });
         },
         { threshold: 0.2 }
-      );
+    );
 
-      document.querySelectorAll(".fade-up").forEach((el) => {
+    document.querySelectorAll(".fade-up").forEach((el) => {
         el.classList.add(
-          "opacity-0",
-          "translate-y-5",
-          "transition-all",
-          "duration-700"
+        "opacity-0",
+        "translate-y-5",
+        "transition-all",
+        "duration-700"
         );
         observer.observe(el);
-      });
+    });
     </script>
 
-  </body>
+</body>
 </html>
