@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midnight Fiction - Profile</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: radial-gradient(circle at top, #4f1c51 58%, #210f37 100%);
+        color: #fff;
+      }
+     /* avatar positioned absolute so it sits centered in the empty space */
+     .avatar-container {
+       position: absolute;
+       top: 45px;            /* atur vertikal sesuai kebutuhan */
+       right: 95px;          /* geser lebih ke kiri dengan meningkatkan nilai ini */
+       margin-left: 0;
+       z-index: 20;
+       display: inline-block;
+       transform: translateY(0);
+     }
+
+      .nav-link {
+        color: #e5cfcf;
+        transition: color 0.3s;
+      }
+      .nav-link:hover { color: #fff; }
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      html { scroll-behavior: smooth; }
+
+      /* profile specific */
+      .panel-bg { background: linear-gradient(180deg,#f6e9df 0%, #f3e6db 100%); }
+      .soft-border { border: 3px solid rgba(96,165,250,0.15); } /* soft bluish outline */
+      .peach { background: #d89e77; }
+      .peach-dark { background: #c9885f; }
+      /* pill-shaped username / inputs to match design */
+      .input-style {
+        background: transparent;
+        border: 3px solid #e6b79b;
+        border-radius: 9999px;
+        padding: .6rem 1rem;
+        color:#7b4b3e;
+        font-weight:600;
+      }
+      .label-style { color: #b35a2f; font-weight:600; }
+      /* avatar ~30% larger */
+      .avatar-wrap { width:125px; height:125px; border-radius:9999px; overflow:hidden; border:5px solid #fff; box-shadow:0 0px 15px rgba(0,0,0,0.28); display:block; }
+      .camera-badge {
+        width:40px; height:40px; border-radius:9999px;
+        background: linear-gradient(180deg,#fff 0,#f3f3f3 100%);
+        display:flex; align-items:center; justify-content:center;
+        box-shadow:0 8px 22px rgba(0,0,0,0.28);
+        position:absolute; bottom:-10px; left:50%; transform:translateX(-50%);
+        border:4px solid rgba(230,183,155,0.95);
+        cursor: pointer;
+      }
+      /* custom select arrow moved left so it isn't flush to the far right */
+      select.input-style {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236b3a2d' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: calc(100% - 28px) center; /* move arrow left from edge */
+        padding-right: 3.5rem; /* space for the arrow */
+      }
+
+      /* input date: don't inject an inline background-icon (we use a visible trigger button) */
+      input[type="date"].input-style {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: transparent;
+        padding-right: 4.5rem; /* give room for the circular trigger button */
+      }
+      /* hide native picker indicator (we open picker via the .date-trigger) */
+      input[type="date"]::-webkit-calendar-picker-indicator { display: none; }
+
+      /* fallback for small screens */
+      @media (max-width: 640px) {
+        input[type="date"].input-style {
+          background-position: calc(100% - 20px) center;
+          padding-right: 2.75rem;
+        }
+      }
+
+      /* date trigger button overlay (opens native picker) */
+      .date-input-wrapper { position: relative; display: block; }
+      .date-trigger {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 9999px;        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .date-trigger svg { display: block; stroke: #6b3a2d; width:18px; height:18px; }
+      /* ensure input has enough right padding so text doesn't overlap the trigger */
+      .input-style.date-with-trigger { padding-right: 5.25rem; }
+
+      /* modal for password change */
+     .modal-backdrop {
+       position: fixed;
+       inset: 0;
+       background: rgba(0,0,0,0.45);
+       display: none;
+       align-items: center;
+       justify-content: center;
+       z-index: 60;
+     }
+     .modal-backdrop.open { display: flex; }
+     .modal-panel {
+       width: 420px;
+       max-width: calc(100% - 32px);
+       background: #fff;
+       border-radius: 12px;
+       padding: 20px;
+       box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+       color: #3b2a28;
+     }
+     .modal-panel h3 { margin:0 0 8px; font-weight:700; color:#8d5848; }
+     .modal-actions { display:flex; gap:10px; margin-top:14px; }
+     .btn-muted { background:transparent; border:1px solid #d6a58f; color:#8d5848; padding:8px 12px; border-radius:8px; cursor:pointer; }
+     .btn-primary { background:#9a5448; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+     .input-modal { width:100%; padding:10px 12px; border-radius:8px; border:2px solid #e6b79b; box-sizing:border-box; }
+    </style>
+</head>
+
+<body class="min-h-screen">
+  <nav class="px-6 py-6">
+    <!-- simple top navbar -->
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="text-2xl font-bold text-white">Midnight Fiction</div>
+      <div class="text-sm text-gray-200">Welcome back</div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6 pb-12">
+    <div class="flex gap-8">
+      <!-- left sidebar / tabs -->
+      <aside class="w-60">
+        <div class="rounded-2xl overflow-hidden peach p-1">
+          <div class="bg-peach-dark rounded-xl p-6 text-left">
+            <ul class="space-y-6">
+              <li class="text-white font-semibold">Account Information</li>
+              <li class="text-white/90">Order</li>
+              <li class="text-white/90">Address</li>
+              <li class="text-white/90">Notification</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- profile card -->
+      <section class="flex-1">
+        <div class="panel-bg rounded-3xl p-8 soft-border relative">
+          <!-- Title and avatar -->
+          <div class="flex items-start justify-between gap-6">
+            <!-- left: title + username -->
+            <div class="flex-1">
+              <h2 class="text-2xl font-semibold text-[#8d5848]">Account Information</h2>
+              <div class="mt-4 max-w-lg">
+                <label class="label-style block mb-2">Username</label>
+                <!-- maxlength=11 (1 for '@' + up to 10 chars) -->
+                <input id="usernameInput" maxlength="11" class="input-style w-full" value="@max10chars" />
+              </div>
+            </div>
+
+            <!-- right: avatar -->
+            <div class="flex items-center gap-4">
+              <div class="avatar-container">
+                <div class="avatar-wrap">
+                  <img id="profileAvatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=9e5c5e3b9b8b5a0a2b3d6f4f8f9d2b9a" alt="avatar" class="w-full h-full object-cover">
+                </div>
+                <!-- hidden file input for avatar upload -->
+                <input id="avatarInput" type="file" accept="image/*" style="display:none" />
+                 <!-- camera badge centered at bottom of avatar -->
+                <button id="avatarButton" class="camera-badge" type="button" aria-label="Change profile photo">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b3a2d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                 </button>
+                <!-- JS to handle upload & preview -->
+                <script>
+                  (function(){
+                    const btn = document.getElementById('avatarButton');
+                    const input = document.getElementById('avatarInput');
+                    const img = document.getElementById('profileAvatar');
+                    let currentObjectURL = null;
+
+                    btn.addEventListener('click', () => input.click());
+
+                    input.addEventListener('change', (e) => {
+                      const file = e.target.files && e.target.files[0];
+                      if (!file) return;
+                      if (!file.type.startsWith('image/')) return alert('Pilih file gambar.');
+                      // optional: limit size to 5MB
+                      if (file.size > 5 * 1024 * 1024) return alert('Maks 5MB.');
+                      if (currentObjectURL) URL.revokeObjectURL(currentObjectURL);
+                      currentObjectURL = URL.createObjectURL(file);
+                      img.src = currentObjectURL;
+                    });
+                  })();
+                </script>
+              </div>
+            </div>
+          </div>
+
+          <!-- form -->
+          <form class="mt-8 grid grid-cols-1 gap-6">
+            <!-- Username moved above title to align directly under heading -->
+            <!-- Name row -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="label-style block mb-2">First Name</label>
+                <input class="input-style w-full" value="Wonyoung" />
+              </div>
+              <div>
+                <label class="label-style block mb-2">Last Name</label>
+                <input class="input-style w-full" value="Jang" />
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label class="label-style block mb-2">Email</label>
+              <input class="input-style w-full" value="wonyoung@gmail.com" />
+            </div>
+
+            <!-- Password (masked and readonly) -->
+            <div>
+              <label class="label-style block mb-2">Password
+                <button id="changePasswordBtn" type="button" class="text-sm ml-2 px-2 py-1 rounded-md bg-transparent text-[#5b2b3a] font-medium" style="border:none;cursor:pointer;">Change</button>
+              </label>
+              <input id="passwordPreview" type="password" readonly class="input-style w-full" value="ja******ng" />
+            </div>
+
+            <!-- Gender select -->
+            <div>
+              <label class="label-style block mb-2">Gender</label>
+              <select class="input-style w-full">
+                <option>Female</option>
+                <option>Male</option>
+                <option>Other</option>
+              </select>
+            </div>
+            
+            <!-- D.O.B. -->
+            <div>
+              <label class="label-style block mb-2">D.O.B.</label>
+              <!-- wrapper with visible trigger that opens native calendar -->
+              <div class="date-input-wrapper">
+                <input id="dobInput" type="date" class="input-style date-with-trigger w-full" value="2004-08-31" />
+                <button id="dobTrigger" type="button" class="date-trigger" aria-label="Open calendar">
+                  <!-- calendar SVG (same style as used for background) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b3a2d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+              <label class="label-style block mb-2">Phone Number</label>
+              <input class="input-style w-full" value="+62 888-888-8888" />
+            </div>
+
+            <!-- Country -->
+            <div>
+              <label class="label-style block mb-2">Country</label>
+              <input class="input-style w-full" value="Indonesia" />
+            </div>
+            <!-- action buttons -->
+            <div class="pt-4 flex flex-col gap-3">
+              <button type="button" class="w-full px-6 py-3 rounded-md bg-[#9a5448] text-white font-semibold shadow">SAVE CHANGES</button>
+              <button type="button" class="w-full px-6 py-3 rounded-md border-2 border-[#c84b49] text-[#c84b49] font-semibold bg-transparent">DELETE ACCOUNT</button>
+            </div>
+          </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Password change modal -->
+  <div id="passwordModal" class="modal-backdrop" role="dialog" aria-hidden="true" aria-labelledby="pwdModalTitle">
+    <div class="modal-panel" role="document">
+      <h3 id="pwdModalTitle">Change Password</h3>
+      <p style="margin:0 0 12px; font-size:13px; color:#6b3a2d;">Masukkan password lama dan password baru.</p>
+      <form id="pwdForm" autocomplete="off">
+        <div style="margin-bottom:8px;">
+          <input id="oldPwd" type="password" placeholder="Current password" class="input-modal" required />
+        </div>
+        <div style="margin-bottom:8px;">
+          <input id="newPwd" type="password" placeholder="New password (min 8 chars)" class="input-modal" required minlength="8" />
+        </div>
+        <div style="margin-bottom:6px;">
+          <input id="confirmPwd" type="password" placeholder="Confirm new password" class="input-modal" required />
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="pwdCancel" class="btn-muted">Cancel</button>
+          <button type="submit" class="btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // enforce immutable leading '@', max 10 chars, alphanumeric only, lowercase
+    (function(){
+      const el = document.getElementById('usernameInput');
+      if (!el) return;
+      const MAX = 10;
+
+      // ensure maxlength attribute present (1 for '@' + MAX)
+      el.setAttribute('maxlength', String(MAX + 1));
+
+      function cleanCore(s) {
+        return (s || '').replace(/@/g, '').replace(/[^a-zA-Z0-9]/g, '').slice(0, MAX).toLowerCase();
+      }
+      function setCoreAndCaret(core, caretPos) {
+        el.value = '@' + core;
+        try { el.setSelectionRange(caretPos, caretPos); } catch (_) {}
+      }
+
+      // block any deletion that would remove the leading '@'
+      el.addEventListener('beforeinput', (ev) => {
+        if (!ev.inputType) return;
+        // block deletions that affect the leading '@'
+        if (ev.inputType.startsWith('delete')) {
+          const s = el.selectionStart || 0;
+          const e = el.selectionEnd || 0;
+          // if selection includes the first character or caret is right after '@' trying to delete
+          if (s < 1 || (s === 1 && e === 1)) {
+            ev.preventDefault();
+            return;
+          }
+          return; // allow other deletes
+        }
+
+        // allow undo/redo
+        if (ev.inputType === 'historyUndo' || ev.inputType === 'historyRedo') return;
+
+        const core = el.value.slice(1);
+        const selStart = el.selectionStart || 1;
+        const selEnd = el.selectionEnd || 1;
+        const replacing = Math.max(0, selEnd - selStart);
+        const available = MAX - (core.length - replacing);
+        if (available <= 0 && !ev.inputType.startsWith('delete')) {
+          ev.preventDefault();
+          return;
+        }
+
+        // handle paste/drop explicitly
+        if (ev.inputType === 'insertFromPaste' || ev.inputType === 'insertFromDrop') {
+          ev.preventDefault();
+          const paste = (ev.clipboardData || window.clipboardData)?.getData('text') || '';
+          const cleaned = paste.replace(/@/g, '').replace(/[^a-zA-Z0-9]/g, '').toLowerCase().slice(0, available);
+          const before = core.slice(0, selStart - 1);
+          const after = core.slice(selEnd - 1);
+          const newCore = (before + cleaned + after).slice(0, MAX);
+          setCoreAndCaret(newCore, 1 + before.length + cleaned.length);
+          return;
+        }
+
+        // insertText (typing) - ensure character(s) are allowed and fit
+        if (ev.inputType === 'insertText') {
+          const data = ev.data || '';
+          const cleaned = data.replace(/@/g, '').replace(/[^a-zA-Z0-9]/g, '');
+          if (!cleaned) {
+            ev.preventDefault();
+            return;
+          }
+          if (cleaned.length > available) {
+            ev.preventDefault();
+            const allowed = cleaned.slice(0, available);
+            const before = core.slice(0, selStart - 1);
+            const after = core.slice(selEnd - 1);
+            const newCore = (before + allowed + after).slice(0, MAX);
+            setCoreAndCaret(newCore, 1 + before.length + allowed.length);
+            return;
+          }
+          // otherwise allow (will be sanitized on input)
+        }
+      });
+
+      // extra keydown guard for Backspace/Delete/Home
+      el.addEventListener('keydown', (ev) => {
+        const s = el.selectionStart || 0;
+        const e = el.selectionEnd || 0;
+        if (ev.key === 'Backspace') {
+          // caret right after '@' or selection includes '@'
+          if (s <= 1) {
+            ev.preventDefault();
+            return;
+          }
+        }
+        if (ev.key === 'Delete') {
+          if (s < 1) {
+            ev.preventDefault();
+            return;
+          }
+        }
+        if (ev.key === 'Home') {
+          ev.preventDefault();
+          setTimeout(()=> el.setSelectionRange(1,1),0);
+        }
+      });
+
+      // sanitize on input (ensures lowercase/alnum and truncation) and keep caret >=1
+      el.addEventListener('input', () => {
+        const prevPos = el.selectionStart || 1;
+        const core = cleanCore(el.value);
+        el.value = '@' + core;
+        const pos = Math.max(1, Math.min(prevPos, core.length + 1));
+        try { el.setSelectionRange(pos, pos); } catch (_) {}
+      });
+
+      // robust paste handler (fallback)
+      el.addEventListener('paste', (ev) => {
+        ev.preventDefault();
+        const paste = (ev.clipboardData || window.clipboardData).getData('text') || '';
+        const core = el.value.slice(1);
+        const selStart = Math.max(1, el.selectionStart || 1);
+        const selEnd = Math.max(1, el.selectionEnd || 1);
+        const before = core.slice(0, selStart - 1);
+        const after = core.slice(selEnd - 1);
+        const cleaned = paste.replace(/@/g, '').replace(/[^a-zA-Z0-9]/g, '').toLowerCase().slice(0, MAX - (before.length + after.length));
+        const newCore = (before + cleaned + after).slice(0, MAX);
+        el.value = '@' + newCore;
+        const caretPos = 1 + before.length + cleaned.length;
+        try { el.setSelectionRange(Math.min(caretPos, newCore.length + 1), Math.min(caretPos, newCore.length + 1)); } catch(_) {}
+      });
+
+      // focus/click guard to keep caret after '@'
+      function ensureCaret() { try { if ((el.selectionStart || 0) < 1) el.setSelectionRange(1,1); } catch(_) {} }
+      el.addEventListener('focus', () => setTimeout(ensureCaret, 0));
+      el.addEventListener('click', () => setTimeout(ensureCaret, 0));
+
+      // initialize sanitized value
+      el.value = '@' + cleanCore(el.value);
+    })();
+     (function(){
+       const dob = document.getElementById('dobInput');
+       const btn = document.getElementById('dobTrigger');
+       if (!dob || !btn) return;
+       btn.addEventListener('click', (e) => {
+         e.preventDefault();
+         // prefer showPicker if supported (Chrome/Edge)
+         if (typeof dob.showPicker === 'function') {
+           dob.showPicker();
+           return;
+         }
+         // fallback: focus + try click to open picker on older browsers
+         dob.focus();
+         try { dob.click(); } catch (err) {}
+       });
+       // optional: keep a formatted visible text somewhere — the input value updates automatically
+       dob.addEventListener('change', () => {
+         // dob.value is updated (YYYY-MM-DD). If you want formatted display, add code here.
+         // Example: console.log('DOB selected:', dob.value);
+       });
+     })();
+     (function(){
+      const openBtn = document.getElementById('changePasswordBtn');
+      const modal = document.getElementById('passwordModal');
+      const cancel = document.getElementById('pwdCancel');
+      const form = document.getElementById('pwdForm');
+      const pwdPreview = document.getElementById('passwordPreview');
+
+      function openModal(){
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        // focus first field
+        setTimeout(()=> document.getElementById('oldPwd').focus(), 50);
+      }
+      function closeModal(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        form.reset();
+      }
+
+      openBtn && openBtn.addEventListener('click', openModal);
+      cancel && cancel.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const oldV = document.getElementById('oldPwd').value || '';
+        const newV = document.getElementById('newPwd').value || '';
+        const conf = document.getElementById('confirmPwd').value || '';
+        if (newV.length < 8) return alert('New password harus minimal 8 karakter.');
+        if (newV !== conf) return alert('Konfirmasi password tidak cocok.');
+        // NOTE: here you should call your backend API to actually change the password.
+        // Simulate success:
+        alert('Password berhasil diubah.');
+        // update preview (masked) — keep masked value, do not expose real password
+        pwdPreview.value = 'ja******ng';
+        closeModal();
+      });
+    })();
+   </script>
+</body>
+</html>
