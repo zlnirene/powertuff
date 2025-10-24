@@ -146,28 +146,34 @@
 
 <body class="min-h-screen">
   <!-- Navbar -->
-  <nav class="flex items-center justify-between px-6 py-6">
-    <div class="flex items-center gap-4">
-      <a href="../index.html"><img src="../images/2.png" alt="Midnight Fiction Logo" class="h-12" style="object-fit:contain" /></a>
-    </div>
-    <div class="mx-auto max-w-3xl w-full">
-      <div class="bg-[#FAF4EE]/100 rounded-full px-6 py-3 flex items-center justify-between shadow-md">
-        <ul class="flex gap-8 items-center justify-center mx-auto text-[#4f1c51] font-medium">
-          <li><a href="../index.html" class="px-2 py-1 rounded-full bg-transparent text-[#8f5e57] font-semibold">Home</a></li>
-          <li><a href="../pages/products.html" class="px-2 py-1">Product</a></li>
-          <li><a href="#" class="px-2 py-1">New Arrivals</a></li>
-          <li><a href="#" class="px-2 py-1">Contact Us</a></li>
-        </ul>
+<nav class="relative flex items-center justify-center py-5 mb-[20px]">
+  <!-- Logo -->
+  <div class="absolute left-40 flex items-center">
+    <a href="../index.html">
+      <img src="../images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
+    </a>
+  </div>
 
-        <div class="flex items-center gap-4 ml-6">
-          <a href="products.html" class="text-[#4f1c51]">🛒</a>
-          <button class="text-[#4f1c51]">⭐</button>
-          <button class="text-[#4f1c51]">☺</button>
-        </div>
-      </div>
+  <!-- Rounded Navigation Bar -->
+  <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-between shadow-lg w-[580px]">
+    <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
+      <li><a href="../index.html" class="hover:font-bold transition-all duration-150">Home</a></li>
+      <li><a href="../pages/products.html" class="hover:font-bold transition-all duration-150">Category</a></li>
+      <li><a href="#" class="hover:font-bold transition-all duration-150">New Arrivals</a></li>
+      <li><a href="#" class="hover:font-bold transition-all duration-150">Contact Us</a></li>
+    </ul>
+
+    <!-- Icons -->
+    <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
+      <a href="#" class="hover:font-semibold transition-all duration-150">🛒</a>
+      <a href="#" class="hover:font-semibold transition-all duration-150">⭐</a>
+      <a href="#" class="hover:font-semibold transition-all duration-150">👤</a>
     </div>
-    <div style="width:36px"></div>
-  </nav>
+  </div>
+</nav>
+
+
+
 
   <main class="max-w-6xl mx-auto px-6 pb-12">
     <div class="flex gap-8">
@@ -346,6 +352,51 @@
       </form>
     </div>
   </div>
+
+    <!-- Wave + Footer -->
+  <section class="relative bg-[#210F37] z-0">
+    <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    </div>
+  </section>
+
+  <footer class="bg-[#FAF4EE] text-[#2e0f3f] pt-20 pb-10 z-10">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 text-sm">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:underline">Terms of Use</a></li>
+            <li><a href="#" class="hover:underline">Terms of Use for Paid Service</a></li>
+            <li><a href="#" class="hover:underline">Child and Youth Protection Policy</a></li>
+            <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="space-y-2">
+            <li><a href="#" class="font-semibold">Who is Midnight Fiction?</a></li>
+            <li><a href="#" class="hover:underline">Gift Cards</a></li>
+            <li><a href="#" class="hover:underline">Store Locator</a></li>
+            <li><a href="#" class="hover:underline">FAQ</a></li>
+            <li><a href="#" class="hover:underline">Returns & Refunds</a></li>
+            <li><a href="#" class="hover:underline">Shipping</a></li>
+          </ul>
+        </div>
+
+        <div class="flex justify-center md:justify-end items-start">
+          <div class="text-center md:text-right">
+            <h2 class="text-2xl font-semibold leading-tight">🌙 Midnight<br>Fiction</h2>
+            <p class="text-xs mt-4">2025 © Midnight Fiction All Rights Reserved</p>
+            <div class="flex justify-center md:justify-end gap-4 mt-3 text-lg">
+              <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="js/index.js"></script>
 </body>
