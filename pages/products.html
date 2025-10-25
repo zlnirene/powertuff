@@ -69,118 +69,121 @@
     </nav>
     <!-- Sort & Filter -->
     <section class="w-full flex flex-col items-center mt-10 text-[#DCA06D]">
-        <section class="max-w-6xl mx-auto mt-12 flex flex-col md:flex-row items-center justify-between gap-6 bg-[#FAF4EE] text-[#8f5e57] rounded-3xl px-8 py-6 shadow-lg">
-            <!-- SORT -->
-            <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
-                <h2 class="font-semibold text-lg text-[#4f1c51]">Sort By:</h2>
-                <div class="flex flex-wrap gap-3 *:px-3 *:py-1">
-                    <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Best Seller</button>
-                    <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">A-Z</button>
-                    <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Z-A</button>
-                    <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Lowest Price</button>
-                    <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Highest Price</button>
-                </div>
-            </div>
 
-            <!-- CATEGORY -->
-            <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
-                <h2 class="font-semibold text-lg text-[#4f1c51]">Category:</h2>
-                <div class="flex items-center border-2 border-[#DCA06D] rounded-3xl px-5 py-2 w-full sm:w-80 justify-between">
-                    <input 
-                        type="text" 
-                        placeholder="Select category..." 
-                        class="bg-transparent text-[#DCA06D] placeholder-[#DCA06D] outline-none w-full"
-                    />
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#DCA06D" class="w-5 h-5 ml-2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-            </div>
-        </section>
-    </section>
+<section class="max-w-6xl mx-auto mt-12 flex flex-col md:flex-row items-center justify-between gap-6 bg-[#FAF4EE] text-[#8f5e57] rounded-3xl px-8 py-6 shadow-lg">
+	<!-- SORT -->
+	<div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+		<h2 class="font-semibold text-lg text-[#4f1c51]">Sort By:</h2>
+		<div class="flex flex-wrap gap-3 *:px-3 *:py-1">
+			<button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Best Seller</button>
+			<button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">A-Z</button>
+			<button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Z-A</button>
+			<button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Lowest Price</button>
+			<button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Highest Price</button>
+		</div>
+	</div>
 
-<!-- Page header -->
+	<!-- CATEGORY -->
+	<div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+		<h2 class="font-semibold text-lg text-[#4f1c51]">Category:</h2>
+		<div class="flex items-center border-2 border-[#DCA06D] rounded-3xl px-5 py-2 w-full sm:w-80 justify-between">
+			<input 
+				type="text" 
+				placeholder="Select category..." 
+				class="bg-transparent text-[#DCA06D] placeholder-[#DCA06D] outline-none w-full"
+			/>
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#DCA06D" class="w-5 h-5 ml-2">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+			</svg>
+		</div>
+	</div>
+</section>
+
 <section class="max-w-5xl mx-auto mt-8 px-6 text-center">
 	<h1 class="text-3xl font-semibold text-[#FAF4EE] mb-2">All Product</h1>
 	<p class="text-[#f3dede]">Browse our full catalog. Click a product to see details.</p>
 </section>
 
-<!-- Products grid -->
-<section class="max-w-6xl mx-auto px-6 mt-8 mb-24">
+<section class="max-w-6xl mx-auto px-6 mt-8 mb-[200px]">
 	<div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center"></div>
 </section>
-<section class="relative bg-[#210F37] z-0">
-    <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+
+<section class="relative bg-[#210F37] z-0 footer-wave-spacer">
+    <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
     </div>
 </section>
-<footer class="site-footer bg-[#FAF4EE] text-[#2d1b1b] py-10">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="policy-links flex flex-wrap justify-between items-center gap-8 text-sm font-medium mb-8">
-            <a href="#" class="hover:text-[#6a4058] transition-colors">Terms of Use</a>
-            <a href="#" class="hover:text-[#6a4058] transition-colors">Terms for Paid Service</a>
-            <a href="#" class="hover:text-[#6a4058] transition-colors">Child & Youth Policy</a>
-            <a href="#" class="hover:text-[#6a4058] transition-colors">Privacy Policy</a>
-        </div>
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <ul class="space-y-1 text-sm leading-relaxed mb-8 md:mb-0">
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Who is Midnight Fiction?</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Gift Cards</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Store Locator</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">FAQ</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Returns & Refunds</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Shipping</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Wholesale</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Events</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Search</a></li>
-                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Refund Policy</a></li>
-            </ul>
-            <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
-                <img src="../images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
-                <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
-                    <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
-                        <a href="#" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            title="Instagram — MidnightFiction" 
-                            aria-label="Instagram — MidnightFiction"
-                            class="hover:opacity-80 transition-opacity duration-200">
-                            <img src="../images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
-                        </a>
-                        <a href="#" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            title="Facebook — MidnightFiction" 
-                            aria-label="Facebook — MidnightFiction"
-                            class="hover:opacity-80 transition-opacity duration-200">
-                            <img src="../images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
-                        </a>
-                        <a href="#" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            title="TikTok — @MidnightFiction" 
-                            aria-label="TikTok — MidnightFiction"
-                            class="hover:opacity-80 transition-opacity duration-200">
-                            <img src="../images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
-                        </a>
-                        <a href="#" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            title="Twitter — MidnightFiction" 
-                            aria-label="Twitter — MidnightFiction"
-                            class="hover:opacity-80 transition-opacity duration-200">
-                            <img src="../images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+    <div class="policy-links" aria-label="policy links">
+        <a href="#">Terms of Use</a>
+        <a href="#">Terms for Paid Service</a>
+        <a href="#">Child & Youth Policy</a>
+        <a href="#">Privacy Policy</a>
+    </div>
+
+    <div class="info-links">
+        <ul>
+        <li><a href="#">Who is Midnight Fiction?</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">Store Locator</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Returns & Refunds</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Wholesale</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Refund policy</a></li>
+        </ul>
+    </div>
+
+    <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
+        <img src="../images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
+        <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
+        <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
+<a href="#" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    title="Instagram — MidnightFiction" 
+    aria-label="Instagram — MidnightFiction"
+    class="hover:opacity-80 transition-opacity duration-200">
+    <img src="../images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
+</a>
+
+<a href="#" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    title="Facebook — MidnightFiction" 
+    aria-label="Facebook — MidnightFiction"
+    class="hover:opacity-80 transition-opacity duration-200">
+    <img src="../images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
+</a>
+
+<a href="#" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    title="TikTok — @MidnightFiction" 
+    aria-label="TikTok — MidnightFiction"
+    class="hover:opacity-80 transition-opacity duration-200">
+    <img src="../images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
+</a>
+
+<a href="#" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    title="Twitter — MidnightFiction" 
+    aria-label="Twitter — MidnightFiction"
+    class="hover:opacity-80 transition-opacity duration-200">
+    <img src="../images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
+</a>
+</div>
+    </div>
     </div>
 </footer>
 
 
 <script>
-	// buat produk dummy yang isinya sama (misal 12 item)
 	const sampleProduct = {
 		image: "../images/product.png",
 		name: "Lorem Ipsum Dolor Sic Amet ...",
@@ -189,7 +192,6 @@
 		spec: "Name|Material|Size|Color|Contents|Care"
 	};
 
-	// buat array berisi produk sama, tapi jumlahnya banyak
 	const products = Array.from({ length: 12 }, (_, i) => ({
 		...sampleProduct,
 	}));
@@ -215,72 +217,67 @@
 			</div>
 		`;
 
-		// modal open
-		card.addEventListener('click', (e) => {
-			if(e.target.closest('.buy-now-btn') || e.target.closest('.cart-btn')) return;
-			showProductModal(p);
-		});
+        card.addEventListener('click', (e) => {
+            if(e.target.closest('.buy-now-btn') || e.target.closest('.cart-btn')) return;
+            showProductModal(p);
+        });
 
-		// buy now
-		card.querySelector('.buy-now-btn').addEventListener('click', (ev) => {
-			ev.stopPropagation();
-			const btn = ev.currentTarget;
-			btn.classList.add('scale-95');
-			btn.innerText = 'Added!';
-			setTimeout(() => { btn.classList.remove('scale-95'); btn.innerHTML = 'BUY NOW'; }, 1500);
-		});
+        card.querySelector('.buy-now-btn').addEventListener('click', (ev) => {
+            ev.stopPropagation();
+            const btn = ev.currentTarget;
+            btn.classList.add('scale-95');
+            btn.innerText = 'Added!';
+            setTimeout(() => { btn.classList.remove('scale-95'); btn.innerHTML = 'BUY NOW'; }, 1500);
+        });
 
-		// cart
-		const cartBtn = card.querySelector('.cart-btn');
-		if(cartBtn){
-			cartBtn.addEventListener('click', (ev)=>{
-				ev.stopPropagation();
-				addToCart(p);
-			});
-		}
+        const cartBtn = card.querySelector('.cart-btn');
+        if(cartBtn){
+            cartBtn.addEventListener('click', (ev)=>{
+                ev.stopPropagation();
+                addToCart(p);
+            });
+        }
 
 		grid.appendChild(card);
 	}
 
 	products.forEach(createCard);
 
-	// add to cart (localStorage)
-	function addToCart(product){
-		const key = 'cartItems';
-		const items = JSON.parse(localStorage.getItem(key) || '[]');
-		const existing = items.find(i => i.name === product.name);
-		if(existing) existing.qty += 1;
-		else items.push({ ...product, id: Date.now(), qty: 1 });
-		localStorage.setItem(key, JSON.stringify(items));
-	}
+    function addToCart(product){
+        const key = 'cartItems';
+        const items = JSON.parse(localStorage.getItem(key) || '[]');
+        const existing = items.find(i => i.name === product.name);
+        if(existing) existing.qty += 1;
+        else items.push({ ...product, id: Date.now(), qty: 1 });
+        localStorage.setItem(key, JSON.stringify(items));
+    }
 
-	// modal
-	function showProductModal(p){
-		let modal = document.getElementById('productModal');
-		if(!modal){
-			modal = document.createElement('div');
-			modal.id = 'productModal';
-			modal.innerHTML = `
-				<div class="backdrop"></div>
-				<div class="panel mx-4 md:flex">
-					<div class="media flex-shrink-0">
-						<img id="modalImg" src="" alt="" class="w-3/4 mx-auto rounded-xl object-contain" />
-					</div>
-					<div class="meta">
-						<div class="flex justify-between items-start">
-							<h2 id="modalName" class="text-2xl font-semibold"></h2>
-							<button id="modalClose" aria-label="Close">✕</button>
-						</div>
-						<p id="modalPrice" class="text-xl font-bold mt-2"></p>
-						<p id="modalDesc" class="mt-4 text-sm text-[#4f1c51]"></p>
-						<div id="modalSpec" class="mt-4 text-sm text-[#4f1c51]"></div>
-					</div>
-				</div>
-			`;
-			document.body.appendChild(modal);
-			modal.querySelector('.backdrop').addEventListener('click', ()=> modal.classList.remove('active'));
-			modal.querySelector('#modalClose').addEventListener('click', ()=> modal.classList.remove('active'));
-		}
+    function showProductModal(p){
+        let modal = document.getElementById('productModal');
+        if(!modal){
+            modal = document.createElement('div');
+            modal.id = 'productModal';
+            modal.innerHTML = `
+                <div class="backdrop"></div>
+                <div class="panel mx-4 md:flex">
+                    <div class="media flex-shrink-0">
+                        <img id="modalImg" src="" alt="" class="w-3/4 mx-auto rounded-xl object-contain" />
+                    </div>
+                    <div class="meta">
+                        <div class="flex justify-between items-start">
+                            <h2 id="modalName" class="text-2xl font-semibold"></h2>
+                            <button id="modalClose" aria-label="Close">✕</button>
+                        </div>
+                        <p id="modalPrice" class="text-xl font-bold mt-2"></p>
+                        <p id="modalDesc" class="mt-4 text-sm text-[#4f1c51]"></p>
+                        <div id="modalSpec" class="mt-4 text-sm text-[#4f1c51]"></div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.querySelector('.backdrop').addEventListener('click', ()=> modal.classList.remove('active'));
+            modal.querySelector('#modalClose').addEventListener('click', ()=> modal.classList.remove('active'));
+        }
 
 		modal.querySelector('#modalImg').src = p.image;
 		modal.querySelector('#modalName').textContent = p.name;
@@ -291,7 +288,6 @@
 		modal.classList.add('active');
 	}
 </script>
-
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>

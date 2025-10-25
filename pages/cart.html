@@ -13,16 +13,17 @@
     }
     body{font-family:'Poppins',sans-serif;background:radial-gradient(circle at top,var(--bg1) 58%,var(--bg2) 100%);color:#fff;min-height:100vh}
     .cart-wrap{max-width:720px;margin:48px auto;padding:24px}
-.cart-container{background:var(--cream);color:var(--text);border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,0.18)}
-.cart-item{display:flex;align-items:center;gap:20px;padding:16px;border-radius:14px}
-.cart-item + .cart-item{border-top:1px solid rgba(0,0,0,0.04);margin-top:6px;padding-top:18px}
-.cart-item .col-item{width:40%}
-.cart-item .col-price{width:18%;text-align:center}
-.cart-item .col-qty{width:22%;text-align:center}
-.cart-item .col-total{width:20%;text-align:right}
+    .cart-container{background:var(--cream);color:var(--text);border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,0.18)}
+    .cart-item{display:flex;align-items:center;gap:20px;padding:16px;border-radius:14px}
+    .cart-item + .cart-item{border-top:1px solid rgba(0,0,0,0.04);margin-top:6px;padding-top:18px}
+    .cart-item .col-item{width:40%}
+    .cart-item .col-price{width:18%;text-align:center}
+    .cart-item .col-qty{width:22%;text-align:center}
+    .cart-item .col-total{width:20%;text-align:right}
+
     .thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex-shrink:0}
-.info{flex:1;min-width:0}
-.name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+    .info{flex:1;min-width:0}
+    .name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
     .tag{display:inline-block;background:var(--accent);color:var(--text);padding:4px 8px;border-radius:8px;font-size:12px;margin-top:6px}
     .qty{display:flex;align-items:center;gap:8px;border-radius:14px;padding:6px 8px;background:transparent}
     .qty button{width:28px;height:28px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text);font-weight:700}
@@ -31,7 +32,6 @@
     .empty{background:rgba(255,255,255,0.06);padding:24px;border-radius:12px;text-align:center}
     .footer{position:fixed;right:24px;left:24px;bottom:24px;max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
     .checkout{background:var(--accent);color:var(--text);padding:12px 20px;border-radius:14px;font-weight:700}
-    /* ensure the checkout button is above any accidental overlays */
     #checkoutBtn{position:relative;z-index:40}
     @media(min-width:768px){.cart-wrap{margin-top:72px}}
 </style>
@@ -77,9 +77,7 @@
     </div>
 </nav>
 
-<!-- Cart layout: centered list and summary below -->
 <section class="max-w-6xl mx-auto px-6 mb-20">
-    <!-- Improved header: title + subtitle + item-count badge -->
     <div class="mb-6 text-center">
     <h1 class="text-3xl md:text-4xl font-semibold text-[#FAF4EE]">Your Cart</h1>
     <p class="text-sm md:text-base text-[#e9b886] mt-2">Review the items below before you checkout</p>
@@ -89,8 +87,7 @@
     </div>
 
     <div class="mx-auto max-w-4xl">
-    <div class="cart-container">
-        <!-- table header (center items vertically to match row content) -->
+      <div class="cart-container">
         <div class="hidden md:flex items-center text-[#8f5e57] text-sm font-medium mb-4 px-2 py-2">
         <div class="w-1/3">Item</div>
         <div class="w-1/3 text-center">Price</div>
@@ -98,39 +95,29 @@
         <div class="w-1/6 text-right">Total</div>
         </div>
 
-        <div id="list" class="space-y-0">
-        <!-- JS will inject cart items here (rows will be .cart-item) -->
-        </div>
+        <div id="list" class="space-y-0"></div>
     </div>
 
     <div id="empty" class="mt-6 hidden">
         <div class="empty text-sm">Your cart is empty.</div>
     </div>
 
-    <!-- summary centered below list -->
     <div class="mx-auto max-w-6xl mt-8">
         <div class="rounded-2xl bg-[#FAF4EE] text-[#2e0f3f] px-6 py-6 shadow-md">
-        <div class="flex items-center justify-between mb-3">
-            <div class="text-sm text-[#8f5e57]">Subtotal</div>
-            <div id="subtotalAmount" class="font-semibold">$0.00</div>
+            <div class="flex items-center justify-between mb-3">
+                <div class="text-sm text-[#8f5e57]">Subtotal</div>
+                <div id="subtotalAmount" class="font-semibold">$0.00</div>
+            </div>
+            <div class="flex items-center justify-between mb-3">
+                <div class="text-sm text-[#8f5e57]">Sales Tax</div>
+                <div id="taxAmount" class="font-medium">$0.00</div>
+            </div>
+            <hr class="my-3 border-t border-[#e6dcd8]" />
+            <div class="flex items-center justify-between mb-4">
+                <div class="text-sm text-[#8f5e57]">Grand total</div>
+                <div id="grandTotal" class="text-xl font-semibold">$0.00</div>
+            </div>
         </div>
-        <div class="flex items-center justify-between mb-3">
-            <div class="text-sm text-[#8f5e57]">Sales Tax</div>
-            <div id="taxAmount" class="font-medium">$0.00</div>
-        </div>
-        <hr class="my-3 border-t border-[#e6dcd8]" />
-        <div class="flex items-center justify-between mb-4">
-            <div class="text-sm text-[#8f5e57]">Grand total</div>
-            <div id="grandTotal" class="text-xl font-semibold">$0.00</div>
-        </div>
-
-        <button id="checkoutBtn" type="button" class="w-full inline-block text-center bg-[#e9b886] text-[#2e0f3f] px-5 py-3 rounded-lg shadow-sm font-semibold">Checkout</button>
-        </div>
-    </div>
-    </div>
-</section>
-
-<!-- Checkout modal (in-page module) -->
 <div id="checkoutModal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
     <div id="checkoutBackdrop" class="absolute inset-0 bg-black/50"></div>
     <div class="relative bg-[#FAF4EE] text-[#2e0f3f] rounded-2xl w-full max-w-md mx-4 p-6 shadow-lg z-10">
@@ -152,9 +139,9 @@
     </div>
 </div>
 
-<section class="relative bg-[#210F37] z-0">
-    <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+<section class="relative bg-[#210F37] z-0 footer-wave-spacer">
+    <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
     </div>
 </section>
 
@@ -180,7 +167,7 @@
                 <li><a href="#" class="hover:text-[#6a4058] transition-colors">Refund Policy</a></li>
             </ul>
             <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
-                <img src="../images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
+                <img src="images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
                 <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
                     <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
                         <a href="#" 
@@ -189,7 +176,7 @@
                             title="Instagram — MidnightFiction" 
                             aria-label="Instagram — MidnightFiction"
                             class="hover:opacity-80 transition-opacity duration-200">
-                            <img src="../images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
+                            <img src="images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
                         </a>
                         <a href="#" 
                             target="_blank" 
@@ -197,7 +184,7 @@
                             title="Facebook — MidnightFiction" 
                             aria-label="Facebook — MidnightFiction"
                             class="hover:opacity-80 transition-opacity duration-200">
-                            <img src="../images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
+                            <img src="images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
                         </a>
                         <a href="#" 
                             target="_blank" 
@@ -205,7 +192,7 @@
                             title="TikTok — @MidnightFiction" 
                             aria-label="TikTok — MidnightFiction"
                             class="hover:opacity-80 transition-opacity duration-200">
-                            <img src="../images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
+                            <img src="images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
                         </a>
                         <a href="#" 
                             target="_blank" 
@@ -213,7 +200,7 @@
                             title="Twitter — MidnightFiction" 
                             aria-label="Twitter — MidnightFiction"
                             class="hover:opacity-80 transition-opacity duration-200">
-                            <img src="../images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
+                            <img src="images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
                         </a>
                     </div>
                 </div>
@@ -223,7 +210,6 @@
 </footer>
 
 <script>
-    // sample cart items to match the mock
     const sampleCart = [
     { id: 1, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
     { id: 2, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
@@ -239,7 +225,6 @@ const itemCount = document.getElementById('itemCount');
     const emptyBox = document.getElementById('empty');
 
     const STORAGE_KEY = 'cartItems';
-    // load cart from localStorage if present, otherwise use sampleCart
     let cart;
     try{
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -253,13 +238,12 @@ const itemCount = document.getElementById('itemCount');
     }
 
     function render(){
-    list.innerHTML = '';
-if(cart.length === 0){ emptyBox.classList.remove('hidden'); if(subtotalAmount) subtotalAmount.textContent = '$0.00'; if(taxAmount) taxAmount.textContent = '$0.00'; if(grandTotal) grandTotal.textContent = '$0.00'; if(itemCount) itemCount.textContent = '0 items'; return }
-    emptyBox.classList.add('hidden');
-    cart.forEach(item => {
-const wrapper = document.createElement('div');
-wrapper.className = 'cart-item';
-        // ensure product name is one line: replace newline characters with spaces
+      list.innerHTML = '';
+  if(cart.length === 0){ emptyBox.classList.remove('hidden'); if(subtotalAmount) subtotalAmount.textContent = '$0.00'; if(taxAmount) taxAmount.textContent = '$0.00'; if(grandTotal) grandTotal.textContent = '$0.00'; if(itemCount) itemCount.textContent = '0 items'; return }
+      emptyBox.classList.add('hidden');
+      cart.forEach(item => {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'cart-item';
         const safeName = (item.name || '').split('\\n').join(' ');
         wrapper.innerHTML = `
         <div class="col-item flex items-center gap-4">
@@ -285,7 +269,6 @@ wrapper.className = 'cart-item';
         <button class="remove" data-id="${item.id}" aria-label="Remove">✕</button>
         `;
 
-        // attach handlers
         wrapper.querySelector('.inc').addEventListener('click', (e)=>{
         e.stopPropagation();
         changeQty(item.id, item.qty + 1);
@@ -301,8 +284,7 @@ wrapper.className = 'cart-item';
 
         list.appendChild(wrapper);
         });
-// update item-count badge
-if(itemCount) itemCount.textContent = `${cart.length} items`;
+  if(itemCount) itemCount.textContent = `${cart.length} items`;
         updateSummary();
     }
 
@@ -318,7 +300,7 @@ if(itemCount) itemCount.textContent = `${cart.length} items`;
     }
     function updateSummary(){
     const subtotal = cart.reduce((s,i)=> s + i.price * i.qty, 0);
-    const taxRate = 0.08; // example tax rate 8%
+    const taxRate = 0.08; 
     const tax = subtotal * taxRate;
     const grand = subtotal + tax;
     if(subtotalAmount) subtotalAmount.textContent = `$${subtotal.toFixed(2)}`;
@@ -327,9 +309,8 @@ if(itemCount) itemCount.textContent = `${cart.length} items`;
     }
 
     render();
-</script>
-<script>
-    // Checkout modal module: open modal, populate totals, confirm/cancel actions
+  </script>
+  <script>
     document.addEventListener('DOMContentLoaded', function () {
     const checkoutBtn = document.getElementById('checkoutBtn');
     const checkoutModal = document.getElementById('checkoutModal');
@@ -353,13 +334,11 @@ if(itemCount) itemCount.textContent = `${cart.length} items`;
         if(checkoutMessage) checkoutMessage.classList.add('hidden');
     }
 
-    if(checkoutBtn){
-        // attach event listener and also set onclick fallback for environments
+      if(checkoutBtn){
         checkoutBtn.addEventListener('click', function (e){
         e.preventDefault();
         openCheckoutModal();
         });
-        // fallback: assign onclick in case addEventListener didn't attach
         try{ checkoutBtn.onclick = function(e){ e && e.preventDefault(); openCheckoutModal(); }; }catch(err){}
     }
 
@@ -369,31 +348,25 @@ if(itemCount) itemCount.textContent = `${cart.length} items`;
 
     if(confirmCheckout){
         confirmCheckout.addEventListener('click', function (){
-        // save total and show confirmation message
-        try { localStorage.setItem('checkoutTotal', grandTotal ? grandTotal.textContent.trim() : '$0.00'); } catch (err) { }
-        if(checkoutMessage){
+          try { localStorage.setItem('checkoutTotal', grandTotal ? grandTotal.textContent.trim() : '$0.00'); } catch (err) { }
+          if(checkoutMessage){
             checkoutMessage.textContent = 'Thank you — your order was successful.';
             checkoutMessage.classList.remove('hidden');
         }
 
-        // Prevent closing for a minimum duration (15 seconds)
-        const MIN_SHOW = 15000;
-        // disable confirm and cancel/close controls while showing
-        confirmCheckout.disabled = true;
-        confirmCheckout.classList.add('opacity-60','cursor-not-allowed');
-        if(cancelCheckout) { cancelCheckout.disabled = true; cancelCheckout.classList.add('opacity-60','cursor-not-allowed'); }
-        if(checkoutClose) { checkoutClose.disabled = true; checkoutClose.classList.add('opacity-60'); }
-        // make backdrop non-interactive so clicks won't close the modal
-        if(checkoutBackdrop) checkoutBackdrop.style.pointerEvents = 'none';
+          const MIN_SHOW = 15000;
+          confirmCheckout.disabled = true;
+          confirmCheckout.classList.add('opacity-60','cursor-not-allowed');
+          if(cancelCheckout) { cancelCheckout.disabled = true; cancelCheckout.classList.add('opacity-60','cursor-not-allowed'); }
+          if(checkoutClose) { checkoutClose.disabled = true; checkoutClose.classList.add('opacity-60'); }
+          if(checkoutBackdrop) checkoutBackdrop.style.pointerEvents = 'none';
 
-        // after MIN_SHOW, re-enable controls and close modal
-        setTimeout(()=>{
+          setTimeout(()=>{
             if(checkoutBackdrop) checkoutBackdrop.style.pointerEvents = '';
             if(cancelCheckout) { cancelCheckout.disabled = false; cancelCheckout.classList.remove('opacity-60','cursor-not-allowed'); }
             if(checkoutClose) { checkoutClose.disabled = false; checkoutClose.classList.remove('opacity-60'); }
             confirmCheckout.disabled = false;
             confirmCheckout.classList.remove('opacity-60','cursor-not-allowed');
-            // close modal now
             closeCheckoutModal();
         }, MIN_SHOW);
         });
