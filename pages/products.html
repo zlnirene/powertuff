@@ -13,31 +13,39 @@
   </style>
 </head>
 <body class="min-h-screen">
-  <!-- Simple navbar (reuse style from index) -->
-  <nav class="flex items-center justify-between px-6 py-6">
-    <div class="flex items-center gap-4">
-      <a href="../index.html"><img src="../images/2.png" alt="Midnight Fiction Logo" class="h-16 md:h-20" style="object-fit:contain" /></a>
-    </div>
+    <!-- Navbar -->
+<nav class="relative flex items-center justify-center py-5 mb-[20px]">
+  <!-- Logo -->
+  <div class="absolute left-40 flex items-center">
+    <a href="../index.html">
+      <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
+    </a>
+  </div>
 
-    <div class="mx-auto max-w-3xl w-full">
-      <div class="bg-[#FAF4EE]/100 rounded-full px-6 py-3 flex items-center justify-between shadow-md">
-        <ul class="flex gap-8 items-center justify-center mx-auto text-[#4f1c51] font-medium">
-          <li><a href="../index.html" class="px-2 py-1 rounded-full bg-transparent text-[#8f5e57] font-semibold">Home</a></li>
-          <li><a href="./products.html" class="px-2 py-1">Product</a></li>
-          <li><a href="#" class="px-2 py-1">New Arrivals</a></li>
-          <li><a href="#" class="px-2 py-1">Contact Us</a></li>
-        </ul>
+  <!-- Rounded Navigation Bar -->
+  <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-between shadow-lg w-[580px]">
+    <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
+      <li><a href="../index.html" class="hover:font-bold transition-all duration-150">Home</a></li>
+      <li><a href="../pages/products.html" class="hover:font-bold transition-all duration-150">Products</a></li>
+      <li><a href="#" class="hover:font-bold transition-all duration-150">New Arrivals</a></li>
+      <li><a href="#" class="hover:font-bold transition-all duration-150">Contact Us</a></li>
+    </ul>
 
-        <div class="flex items-center gap-4 ml-6">
-          <button class="text-[#4f1c51]">🛒</button>
-          <button class="text-[#4f1c51]">⭐</button>
-          <button class="text-[#4f1c51]">☺</button>
-        </div>
-      </div>
-    </div>
+    <!-- Icons -->
+<div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
+  <a href="../pages/cart.html" class="hover:opacity-80 transition-all duration-150">
+    <img src="images/icons/cart.svg" alt="Cart" class="w-5 h-5" />
+  </a>
+  <a href="#" class="hover:opacity-80 transition-all duration-150">
+    <img src="images/icons/star.svg" alt="Star" class="w-5 h-5" />
+  </a>
+  <a href="#" class="hover:opacity-80 transition-all duration-150">
+    <img src="images/icons/user.svg" alt="User" class="w-5 h-5" />
+  </a>
+</div>
 
-    <div style="width:36px"></div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Page header -->
   <section class="max-w-5xl mx-auto mt-8 px-6">
