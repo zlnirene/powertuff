@@ -133,11 +133,23 @@
       { id: 4, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 }
     ];
 
-    const list = document.getElementById('list');
+  const list = document.getElementById('list');
     const summary = document.getElementById('summary');
     const emptyBox = document.getElementById('empty');
 
-    let cart = sampleCart.slice();
+    const STORAGE_KEY = 'cartItems';
+    // load cart from localStorage if present, otherwise use sampleCart
+    let cart;
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      cart = raw ? JSON.parse(raw) : sampleCart.slice();
+    }catch(err){
+      cart = sampleCart.slice();
+    }
+
+    function saveCart(){
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }catch(e){}
+    }
 
     function render(){
       list.innerHTML = '';
@@ -182,10 +194,12 @@
 
     function changeQty(id, qty){
       cart = cart.map(i => i.id === id ? {...i, qty } : i);
+      saveCart();
       render();
     }
     function removeItem(id){
       cart = cart.filter(i => i.id !== id);
+      saveCart();
       render();
     }
     function updateSummary(){

@@ -10,6 +10,14 @@
     body { font-family: 'Poppins', sans-serif; background: radial-gradient(circle at top,#4f1c51 58%,#210f37 100%); color: #fff; }
     .no-scrollbar::-webkit-scrollbar{ display:none } .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none }
     a { text-decoration: none }
+    /* product modal styles */
+    #productModal{display:none;position:fixed;inset:0;z-index:60;align-items:center;justify-content:center}
+    #productModal.active{display:flex}
+    #productModal .backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.5)}
+    #productModal .panel{position:relative;z-index:10;background:#FAF4EE;color:#2e0f3f;border-radius:16px;max-width:900px;width:100%;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+    #productModal .media{width:48%;min-width:200px}
+    #productModal .meta{width:52%;padding-left:18px}
+    @media(max-width:900px){#productModal .media,#productModal .meta{width:100%;padding-left:0}}
 </style>
 </head>
 <body class="min-h-screen">
@@ -100,15 +108,16 @@
         <p class="font-bold text-[#4f1c51]">$${p.price}</p>
         <div class="mt-4 flex items-center justify-center gap-2">
         <button class="buy-now-btn flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md">BUY NOW</button>
-        <button class="cart-btn bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full hover:scale-110 transition-all duration-300" aria-label="Add to cart"><i class="fa-solid fa-cart-shopping"></i></button>
+        <button class="cart-btn bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full hover:scale-110 transition-all duration-300" aria-label="Add to cart">
+            <img src="../images/icons/cart.svg" alt="cart" class="w-4 h-4" />
+        </button>
         </div>
     `;
 
-    // navigate to product detail page when clicking the card (but not when clicking buy or cart)
+    // open product detail modal when clicking the card (but not when clicking buy or cart)
     card.addEventListener('click', (e) => {
         if(e.target.closest('.buy-now-btn') || e.target.closest('.cart-btn')) return;
-        const qs = new URLSearchParams({ name: p.name, price: p.price, img: p.image, desc: p.desc, spec: p.spec });
-        window.location.href = `product.html?${qs.toString()}`;
+        showProductModal(p);
     });
 
     // buy button action (stop propagation)
@@ -120,10 +129,100 @@
         setTimeout(() => { btn.classList.remove('scale-95'); btn.innerHTML = 'BUY NOW'; }, 1500);
     });
 
+    // cart button: add product to cart (persist to localStorage)
+    const cartBtn = card.querySelector('.cart-btn');
+    if(cartBtn){
+        cartBtn.addEventListener('click', (ev)=>{
+            ev.stopPropagation();
+            // simple feedback
+            const orig = cartBtn.innerHTML;
+            cartBtn.innerHTML = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h15l-1.5 9h-11L6 6z" stroke="#4f1c51" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            setTimeout(()=> cartBtn.innerHTML = orig, 900);
+
+            addToCart(p);
+        });
+    }
+
     grid.appendChild(card);
     }
 
     products.forEach(createCard);
+
+    // add to cart helper: stores items in localStorage under 'cartItems'
+    function addToCart(product){
+        try{
+            const key = 'cartItems';
+            const raw = localStorage.getItem(key);
+            const items = raw ? JSON.parse(raw) : [];
+            // identify by image+name+price
+            const existing = items.find(i => i.name === product.name && i.price == product.price && i.image === product.image);
+            if(existing){
+                existing.qty = (existing.qty || 1) + 1;
+            } else {
+                // create item shape similar to cart.html expectations
+                items.push({ id: Date.now(), image: product.image, name: product.name, price: product.price, tag: product.tag || '', qty: 1 });
+            }
+            localStorage.setItem(key, JSON.stringify(items));
+        }catch(err){
+            console.error('Could not add to cart', err);
+        }
+    }
+
+    // PRODUCT DETAIL MODAL
+    function showProductModal(p){
+        // create or reuse modal
+        let modal = document.getElementById('productModal');
+        if(!modal){
+            modal = document.createElement('div');
+            modal.id = 'productModal';
+            modal.innerHTML = `
+                <div class="backdrop"></div>
+                <div class="panel mx-4 md:flex">
+                    <div class="media flex-shrink-0">
+                        <img id="modalImg" src="" alt="" class="w-full rounded-xl object-contain" />
+                    </div>
+                    <div class="meta">
+                        <div class="flex justify-between items-start">
+                            <h2 id="modalName" class="text-2xl font-semibold"></h2>
+                            <button id="modalClose" aria-label="Close">✕</button>
+                        </div>
+                        <p id="modalPrice" class="text-xl font-bold mt-2"></p>
+                        <p id="modalDesc" class="mt-4 text-sm text-[#4f1c51]"></p>
+                        <div id="modalSpec" class="mt-4 text-sm text-[#4f1c51]"></div>
+                        <div class="mt-6 flex gap-3">
+                            <!-- actions removed: Add to cart handled elsewhere -->
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            // attach handlers
+            modal.querySelector('.backdrop').addEventListener('click', ()=> modal.classList.remove('active'));
+            modal.querySelector('#modalClose').addEventListener('click', ()=> modal.classList.remove('active'));
+            // add-to-cart removed from modal (handled in product list or cart page)
+        }
+
+        // populate
+        modal.dataset.name = p.name;
+        modal.dataset.price = p.price;
+        modal.dataset.img = p.image;
+        modal.dataset.desc = p.desc;
+        modal.dataset.spec = p.spec;
+        const img = modal.querySelector('#modalImg');
+        const name = modal.querySelector('#modalName');
+        const price = modal.querySelector('#modalPrice');
+        const desc = modal.querySelector('#modalDesc');
+        const spec = modal.querySelector('#modalSpec');
+        if(img) img.src = p.image;
+        if(name) name.textContent = p.name;
+        if(price) price.textContent = `$${p.price.toFixed ? p.price.toFixed(2) : p.price}`;
+        if(desc) desc.textContent = p.desc || '';
+        if(spec) spec.innerHTML = (p.spec || '').split('|').map(s=>`<div>• ${s}</div>`).join('');
+
+        // show
+        modal.classList.add('active');
+    }
 
 </script>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
