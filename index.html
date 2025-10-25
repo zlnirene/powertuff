@@ -116,7 +116,7 @@
   <!-- Logo -->
   <div class="absolute left-40 flex items-center">
     <a href="../index.html">
-      <img src="../images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
+      <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
     </a>
   </div>
 
@@ -132,13 +132,13 @@
     <!-- Icons -->
 <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
   <a href="#" class="hover:opacity-80 transition-all duration-150">
-    <img src="../images/icons/cart.svg" alt="Cart" class="w-5 h-5" />
+    <img src="images/icons/cart.svg" alt="Cart" class="w-5 h-5" />
   </a>
   <a href="#" class="hover:opacity-80 transition-all duration-150">
-    <img src="../images/icons/star.svg" alt="Star" class="w-5 h-5" />
+    <img src="images/icons/star.svg" alt="Star" class="w-5 h-5" />
   </a>
   <a href="#" class="hover:opacity-80 transition-all duration-150">
-    <img src="../images/icons/user.svg" alt="User" class="w-5 h-5" />
+    <img src="images/icons/user.svg" alt="User" class="w-5 h-5" />
   </a>
 </div>
 
@@ -411,7 +411,8 @@
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <script>
-  // Data produk
+document.addEventListener("DOMContentLoaded", function () {
+  // === Bagian 1: Produk Statis ===
   const products = [
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
@@ -423,119 +424,123 @@
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
   ];
 
-  const container = document.getElementById("allProducts");
+  const containerStatic = document.getElementById("allProducts");
 
-  products.forEach((product) => {
-    const card = document.createElement("div");
-    card.className =
-      "group w-full max-w-[250px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1";
+  if (containerStatic) {
+    products.forEach((product) => {
+      const card = document.createElement("div");
+      card.className =
+        "group w-full max-w-[250px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1";
 
-    card.innerHTML = `
-      <!-- Gambar Produk -->
-      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden">
-        <div class="overflow-hidden">
-          <img
-            src="${product.image}"
-            alt="${product.name}"
-            class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:-translate-y-4"
-          />
+      card.innerHTML = `
+        <!-- Gambar Produk -->
+        <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:-translate-y-4"
+            />
+          </div>
         </div>
-      </div>
 
-      <!-- Nama & Harga -->
-      <h3 class="text-[#4f1c51] font-medium mb-1">${product.name}</h3>
-      <p class="font-bold text-[#4f1c51]">$${product.price}</p>
+        <!-- Nama & Harga -->
+        <h3 class="text-[#4f1c51] font-medium mb-1">${product.name}</h3>
+        <p class="font-bold text-[#4f1c51]">$${product.price}</p>
 
-      <!-- Tombol Buy + Cart -->
-      <div class="mt-4 flex items-center justify-center gap-2">
-        <button
-          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
-        >
-          <span>BUY NOW</span>
-        </button>
-        <button
-          class="bg-[#e9b886] px-3 py-2 rounded-full hover:scale-110 transition-all duration-300"
-        >
-          <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-</script>
+        <!-- Tombol Buy + Cart -->
+        <div class="mt-4 flex items-center justify-center gap-2">
+          <button
+            class="buyBtn flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+          >
+            <span>BUY NOW</span>
+          </button>
+          <button
+            class="bg-[#e9b886] px-3 py-2 rounded-full hover:scale-110 transition-all duration-300"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
+      `;
+      containerStatic.appendChild(card);
+    });
+  }
 
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // generate product cards
-    const makeProducts = (id, start) => {
+  // === Bagian 2: Produk Dinamis (scrollable section) ===
+  const makeProducts = (id, start) => {
     const container = document.getElementById(id);
+    if (!container) return;
+
     const products = Array.from({ length: 10 }).map((_, i) => ({
-        name: Product ${i + start},
-        price: $${(Math.random() * 50 + 10).toFixed(2)},
-        img: images/cat${((i + start) % 3) + 1}.jpg,
+      name: `Product ${i + start}`,
+      price: `$${(Math.random() * 50 + 10).toFixed(2)}`,
+      img: `images/cat${((i + start) % 3) + 1}.jpg`,
     }));
 
     products.forEach((p) => {
-        const card = document.createElement("div");
-        card.className =
+      const card = document.createElement("div");
+      card.className =
         "min-w-[250px] snap-start bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 flex-shrink-0 transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl";
-        card.innerHTML = `
+      card.innerHTML = `
         <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 flex items-center justify-center">
-            <img src="${p.img}" alt="${p.name}" class="w-28 h-28 object-contain" />
+          <img src="${p.img}" alt="${p.name}" class="w-28 h-28 object-contain" />
         </div>
         <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
         <p class="font-bold text-[#4f1c51]">${p.price}</p>
         <button
-            class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition-all duration-300"
+          class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition-all duration-300"
         >
-            BUY NOW
+          BUY NOW
         </button>
-        `;
-        container.appendChild(card);
+      `;
+      container.appendChild(card);
     });
-    };
+  };
 
-    makeProducts("productScroll1", 1);
-    makeProducts("productScroll2", 11);
+  makeProducts("productScroll1", 1);
+  makeProducts("productScroll2", 11);
 
-    const leftShadow = document.getElementById("leftShadow");
-    const rightShadow = document.getElementById("rightShadow");
-
-    // Scroll button function
-    document.querySelectorAll(".scroll-btn").forEach((btn) => {
+  // === Scroll Button Function ===
+  document.querySelectorAll(".scroll-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-        const container = document.getElementById(btn.dataset.target);
-        const scrollValue = 320;
-        const direction = btn.dataset.direction === "left" ? -1 : 1;
-        container.scrollBy({ left: direction * scrollValue, behavior: "smooth" });
+      const container = document.getElementById(btn.dataset.target);
+      const scrollValue = 320;
+      const direction = btn.dataset.direction === "left" ? -1 : 1;
+      container.scrollBy({ left: direction * scrollValue, behavior: "smooth" });
     });
-    });
+  });
 
-    // Shadow animation
-    const container1 = document.getElementById("productScroll1");
+  // === Shadow Animation ===
+  const container1 = document.getElementById("productScroll1");
+  const leftShadow = document.getElementById("leftShadow");
+  const rightShadow = document.getElementById("rightShadow");
+
+  if (container1 && leftShadow && rightShadow) {
     const handleShadow = () => {
-    const { scrollLeft, scrollWidth, clientWidth } = container1;
-    leftShadow.style.opacity = scrollLeft > 20 ? "1" : "0";
-    rightShadow.style.opacity =
+      const { scrollLeft, scrollWidth, clientWidth } = container1;
+      leftShadow.style.opacity = scrollLeft > 20 ? "1" : "0";
+      rightShadow.style.opacity =
         scrollLeft + clientWidth < scrollWidth - 20 ? "1" : "0";
     };
 
     container1.addEventListener("scroll", handleShadow);
     handleShadow();
-});
+  }
 
-  const btn = document.getElementById("buyBtn");
-  btn.addEventListener("click", () => {
-    btn.classList.add("scale-95");
-    btn.innerHTML = 'Added!';
-    setTimeout(() => {
-      btn.classList.remove("scale-95");
-      btn.innerHTML = '<span>BUY NOW</span>';
-    }, 2000);
+  // === Tombol Buy Animation ===
+  document.querySelectorAll(".buyBtn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.classList.add("scale-95");
+      btn.innerHTML = "Added!";
+      setTimeout(() => {
+        btn.classList.remove("scale-95");
+        btn.innerHTML = "<span>BUY NOW</span>";
+      }, 2000);
+    });
   });
-
+});
 </script>
+
 
 <!-- Wave above footer (keeps same shape) -->
   <section class="relative bg-[#210F37] z-0 footer-wave-spacer">
@@ -572,7 +577,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       <!-- right: brand + socials -->
       <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
-        <img src="../images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
+        <img src="images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
         <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
         <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
   <!-- Instagram -->
