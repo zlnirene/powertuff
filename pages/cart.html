@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cart | Midnight Fiction</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cart | Midnight Fiction</title>
+<link rel="stylesheet" href="../css/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
     :root{
-      --bg1:#4f1c51; --bg2:#210f37; --cream:#FAF4EE; --panel:#fff6f3; --muted:#8f5e57; --accent:#e9b886; --text:#2e0f3f;
+    --bg1:#4f1c51; --bg2:#210f37; --cream:#FAF4EE; --panel:#fff6f3; --muted:#8f5e57; --accent:#e9b886; --text:#2e0f3f;
     }
     body{font-family:'Poppins',sans-serif;background:radial-gradient(circle at top,var(--bg1) 58%,var(--bg2) 100%);color:#fff;min-height:100vh}
     .cart-wrap{max-width:720px;margin:48px auto;padding:24px}
@@ -33,176 +34,209 @@
     .checkout{background:var(--accent);color:var(--text);padding:12px 20px;border-radius:14px;font-weight:700}
     #checkoutBtn{position:relative;z-index:40}
     @media(min-width:768px){.cart-wrap{margin-top:72px}}
-  </style>
+</style>
 </head>
 <body class="min-h-screen">
-  <nav class="relative flex items-center justify-center py-5 mb-[20px]">
-    <div class="absolute left-40 flex items-center">
-      <a href="../index.html">
+<nav class="w-full flex items-center justify-between max-w-6xl mx-auto">
+    <div class="flex-shrink-0">
+        <a href="../index.html">
         <img src="../images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
-      </a>
+        </a>
     </div>
 
-    <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-between shadow-lg w-[580px]">
-      <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
-        <li><a href="../index.html" class="hover:font-bold transition-all duration-150">Home</a></li>
-        <li><a href="../pages/products.html" class="hover:font-bold transition-all duration-150">Products</a></li>
-        <li><a href="#" class="hover:font-bold transition-all duration-150">New Arrivals</a></li>
-        <li><a href="#" class="hover:font-bold transition-all duration-150">Contact Us</a></li>
-      </ul>
+    <div class="bg-[#FAF4EE] rounded-2xl px-10 py-3 flex items-center justify-between shadow-lg w-4/5">
+        <ul class="flex gap-10 text-[#8f5e57] font-medium text-[15px]">
+            <li class="relative group">
+                <a href="products.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                All Products
+                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </li>
+            <li class="relative group">
+                <a href="signin.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                Sign In
+                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </li>
+            <li class="relative group">
+                <a href="signup.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                Sign Up
+                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </li>
+        </ul>
 
-      <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
-        <a href="../pages/cart.html" class="hover:opacity-80 transition-all duration-150">
-          <img src="images/icons/cart.svg" alt="Cart" class="w-5 h-5" />
+        <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
+        <a href="cart.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+            <img src="../images/icons/cart.svg" alt="Cart" class="w-5 h-5" />
         </a>
-        <a href="#" class="hover:opacity-80 transition-all duration-150">
-          <img src="images/icons/star.svg" alt="Star" class="w-5 h-5" />
+        <a href="profile.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+            <img src="../images/icons/user.svg" alt="User" class="w-5 h-5" />
         </a>
-        <a href="#" class="hover:opacity-80 transition-all duration-150">
-          <img src="images/icons/user.svg" alt="User" class="w-5 h-5" />
-        </a>
-      </div>
+        </div>
     </div>
-  </nav>
+</nav>
 
-  <section class="max-w-6xl mx-auto px-6 mb-20">
+<!-- Cart layout: centered list and summary below -->
+<section class="max-w-6xl mx-auto px-6 mb-20">
+    <!-- Improved header: title + subtitle + item-count badge -->
     <div class="mb-6 text-center">
-      <h1 class="text-3xl md:text-4xl font-semibold text-[#FAF4EE]">Your Cart</h1>
-      <p class="text-sm md:text-base text-[#e9b886] mt-2">Review the items below before you checkout</p>
-      <div id="cartMeta" class="mt-3 flex items-center justify-center gap-3">
+    <h1 class="text-3xl md:text-4xl font-semibold text-[#FAF4EE]">Your Cart</h1>
+    <p class="text-sm md:text-base text-[#e9b886] mt-2">Review the items below before you checkout</p>
+    <div id="cartMeta" class="mt-3 flex items-center justify-center gap-3">
         <span id="itemCount" class="inline-flex items-center bg-[#FAF4EE] text-[#2e0f3f] px-3 py-1 rounded-full text-sm font-medium">0 items</span>
-      </div>
+    </div>
     </div>
 
     <div class="mx-auto max-w-4xl">
       <div class="cart-container">
         <div class="hidden md:flex items-center text-[#8f5e57] text-sm font-medium mb-4 px-2 py-2">
-          <div class="w-1/3">Item</div>
-          <div class="w-1/3 text-center">Price</div>
-          <div class="w-1/4 text-center">Quantity</div>
-          <div class="w-1/6 text-right">Total</div>
+        <div class="w-1/3">Item</div>
+        <div class="w-1/3 text-center">Price</div>
+        <div class="w-1/4 text-center">Quantity</div>
+        <div class="w-1/6 text-right">Total</div>
         </div>
 
         <div id="list" class="space-y-0"></div>
       </div>
 
-      <div id="empty" class="mt-6 hidden">
+    <div id="empty" class="mt-6 hidden">
         <div class="empty text-sm">Your cart is empty.</div>
-      </div>
+    </div>
 
       <div class="mx-auto max-w-6xl mt-8">
         <div class="rounded-2xl bg-[#FAF4EE] text-[#2e0f3f] px-6 py-6 shadow-md">
-          <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center justify-between mb-3">
             <div class="text-sm text-[#8f5e57]">Subtotal</div>
             <div id="subtotalAmount" class="font-semibold">$0.00</div>
-          </div>
-          <div class="flex items-center justify-between mb-3">
+        </div>
+        <div class="flex items-center justify-between mb-3">
             <div class="text-sm text-[#8f5e57]">Sales Tax</div>
             <div id="taxAmount" class="font-medium">$0.00</div>
-          </div>
-          <hr class="my-3 border-t border-[#e6dcd8]" />
-          <div class="flex items-center justify-between mb-4">
+        </div>
+        <hr class="my-3 border-t border-[#e6dcd8]" />
+        <div class="flex items-center justify-between mb-4">
             <div class="text-sm text-[#8f5e57]">Grand total</div>
             <div id="grandTotal" class="text-xl font-semibold">$0.00</div>
-          </div>
-
-          <button id="checkoutBtn" type="button" class="w-full inline-block text-center bg-[#e9b886] text-[#2e0f3f] px-5 py-3 rounded-lg shadow-sm font-semibold">Checkout</button>
         </div>
-      </div>
-    </div>
-  </section>
 
   <div id="checkoutModal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
     <div id="checkoutBackdrop" class="absolute inset-0 bg-black/50"></div>
     <div class="relative bg-[#FAF4EE] text-[#2e0f3f] rounded-2xl w-full max-w-md mx-4 p-6 shadow-lg z-10">
-      <div class="flex justify-between items-start mb-4">
+    <div class="flex justify-between items-start mb-4">
         <h3 class="text-lg font-semibold">Checkout</h3>
         <button id="checkoutClose" aria-label="Close checkout" class="text-[#2e0f3f]">✕</button>
-      </div>
-      <div class="mb-4">
+    </div>
+    <div class="mb-4">
         <div class="flex justify-between text-sm text-[#8f5e57]"><span>Subtotal</span><span id="modalSubtotal">$0.00</span></div>
         <div class="flex justify-between text-sm text-[#8f5e57]"><span>Sales Tax</span><span id="modalTax">$0.00</span></div>
         <hr class="my-3 border-t border-[#e6dcd8]" />
         <div class="flex justify-between font-semibold text-xl"><span>Grand total</span><span id="modalGrand">$0.00</span></div>
-      </div>
-      <div class="flex gap-3">
+    </div>
+    <div class="flex gap-3">
         <button id="confirmCheckout" class="flex-1 bg-[#4f1c51] text-[#FAF4EE] px-4 py-2 rounded-lg font-semibold">Confirm Purchase</button>
         <button id="cancelCheckout" class="flex-1 bg-transparent border border-[#e6dcd8] text-[#2e0f3f] px-4 py-2 rounded-lg">Cancel</button>
-      </div>
-      <p id="checkoutMessage" class="text-sm text-[#4f1c51] mt-3 hidden"></p>
     </div>
-  </div>
+    <p id="checkoutMessage" class="text-sm text-[#4f1c51] mt-3 hidden"></p>
+    </div>
+</div>
 
   <section class="relative bg-[#210F37] z-0">
     <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     </div>
-  </section>
+</section>
 
-  <footer class="bg-[#FAF4EE] text-[#2e0f3f] pt-20 pb-10 z-10">
-    <div class="max-w-6xl mx-auto px-6 md:px-12 text-sm">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:underline">Terms of Use</a></li>
-            <li><a href="#" class="hover:underline">Terms of Use for Paid Service</a></li>
-            <li><a href="#" class="hover:underline">Child and Youth Protection Policy</a></li>
-            <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-          </ul>
+<footer class="site-footer bg-[#FAF4EE] text-[#2d1b1b] py-10">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="policy-links flex flex-wrap justify-between items-center gap-8 text-sm font-medium mb-8">
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Terms of Use</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Terms for Paid Service</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Child & Youth Policy</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Privacy Policy</a>
         </div>
-
-        <div>
-          <ul class="space-y-2">
-            <li><a href="#" class="font-semibold">Who is Midnight Fiction?</a></li>
-            <li><a href="#" class="hover:underline">Gift Cards</a></li>
-            <li><a href="#" class="hover:underline">Store Locator</a></li>
-            <li><a href="#" class="hover:underline">FAQ</a></li>
-            <li><a href="#" class="hover:underline">Returns & Refunds</a></li>
-            <li><a href="#" class="hover:underline">Shipping</a></li>
-          </ul>
-        </div>
-
-        <div class="flex justify-center md:justify-end items-start">
-          <div class="text-center md:text-right">
-            <h2 class="text-2xl font-semibold leading-tight">🌙 Midnight<br>Fiction</h2>
-            <p class="text-xs mt-4">2025 © Midnight Fiction All Rights Reserved</p>
-            <div class="flex justify-center md:justify-end gap-4 mt-3 text-lg">
-              <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-instagram"></i></a>
-              <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-tiktok"></i></a>
-              <a href="#" class="hover:text-[#4F1C51]"><i class="fa-brands fa-twitter"></i></a>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <ul class="space-y-1 text-sm leading-relaxed mb-8 md:mb-0">
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Who is Midnight Fiction?</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Gift Cards</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Store Locator</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">FAQ</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Returns & Refunds</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Shipping</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Wholesale</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Events</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Search</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Refund Policy</a></li>
+            </ul>
+            <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
+                <img src="../images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
+                <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
+                    <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Instagram — MidnightFiction" 
+                            aria-label="Instagram — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="../images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Facebook — MidnightFiction" 
+                            aria-label="Facebook — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="../images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="TikTok — @MidnightFiction" 
+                            aria-label="TikTok — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="../images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Twitter — MidnightFiction" 
+                            aria-label="Twitter — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="../images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </footer>
+</footer>
 
   <script>
     const sampleCart = [
-      { id: 1, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
-      { id: 2, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
-      { id: 3, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
-      { id: 4, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 }
+    { id: 1, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
+    { id: 2, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
+    { id: 3, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
+    { id: 4, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 }
     ];
 
-  const list = document.getElementById('list');
-  const subtotalAmount = document.getElementById('subtotalAmount');
-  const taxAmount = document.getElementById('taxAmount');
-  const grandTotal = document.getElementById('grandTotal');
-  const itemCount = document.getElementById('itemCount');
+const list = document.getElementById('list');
+const subtotalAmount = document.getElementById('subtotalAmount');
+const taxAmount = document.getElementById('taxAmount');
+const grandTotal = document.getElementById('grandTotal');
+const itemCount = document.getElementById('itemCount');
     const emptyBox = document.getElementById('empty');
 
     const STORAGE_KEY = 'cartItems';
     let cart;
     try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      cart = raw ? JSON.parse(raw) : sampleCart.slice();
+    const raw = localStorage.getItem(STORAGE_KEY);
+    cart = raw ? JSON.parse(raw) : sampleCart.slice();
     }catch(err){
-      cart = sampleCart.slice();
+    cart = sampleCart.slice();
     }
 
     function saveCart(){
-      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }catch(e){}
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }catch(e){}
     }
 
     function render(){
@@ -214,113 +248,113 @@
   wrapper.className = 'cart-item';
         const safeName = (item.name || '').split('\\n').join(' ');
         wrapper.innerHTML = `
-          <div class="col-item flex items-center gap-4">
+        <div class="col-item flex items-center gap-4">
             <img src="${item.image}" class="thumb" alt="${safeName}">
             <div class="info">
-              <div class="name">${safeName}</div>
-              <div class="tag">${item.tag}</div>
+            <div class="name">${safeName}</div>
+            <div class="tag">${item.tag}</div>
             </div>
-          </div>
-          <div class="col-price">
+        </div>
+        <div class="col-price">
             <div class="text-sm text-[#8f5e57]">$${item.price.toFixed(2)}</div>
-          </div>
-          <div class="col-qty">
+        </div>
+        <div class="col-qty">
             <div class="qty" data-id="${item.id}">
-              <button class="dec">-</button>
-              <div class="qtd inline-block mx-3">${item.qty}</div>
-              <button class="inc">+</button>
+            <button class="dec">-</button>
+            <div class="qtd inline-block mx-3">${item.qty}</div>
+            <button class="inc">+</button>
             </div>
-          </div>
-          <div class="col-total">
+        </div>
+        <div class="col-total">
             <div class="price">$${(item.price * item.qty).toFixed(2)}</div>
-          </div>
-          <button class="remove" data-id="${item.id}" aria-label="Remove">✕</button>
+        </div>
+        <button class="remove" data-id="${item.id}" aria-label="Remove">✕</button>
         `;
 
         wrapper.querySelector('.inc').addEventListener('click', (e)=>{
-          e.stopPropagation();
-          changeQty(item.id, item.qty + 1);
+        e.stopPropagation();
+        changeQty(item.id, item.qty + 1);
         });
         wrapper.querySelector('.dec').addEventListener('click', (e)=>{
-          e.stopPropagation();
-          if(item.qty > 1) changeQty(item.id, item.qty -1);
+        e.stopPropagation();
+        if(item.qty > 1) changeQty(item.id, item.qty -1);
         });
         wrapper.querySelector('.remove').addEventListener('click', (e)=>{
-          e.stopPropagation();
-          removeItem(item.id);
+        e.stopPropagation();
+        removeItem(item.id);
         });
 
-          list.appendChild(wrapper);
+        list.appendChild(wrapper);
         });
   if(itemCount) itemCount.textContent = `${cart.length} items`;
         updateSummary();
     }
 
     function changeQty(id, qty){
-      cart = cart.map(i => i.id === id ? {...i, qty } : i);
-      saveCart();
-      render();
+    cart = cart.map(i => i.id === id ? {...i, qty } : i);
+    saveCart();
+    render();
     }
     function removeItem(id){
-      cart = cart.filter(i => i.id !== id);
-      saveCart();
-      render();
+    cart = cart.filter(i => i.id !== id);
+    saveCart();
+    render();
     }
     function updateSummary(){
-      const subtotal = cart.reduce((s,i)=> s + i.price * i.qty, 0);
-      const taxRate = 0.08; // example tax rate 8%
-      const tax = subtotal * taxRate;
-      const grand = subtotal + tax;
-      if(subtotalAmount) subtotalAmount.textContent = `$${subtotal.toFixed(2)}`;
-      if(taxAmount) taxAmount.textContent = `$${tax.toFixed(2)}`;
-      if(grandTotal) grandTotal.textContent = `$${grand.toFixed(2)}`;
+    const subtotal = cart.reduce((s,i)=> s + i.price * i.qty, 0);
+    const taxRate = 0.08; // example tax rate 8%
+    const tax = subtotal * taxRate;
+    const grand = subtotal + tax;
+    if(subtotalAmount) subtotalAmount.textContent = `$${subtotal.toFixed(2)}`;
+    if(taxAmount) taxAmount.textContent = `$${tax.toFixed(2)}`;
+    if(grandTotal) grandTotal.textContent = `$${grand.toFixed(2)}`;
     }
 
     render();
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const checkoutBtn = document.getElementById('checkoutBtn');
-      const checkoutModal = document.getElementById('checkoutModal');
-      const checkoutBackdrop = document.getElementById('checkoutBackdrop');
-      const checkoutClose = document.getElementById('checkoutClose');
-      const cancelCheckout = document.getElementById('cancelCheckout');
-      const confirmCheckout = document.getElementById('confirmCheckout');
-      const modalSubtotal = document.getElementById('modalSubtotal');
-      const modalTax = document.getElementById('modalTax');
-      const modalGrand = document.getElementById('modalGrand');
-      const checkoutMessage = document.getElementById('checkoutMessage');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const checkoutModal = document.getElementById('checkoutModal');
+    const checkoutBackdrop = document.getElementById('checkoutBackdrop');
+    const checkoutClose = document.getElementById('checkoutClose');
+    const cancelCheckout = document.getElementById('cancelCheckout');
+    const confirmCheckout = document.getElementById('confirmCheckout');
+    const modalSubtotal = document.getElementById('modalSubtotal');
+    const modalTax = document.getElementById('modalTax');
+    const modalGrand = document.getElementById('modalGrand');
+    const checkoutMessage = document.getElementById('checkoutMessage');
 
-      function openCheckoutModal(){
+    function openCheckoutModal(){
         if(modalSubtotal) modalSubtotal.textContent = subtotalAmount ? subtotalAmount.textContent : '$0.00';
         if(modalTax) modalTax.textContent = taxAmount ? taxAmount.textContent : '$0.00';
         if(modalGrand) modalGrand.textContent = grandTotal ? grandTotal.textContent : '$0.00';
         if(checkoutModal) checkoutModal.classList.remove('hidden');
-      }
-      function closeCheckoutModal(){
+    }
+    function closeCheckoutModal(){
         if(checkoutModal) checkoutModal.classList.add('hidden');
         if(checkoutMessage) checkoutMessage.classList.add('hidden');
-      }
+    }
 
       if(checkoutBtn){
         checkoutBtn.addEventListener('click', function (e){
-          e.preventDefault();
-          openCheckoutModal();
+        e.preventDefault();
+        openCheckoutModal();
         });
         try{ checkoutBtn.onclick = function(e){ e && e.preventDefault(); openCheckoutModal(); }; }catch(err){}
-      }
+    }
 
-      [checkoutBackdrop, checkoutClose, cancelCheckout].forEach(el => {
+    [checkoutBackdrop, checkoutClose, cancelCheckout].forEach(el => {
         if(el) el.addEventListener('click', closeCheckoutModal);
-      });
+    });
 
-      if(confirmCheckout){
+    if(confirmCheckout){
         confirmCheckout.addEventListener('click', function (){
           try { localStorage.setItem('checkoutTotal', grandTotal ? grandTotal.textContent.trim() : '$0.00'); } catch (err) { }
           if(checkoutMessage){
             checkoutMessage.textContent = 'Thank you — your order was successful.';
             checkoutMessage.classList.remove('hidden');
-          }
+        }
 
           const MIN_SHOW = 15000;
           confirmCheckout.disabled = true;
@@ -336,10 +370,10 @@
             confirmCheckout.disabled = false;
             confirmCheckout.classList.remove('opacity-60','cursor-not-allowed');
             closeCheckoutModal();
-          }, MIN_SHOW);
+        }, MIN_SHOW);
         });
-      }
+    }
     });
-  </script>
+</script>
 </body>
 </html>
