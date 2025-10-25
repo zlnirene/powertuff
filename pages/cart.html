@@ -77,9 +77,7 @@
     </div>
 </nav>
 
-<!-- Cart layout: centered list and summary below -->
 <section class="max-w-6xl mx-auto px-6 mb-20">
-    <!-- Improved header: title + subtitle + item-count badge -->
     <div class="mb-6 text-center">
     <h1 class="text-3xl md:text-4xl font-semibold text-[#FAF4EE]">Your Cart</h1>
     <p class="text-sm md:text-base text-[#e9b886] mt-2">Review the items below before you checkout</p>
@@ -302,7 +300,7 @@ const itemCount = document.getElementById('itemCount');
     }
     function updateSummary(){
     const subtotal = cart.reduce((s,i)=> s + i.price * i.qty, 0);
-    const taxRate = 0.08; // example tax rate 8%
+    const taxRate = 0.08; 
     const tax = subtotal * taxRate;
     const grand = subtotal + tax;
     if(subtotalAmount) subtotalAmount.textContent = `$${subtotal.toFixed(2)}`;
