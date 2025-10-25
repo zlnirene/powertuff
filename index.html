@@ -25,14 +25,7 @@
         color: #fff;
     }
 
-    .nav-link {
-        color: #e5cfcf;
-        transition: color 0.3s;
-    }
 
-    .nav-link:hover {
-        color: #ffffff;
-    }
 
     .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -60,87 +53,103 @@
     }
 
     /* Footer — match design exactly */
-     footer.site-footer {
-       background: #FAF4EE;
-       color: #2e0f3f;
-       position: relative;
-       padding-top: 64px;
-       padding-bottom: 48px;
-     }
-     footer.site-footer .footer-inner {
-       max-width: 1100px;
-       margin: 0 auto;
-       padding: 0 24px;
-       display: grid;
-       grid-template-columns: 1fr 1fr 320px;
-       gap: 24px;
-       align-items: start;
-     }
-     footer.site-footer .policy-links a,
-     footer.site-footer .info-links a {
-       font-size: 12px;
-       color: #2e0f3f;
-       opacity: 0.95;
-       text-decoration: none;
-       margin-right: 12px;
-     }
-     footer.site-footer .policy-links { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; }
-     footer.site-footer .info-links ul { padding:0; margin:0; list-style:none; font-size:13px; line-height:1.55; color:#2e0f3f; }
-     footer.site-footer .info-links ul li a { color: #2e0f3f; opacity:0.95; text-decoration:none; }
+    footer.site-footer {
+    background: #FAF4EE;
+    color: #2e0f3f;
+    position: relative;
+    padding-top: 64px;
+    padding-bottom: 48px;
+    }
+    footer.site-footer .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 320px;
+    gap: 24px;
+    align-items: start;
+    }
+    footer.site-footer .policy-links a,
+    footer.site-footer .info-links a {
+    font-size: 12px;
+    color: #2e0f3f;
+    opacity: 0.95;
+    text-decoration: none;
+    margin-right: 12px;
+    }
+    footer.site-footer .policy-links { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; }
+    footer.site-footer .info-links ul { padding:0; margin:0; list-style:none; font-size:13px; line-height:1.55; color:#2e0f3f; }
+    footer.site-footer .info-links ul li a { color: #2e0f3f; opacity:0.95; text-decoration:none; }
 
-     /* right column: logo + copyright + socials */
-     .footer-brand { display:flex; flex-direction:column; align-items:flex-end; gap:10px; text-align:right; }
-     .footer-brand img.logo { height:56px; object-fit:contain; }
-     .footer-brand .copyright { font-size:12px; color:#2e0f3f; opacity:0.95; }
-     .footer-socials { display:flex; gap:10px; justify-content:flex-end; }
-     .footer-socials a {
-       width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center;
-       border-radius:9999px; background:#4F1C51; color:#fff; text-decoration:none;
-       box-shadow: 0 6px 14px rgba(79,28,81,0.12);
-     }
+    /* right column: logo + copyright + socials */
+    .footer-brand { display:flex; flex-direction:column; align-items:flex-end; gap:10px; text-align:right; }
+    .footer-brand img.logo { height:56px; object-fit:contain; }
+    .footer-brand .copyright { font-size:12px; color:#2e0f3f; opacity:0.95; }
+    .footer-socials { display:flex; gap:10px; justify-content:flex-end; }
+    .footer-socials a {
+    width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center;
+    border-radius:9999px; background:#4F1C51; color:#fff; text-decoration:none;
+    box-shadow: 0 6px 14px rgba(79,28,81,0.12);
+    }
 
-     /* make footer area visually match the wave above */
-     .footer-wave-spacer { margin-top: -90px; pointer-events:none; }
+    /* make footer area visually match the wave above */
+    .footer-wave-spacer { margin-top: -90px; pointer-events:none; }
 
-     @media (max-width: 960px) {
-       footer.site-footer .footer-inner { grid-template-columns: 1fr; text-align:center; }
-       .footer-brand { align-items:center; }
-       .footer-socials { justify-content:center; }
-     }
+    @media (max-width: 960px) {
+    footer.site-footer .footer-inner { grid-template-columns: 1fr; text-align:center; }
+    .footer-brand { align-items:center; }
+    .footer-socials { justify-content:center; }
+    }
     </style>
 </head>
 
 <body class="min-h-screen">
-<nav class="relative flex items-center justify-center py-5 mb-[20px]">
-  <div class="absolute left-40 flex items-center">
-    <a href="../index.html">
-      <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
-    </a>
-  </div>
-
-  <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-between shadow-lg w-[580px]">
-    <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
-      <li><a href="index.html" class="hover:font-bold transition-all duration-150">Home</a></li>
-      <li><a href="pages/category.html" class="hover:font-bold transition-all duration-150">Category</a></li>
-      <li><a href="pages/products.html" class="hover:font-bold transition-all duration-150">All Products</a></li>
-      <li><a href="#" class="hover:font-bold transition-all duration-150">Contact Us</a></li>
-    </ul>
-
-    <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
-      <a href="#" class="hover:opacity-80 transition-all duration-150 ">
-        <img src="images/icons/cart.svg" alt="Cart" class="w-[20px] h-[20px]" />
-      </a>
-      <a href="#" class="hover:opacity-80 transition-all duration-150">
-        <img src="images/icons/star.svg" alt="Star" class="w-[20px] h-[20px]" />
-      </a>
-      <a href="#" class="hover:opacity-80 transition-all duration-150">
-        <img src="images/icons/user.svg" alt="User" class="w-[20px] h-[20px]" />
-      </a>
-  </div>
-
-  </div>
-</nav>
-
+    <nav class="relative flex items-center justify-center py-5 mb-[20px]">
+        <div class="absolute left-40 flex items-center">
+            <a href="index.html">
+            <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
+            </a>
+        </div>
+        <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-around shadow-lg w-[580px]">
+            <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
+                <li class="relative group">
+                    <a href="index.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                    Home
+                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+                <li class="relative group">
+                    <a href="pages/category.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                    Category
+                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+                <li class="relative group">
+                    <a href="pages/products.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                    All Products
+                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+                <li class="relative group">
+                    <a href="#" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                    Contact Us
+                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+            </ul>
+            <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg *:*:w-[20px] h-[20px]">
+                <a href="pages/cart.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+                    <img src="images/icons/cart.svg" alt="Cart" class="" />
+                </a>
+                <a href="#" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+                    <img src="images/icons/star.svg" alt="Star" class="" />
+                </a>
+                <a href="pages/profile.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+                    <img src="images/icons/user.svg" alt="User" class="" />
+                </a>
+            </div>
+        </div>
+    </nav>
     <!-- Section Utama (Highlight Produk) -->
     <section
     class="mx-auto mt-10 max-w-5xl bg-[#FAF4EE]/80 rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up"
@@ -211,196 +220,196 @@
 
 <!-- PRE-ORDER Section -->
 <section class="mx-auto mt-20 max-w-6xl fade-up ">
-  <!-- Header -->
-  <div class="flex items-center justify-between mb-8">
+<!-- Header -->
+<div class="flex items-center justify-between mb-8">
     <div>
-      <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
+    <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
         PRE-ORDER
-      </span>
+    </span>
     </div>
     <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
-  </div>
+</div>
 
-  <!-- Scrollable Product Cards -->
-  <div
+<!-- Scrollable Product Cards -->
+<div
     class="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pt-[20px] pb-[70px] px-2 scroll-smooth"
-  >
+>
     <!-- Product Card -->
     <div
-      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
     >
-      <div
+    <div
         class="bg-[#e9b886] rounded-2xl p-6 mb-4 transition-transform duration-300 hover:scale-105"
-      >
+    >
         <img
-          src="images/cat.jpg"
-          alt="Keychain 1"
-          class="w-28 h-28 mx-auto object-contain select-none"
+        src="images/cat.jpg"
+        alt="Keychain 1"
+        class="w-28 h-28 mx-auto object-contain select-none"
         />
-      </div>
+    </div>
 
-      <h3 class="text-[#4f1c51] font-medium mb-1">
+    <h3 class="text-[#4f1c51] font-medium mb-1">
         Lorem Ipsum Dolor Sic Amet ...
-      </h3>
-      <p class="font-bold text-[#4f1c51]">$45</p>
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
 
-      <div class="mt-4 flex items-center justify-center gap-2">
+    <div class="mt-4 flex items-center justify-center gap-2">
         <button
-          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
         >
-          BUY NOW
+        BUY NOW
         </button>
         <button
-          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
         >
-          <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
         </button>
-      </div>
+    </div>
     </div>
 
     <!-- Product Card 2 -->
     <div
-      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
     >
-      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+    <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
         <img
-          src="images/cat.jpg"
-          alt="Keychain 2"
-          class="w-28 h-28 mx-auto object-contain"
+        src="images/cat.jpg"
+        alt="Keychain 2"
+        class="w-28 h-28 mx-auto object-contain"
         />
-      </div>
-      <h3 class="text-[#4f1c51] font-medium mb-1">
+    </div>
+    <h3 class="text-[#4f1c51] font-medium mb-1">
         Lorem Ipsum Dolor Sic Amet ...
-      </h3>
-      <p class="font-bold text-[#4f1c51]">$45</p>
-      <div class="mt-4 flex items-center justify-center gap-2">
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
         <button
-          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
         >
-          BUY NOW
+        BUY NOW
         </button>
         <button
-          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
         >
-          <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
         </button>
-      </div>
+    </div>
     </div>
 
     <!-- Product Card 3 -->
     <div
-      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
     >
-      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+    <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
         <img
-          src="images/cat.jpg"
-          alt="Keychain 3"
-          class="w-28 h-28 mx-auto object-contain"
+        src="images/cat.jpg"
+        alt="Keychain 3"
+        class="w-28 h-28 mx-auto object-contain"
         />
-      </div>
-      <h3 class="text-[#4f1c51] font-medium mb-1">
+    </div>
+    <h3 class="text-[#4f1c51] font-medium mb-1">
         Lorem Ipsum Dolor Sic Amet ...
-      </h3>
-      <p class="font-bold text-[#4f1c51]">$45</p>
-      <div class="mt-4 flex items-center justify-center gap-2">
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
         <button
-          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
         >
-          BUY NOW
+        BUY NOW
         </button>
         <button
-          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
         >
-          <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
         </button>
-      </div>
+    </div>
     </div>
 
     <!-- Product Card 4 -->
     <div
-      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
     >
-      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+    <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
         <img
-          src="images/cat.jpg"
-          alt="Keychain 4"
-          class="w-28 h-28 mx-auto object-contain"
+        src="images/cat.jpg"
+        alt="Keychain 4"
+        class="w-28 h-28 mx-auto object-contain"
         />
-      </div>
-      <h3 class="text-[#4f1c51] font-medium mb-1">
+    </div>
+    <h3 class="text-[#4f1c51] font-medium mb-1">
         Lorem Ipsum Dolor Sic Amet ...
-      </h3>
-      <p class="font-bold text-[#4f1c51]">$45</p>
-      <div class="mt-4 flex items-center justify-center gap-2">
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
         <button
-          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
         >
-          BUY NOW
+        BUY NOW
         </button>
         <button
-          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
         >
-          <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
         </button>
-      </div>
+    </div>
     </div>
 
     <!-- Product Card 5 -->
     <div
-      class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
     >
-      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+    <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
         <img
-          src="images/cat.jpg"
-          alt="Keychain 5"
-          class="w-28 h-28 mx-auto object-contain"
+        src="images/cat.jpg"
+        alt="Keychain 5"
+        class="w-28 h-28 mx-auto object-contain"
         />
-      </div>
-      <h3 class="text-[#4f1c51] font-medium mb-1">
-        Lorem Ipsum Dolor Sic Amet ...
-      </h3>
-      <p class="font-bold text-[#4f1c51]">$45</p>
-      <div class="mt-4 flex items-center justify-center gap-2">
-        <button
-          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
-        >
-          BUY NOW
-        </button>
-        <button
-          class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
-        >
-          <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-      </div>
     </div>
-  </div>
+    <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+        BUY NOW
+        </button>
+        <button
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+        <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    </div>
+    </div>
+</div>
 </section>
 <!-- ALL PRODUCT Section -->
 <section class="mx-auto mt-12 mb-32 max-w-6xl fade-up mb-[200px]">
-  <!-- Header -->
-  <div class="flex items-center justify-between mb-8 px-2">
+<!-- Header -->
+<div class="flex items-center justify-between mb-8 px-2">
     <div>
-      <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
+    <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
         ALL PRODUCT
-      </span>
+    </span>
     </div>
     <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
-  </div>
+</div>
 
-  <!-- Product Grid -->
-  <div
+<!-- Product Grid -->
+<div
     id="allProducts"
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center"
-  ></div>
+></div>
 
-  <!-- See All Button -->
-  <div class="flex justify-center mt-12">
+<!-- See All Button -->
+<div class="flex justify-center mt-12">
     <button
-      class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full shadow-md hover:bg-[#4f1c51] hover:text-white transition-all duration-300"
+    class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full shadow-md hover:bg-[#4f1c51] hover:text-white transition-all duration-300"
     >
-      See All
+    See All
     </button>
-  </div>
+</div>
 </section>
 
 <!-- FontAwesome -->
@@ -408,8 +417,8 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  // === Bagian 1: Produk Statis ===
-  const products = [
+// === Bagian 1: Produk Statis ===
+const products = [
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
@@ -418,26 +427,26 @@ document.addEventListener("DOMContentLoaded", function () {
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
     { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
-  ];
+];
 
-  const containerStatic = document.getElementById("allProducts");
+const containerStatic = document.getElementById("allProducts");
 
-  if (containerStatic) {
+if (containerStatic) {
     products.forEach((product) => {
-      const card = document.createElement("div");
-      card.className =
+    const card = document.createElement("div");
+    card.className =
         "group w-full max-w-[250px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1";
 
-      card.innerHTML = `
+    card.innerHTML = `
         <!-- Gambar Produk -->
         <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden">
-          <div class="overflow-hidden">
+        <div class="overflow-hidden">
             <img
-              src="${product.image}"
-              alt="${product.name}"
-              class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:-translate-y-4"
+            src="${product.image}"
+            alt="${product.name}"
+            class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:-translate-y-4"
             />
-          </div>
+        </div>
         </div>
 
         <!-- Nama & Harga -->
@@ -446,181 +455,168 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <!-- Tombol Buy + Cart -->
         <div class="mt-4 flex items-center justify-center gap-2">
-          <button
+        <button
             class="buyBtn flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
-          >
+        >
             <span>BUY NOW</span>
-          </button>
-          <button
+        </button>
+        <button
             class="bg-[#e9b886] px-3 py-2 rounded-full hover:scale-110 transition-all duration-300"
-          >
+        >
             <i class="fa-solid fa-cart-shopping"></i>
-          </button>
+        </button>
         </div>
-      `;
-      containerStatic.appendChild(card);
+    `;
+    containerStatic.appendChild(card);
     });
-  }
+}
 
-  // === Bagian 2: Produk Dinamis (scrollable section) ===
-  const makeProducts = (id, start) => {
+// === Bagian 2: Produk Dinamis (scrollable section) ===
+const makeProducts = (id, start) => {
     const container = document.getElementById(id);
     if (!container) return;
 
     const products = Array.from({ length: 10 }).map((_, i) => ({
-      name: `Product ${i + start}`,
-      price: `$${(Math.random() * 50 + 10).toFixed(2)}`,
-      img: `images/cat${((i + start) % 3) + 1}.jpg`,
+    name: `Product ${i + start}`,
+    price: `$${(Math.random() * 50 + 10).toFixed(2)}`,
+    img: `images/cat${((i + start) % 3) + 1}.jpg`,
     }));
 
     products.forEach((p) => {
-      const card = document.createElement("div");
-      card.className =
+    const card = document.createElement("div");
+    card.className =
         "min-w-[250px] snap-start bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 flex-shrink-0 transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl";
-      card.innerHTML = `
+    card.innerHTML = `
         <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 flex items-center justify-center">
-          <img src="${p.img}" alt="${p.name}" class="w-28 h-28 object-contain" />
+        <img src="${p.img}" alt="${p.name}" class="w-28 h-28 object-contain" />
         </div>
         <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
         <p class="font-bold text-[#4f1c51]">${p.price}</p>
         <button
-          class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition-all duration-300"
+        class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition-all duration-300"
         >
-          BUY NOW
+        BUY NOW
         </button>
-      `;
-      container.appendChild(card);
+    `;
+    container.appendChild(card);
     });
-  };
+};
 
-  makeProducts("productScroll1", 1);
-  makeProducts("productScroll2", 11);
+makeProducts("productScroll1", 1);
+makeProducts("productScroll2", 11);
 
-  // === Scroll Button Function ===
-  document.querySelectorAll(".scroll-btn").forEach((btn) => {
+// === Scroll Button Function ===
+document.querySelectorAll(".scroll-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const container = document.getElementById(btn.dataset.target);
-      const scrollValue = 320;
-      const direction = btn.dataset.direction === "left" ? -1 : 1;
-      container.scrollBy({ left: direction * scrollValue, behavior: "smooth" });
+    const container = document.getElementById(btn.dataset.target);
+    const scrollValue = 320;
+    const direction = btn.dataset.direction === "left" ? -1 : 1;
+    container.scrollBy({ left: direction * scrollValue, behavior: "smooth" });
     });
-  });
+});
 
-  // === Shadow Animation ===
-  const container1 = document.getElementById("productScroll1");
-  const leftShadow = document.getElementById("leftShadow");
-  const rightShadow = document.getElementById("rightShadow");
+// === Shadow Animation ===
+const container1 = document.getElementById("productScroll1");
+const leftShadow = document.getElementById("leftShadow");
+const rightShadow = document.getElementById("rightShadow");
 
-  if (container1 && leftShadow && rightShadow) {
+if (container1 && leftShadow && rightShadow) {
     const handleShadow = () => {
-      const { scrollLeft, scrollWidth, clientWidth } = container1;
-      leftShadow.style.opacity = scrollLeft > 20 ? "1" : "0";
-      rightShadow.style.opacity =
+    const { scrollLeft, scrollWidth, clientWidth } = container1;
+    leftShadow.style.opacity = scrollLeft > 20 ? "1" : "0";
+    rightShadow.style.opacity =
         scrollLeft + clientWidth < scrollWidth - 20 ? "1" : "0";
     };
 
     container1.addEventListener("scroll", handleShadow);
     handleShadow();
-  }
+}
 
-  // === Tombol Buy Animation ===
-  document.querySelectorAll(".buyBtn").forEach((btn) => {
+// === Tombol Buy Animation ===
+document.querySelectorAll(".buyBtn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      btn.classList.add("scale-95");
-      btn.innerHTML = "Added!";
-      setTimeout(() => {
+    btn.classList.add("scale-95");
+    btn.innerHTML = "Added!";
+    setTimeout(() => {
         btn.classList.remove("scale-95");
         btn.innerHTML = "<span>BUY NOW</span>";
-      }, 2000);
+    }, 2000);
     });
-  });
+});
 });
 </script>
 
 
-<!-- Wave above footer (keeps same shape) -->
-  <section class="relative bg-[#210F37] z-0 footer-wave-spacer">
+<section class="relative bg-[#210F37] z-0 footer-wave-spacer">
     <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
     </div>
-  </section>
-  
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <!-- left: policy links -->
-      <div class="policy-links" aria-label="policy links">
-        <a href="#">Terms of Use</a>
-        <a href="#">Terms for Paid Service</a>
-        <a href="#">Child & Youth Policy</a>
-        <a href="#">Privacy Policy</a>
-      </div>
+</section>
 
-      <!-- center: info links (stacked) -->
-      <div class="info-links">
-        <ul>
-          <li><a href="#">Who is Midnight Fiction?</a></li>
-          <li><a href="#">Gift Cards</a></li>
-          <li><a href="#">Store Locator</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Returns & Refunds</a></li>
-          <li><a href="#">Shipping</a></li>
-          <li><a href="#">Wholesale</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Search</a></li>
-          <li><a href="#">Refund policy</a></li>
-        </ul>
-      </div>
-
-      <!-- right: brand + socials -->
-      <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
-        <img src="images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
-        <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
-        <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/midnightfiction" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     title="Instagram — MidnightFiction" 
-     aria-label="Instagram — MidnightFiction"
-     class="hover:opacity-80 transition-opacity duration-200">
-    <img src="../images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
-  </a>
-
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/midnightfiction" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     title="Facebook — MidnightFiction" 
-     aria-label="Facebook — MidnightFiction"
-     class="hover:opacity-80 transition-opacity duration-200">
-    <img src="../images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
-  </a>
-
-  <!-- TikTok -->
-  <a href="https://www.tiktok.com/@midnightfiction" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     title="TikTok — @MidnightFiction" 
-     aria-label="TikTok — MidnightFiction"
-     class="hover:opacity-80 transition-opacity duration-200">
-    <img src="../images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
-  </a>
-
-  <!-- Twitter -->
-  <a href="https://twitter.com/midnightfiction" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     title="Twitter — MidnightFiction" 
-     aria-label="Twitter — MidnightFiction"
-     class="hover:opacity-80 transition-opacity duration-200">
-    <img src="../images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
-  </a>
-</div>
-
-
-      </div>
+<footer class="site-footer bg-[#FAF4EE] text-[#2d1b1b] py-10">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="policy-links flex flex-wrap justify-between items-center gap-8 text-sm font-medium mb-8">
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Terms of Use</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Terms for Paid Service</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Child & Youth Policy</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Privacy Policy</a>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <ul class="space-y-1 text-sm leading-relaxed mb-8 md:mb-0">
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Who is Midnight Fiction?</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Gift Cards</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Store Locator</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">FAQ</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Returns & Refunds</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Shipping</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Wholesale</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Events</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Search</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Refund Policy</a></li>
+            </ul>
+            <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
+                <img src="images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
+                <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
+                    <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Instagram — MidnightFiction" 
+                            aria-label="Instagram — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Facebook — MidnightFiction" 
+                            aria-label="Facebook — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="TikTok — @MidnightFiction" 
+                            aria-label="TikTok — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Twitter — MidnightFiction" 
+                            aria-label="Twitter — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </footer>
+</footer>
+
 
 
 
