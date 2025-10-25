@@ -104,57 +104,38 @@
 </head>
 
 <body class="min-h-screen">
-    <nav class="w-full flex items-center justify-between max-w-6xl mx-auto">
-        <div class="flex-shrink-0">
-            <a href="index.html">
-            <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
-            </a>
-        </div>
+<nav class="relative flex items-center justify-center py-5 mb-[20px]">
+  <div class="absolute left-40 flex items-center">
+    <a href="../index.html">
+      <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
+    </a>
+  </div>
 
-        <div class="bg-[#FAF4EE] rounded-2xl px-10 py-3 flex items-center justify-between shadow-lg w-4/5">
-            <ul class="flex gap-10 text-[#8f5e57] font-medium text-[15px]">
-            <li class="relative group">
-                <a href="index.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                Home
-                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-            </li>
-            <li class="relative group">
-                <a href="pages/category.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                Category
-                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-            </li>
-            <li class="relative group">
-                <a href="pages/products.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                All Products
-                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-            </li>
-            <li class="relative group">
-                <a href="#" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                Contact Us
-                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-            </li>
-            </ul>
+  <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-between shadow-lg w-[580px]">
+    <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
+      <li><a href="index.html" class="hover:font-bold transition-all duration-150">Home</a></li>
+      <li><a href="pages/category.html" class="hover:font-bold transition-all duration-150">Category</a></li>
+      <li><a href="pages/products.html" class="hover:font-bold transition-all duration-150">All Products</a></li>
+      <li><a href="#" class="hover:font-bold transition-all duration-150">Contact Us</a></li>
+    </ul>
 
-            <!-- Right: Icons -->
-            <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
-            <a href="pages/cart.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                <img src="images/icons/cart.svg" alt="Cart" class="w-5 h-5" />
+    <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
+            <a href="pages/cart.html" class="hover:opacity-80 transition-all duration-150 relative">
+                <img src="images/icons/cart.svg" alt="Cart" class="w-[20px] h-[20px]" />
+                <span id="navCartBadge" class="absolute -top-2 -right-2 bg-[#c59e6f] text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center"></span>
             </a>
-            <a href="#" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                <img src="images/icons/star.svg" alt="Star" class="w-5 h-5" />
-            </a>
-            <a href="pages/profile.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                <img src="images/icons/user.svg" alt="User" class="w-5 h-5" />
-            </a>
-            </div>
-        </div>
-    </nav>
+      <a href="pages/favorite.html" class="hover:opacity-80 transition-all duration-150">
+        <img src="images/icons/star.svg" alt="Star" class="w-[20px] h-[20px]" />
+      </a>
+      <a href="pages/signup.html" class="hover:opacity-80 transition-all duration-150">
+        <img src="images/icons/user.svg" alt="User" class="w-[20px] h-[20px]" />
+      </a>
+  </div>
 
-    <section class="mx-auto max-w-6xl bg-[#FAF4EE] rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up">
+  </div>
+</nav>
+
+    <section class="mx-auto max-w-6xl bg-[#FAF4EE]/80 rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up">
         <img src="images/event-1.png" alt="Product Highlight" class="w-full md:w-1/2 rounded-xl object-cover"/>
         <div class="flex flex-col justify-center w-full md:w-1/2">
             <ul class="space-y-3 text-[#4F1C51]">
@@ -186,14 +167,9 @@
                 Hapa Kristin Jang Wonyoung PC Event
                 </div>
             </div>
-            <div>
-                <div
-                    class="see-details-btn bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer"
-                    data-title="Hapa Kristin Jang Wonyoung PC Event"
-                    data-description="Join the Hapa Kristin special photocard event featuring Jang Wonyoung! Purchase any Hapa Kristin product during the event period to receive exclusive limited-edition photocards."
-                    data-image="images/event-2.png">
-                    SEE DETAILS
-                </div>
+            <div
+                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
+                SEE DETAILS
             </div>
             </div>
             <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
@@ -206,17 +182,12 @@
                 class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
                 </div>
                 <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
-                PPULBATU Bamgeut Day
+                Third Event Promotion
                 </div>
             </div>
-            <div>
-                <div
-                    class="see-details-btn bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer"
-                    data-title="PPULBATU Bamgeut Day"
-                    data-description="Celebrate PPULBATU Bamgeut Day with us! Enjoy special discounts and exclusive offers on all PPULBATU Bamgeut products for one day only. Don't miss out on the fun and savings!"
-                    data-image="images/event-3.png">
-                    SEE DETAILS
-                </div>
+            <div
+                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
+                SEE DETAILS
             </div>
             </div>
             <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
@@ -232,43 +203,36 @@
                 PPULBATU Keychain Pre-Order Event
                 </div>
             </div>
-            <div>
-                <div
-                    class="see-details-btn bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer"
-                    data-title="PPULBATU Keychain Pre-Order Event"
-                    data-description="Be one of the first to get the exclusive PPULBATU Keychain by pre-ordering now! Limited stock available."
-                    data-image="images/event-4.png">
-                    SEE DETAILS
-                </div>
+            <div
+                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
+                SEE DETAILS
             </div>
             </div>
             <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
-            <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#4f1c51]/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
-                <div class="overflow-hidden">
-                <img src="images/event-1.png" alt="PPULBATU Keychain Event"
-                    class="w-full h-60 object-cover transition-transform duration-700 ease-in-out hover:scale-110" />
-                </div>
-                <div
-                class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
-                </div>
-                <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
-                Hapa Kristin Back To School Event
-                </div>
+        <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#4f1c51]/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
+            <!-- Image Wrapper -->
+            <div class="overflow-hidden">
+            <img src="images/event-1.png" alt="Back To School Event"
+                class="w-full h-60 object-cover transition-transform duration-700 ease-in-out hover:scale-110" />
             </div>
-            <div>
-                <div
-                    class="see-details-btn bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer"
-                    data-title="Hapa Kristin Back To School Event"
-                    data-description="Join the Hapa Kristin special photocard event featuring Jang Wonyoung! Purchase any Hapa Kristin product during the event period to receive exclusive limited-edition photocards."
-                    data-image="images/event-1.png">
-                    SEE DETAILS
-                </div>
+
+            <!-- Gradient Overlay -->
+            <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
             </div>
+
+            <!-- Text -->
+            <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
+            Back To School
+            </div>
+        </div>
+        <div
+            class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
+            SEE DETAILS
+        </div>
             </div>
         </div>
     </section>
-
-
 
 <!-- PRE-ORDER Section -->
 <section class="mx-auto mt-20 max-w-6xl fade-up ">
@@ -311,11 +275,12 @@
         >
         BUY NOW
         </button>
-        <button
-        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
-        >
-        <i class="fa-solid fa-cart-shopping"></i>
-        </button>
+    <button
+    class="bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:scale-110 transition-transform duration-300"
+    aria-label="Add to cart"
+    >
+    <img src="images/icons/cart.svg" alt="Cart" class="w-4 h-4" />
+    </button>
     </div>
     </div>
 
@@ -340,11 +305,12 @@
         >
         BUY NOW
         </button>
-        <button
-        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
-        >
-        <i class="fa-solid fa-cart-shopping"></i>
-        </button>
+    <button
+    class="bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:scale-110 transition-transform duration-300"
+    aria-label="Add to cart"
+    >
+    <img src="images/icons/cart.svg" alt="Cart" class="w-4 h-4" />
+    </button>
     </div>
     </div>
 
@@ -369,11 +335,12 @@
         >
         BUY NOW
         </button>
-        <button
-        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
-        >
-        <i class="fa-solid fa-cart-shopping"></i>
-        </button>
+    <button
+    class="bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:scale-110 transition-transform duration-300"
+    aria-label="Add to cart"
+    >
+    <img src="images/icons/cart.svg" alt="Cart" class="w-4 h-4" />
+    </button>
     </div>
     </div>
 
@@ -398,11 +365,12 @@
         >
         BUY NOW
         </button>
-        <button
-        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
-        >
-        <i class="fa-solid fa-cart-shopping"></i>
-        </button>
+    <button
+    class="bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:scale-110 transition-transform duration-300"
+    aria-label="Add to cart"
+    >
+    <img src="images/icons/cart.svg" alt="Cart" class="w-4 h-4" />
+    </button>
     </div>
     </div>
 
@@ -427,11 +395,12 @@
         >
         BUY NOW
         </button>
-        <button
-        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
-        >
-        <i class="fa-solid fa-cart-shopping"></i>
-        </button>
+    <button
+    class="bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:scale-110 transition-transform duration-300"
+    aria-label="Add to cart"
+    >
+    <img src="images/icons/cart.svg" alt="Cart" class="w-4 h-4" />
+    </button>
     </div>
     </div>
 </div>
@@ -513,9 +482,10 @@ if (containerStatic) {
             <span>BUY NOW</span>
         </button>
         <button
-            class="bg-[#e9b886] px-3 py-2 rounded-full hover:scale-110 transition-all duration-300"
+            class="bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full hover:scale-110 transition-all duration-300"
+            aria-label="Add to cart"
         >
-            <i class="fa-solid fa-cart-shopping"></i>
+            <img src="images/icons/cart.svg" alt="Cart" class="w-4 h-4" />
         </button>
         </div>
     `;

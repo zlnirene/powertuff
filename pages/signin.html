@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midnight Fiction - Sign In</title>
+  <link rel="icon" type="image/png" href="../images/midfic.png">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #4f1c51 58%, #210f37 100%);
+      color: white;
+      min-height: 100vh;
+    }
+    input::placeholder {
+      color: #c9aebd;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center">
+
+  <!-- Logo Section -->
+  <div style="margin-top: -45px;" class="flex flex-col items-center justify-center text-center space-y-3">
+    <div class="flex items-center space-x-2">
+      <a href="../index.html">
+        <img src="../images/2.png" alt="MidnightFiction Logo" style="height: 250px;">
+      </a>
+    </div>
+    <p class="font-semibold" style="font-size: 30px; line-height: 1; margin-top: -55px;">Welcome Back Dearest</p>
+  </div>
+
+  <!-- Wrapper -->
+  <div class="flex flex-col items-center justify-center mt-6 space-y-10">
+
+    <!-- Header -->
+    <div class="w-[830px] flex items-center justify-center space-x-6 mt-2 mb-12">
+      <div class="bg-[#FAF4EE] text-[#A55B4B] font-extrabold rounded-full px-10 py-4 text-2xl tracking-wide select-none shadow-sm">
+        SIGN IN
+      </div>
+      <div class="h-[15px] bg-[#FAF4EE] rounded-full flex-1"></div>
+    </div>
+
+    <!-- Form + Panel -->
+    <div class="flex justify-center space-x-10 scale-[1.25] w-[930px]">
+
+      <!-- Left Form -->
+      <div style="border-radius: 25px;" class="bg-[#FAF4EE] text-[#A55B4B] rounded-2xl p-8 w-[360px] flex flex-col space-y-5 shadow-lg">
+        <form id="signin-form" class="flex flex-col space-y-5">
+
+          <!-- Email -->
+          <div style="margin-top: 25px;">
+            <label class="block text-base font-extrabold mb-2">Email Address</label>
+            <input 
+              id="email"
+              type="email" 
+              placeholder="Email Address" 
+              class="w-full bg-[#FAF4EE] border-2 border-[#A55B4B] text-[#A55B4B] placeholder-[#d8b6a9] rounded-lg px-4 py-2 focus:outline-none focus:ring-0"
+              required
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="relative">
+            <label class="block text-base font-extrabold mb-2">Password</label>
+            <input 
+              id="password"
+              type="password" 
+              placeholder="Password" 
+              class="w-full bg-[#FAF4EE] border-2 border-[#A55B4B] text-[#A55B4B] placeholder-[#d8b6a9] rounded-lg px-4 py-2 focus:outline-none focus:ring-0"
+              required
+            />
+          </div>
+
+          <!-- Button -->
+          <button 
+            type="submit"
+            class="bg-[#A55B4B] text-[#FAF4EE] font-bold rounded-lg py-3 mt-2 hover:opacity-90 transition"
+          >
+            SIGN IN
+          </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="flex items-center justify-center my-3">
+          <div class="flex-1 h-[1.5px] bg-[#A55B4B] opacity-50"></div>
+          <span class="mx-3 text-sm font-semibold text-[#A55B4B] opacity-80">OR</span>
+          <div class="flex-1 h-[1.5px] bg-[#A55B4B] opacity-50"></div>
+        </div>
+
+        <!-- Social Login -->
+        <div class="flex items-center justify-center space-x-6">
+          <a href="https://www.google.com/"><img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" class="w-6 h-6 cursor-pointer hover:scale-110 transition" alt="Google" /></a>
+          <a href="https://www.apple.com/"><img src="https://cdn-icons-png.flaticon.com/512/179/179309.png" class="w-6 h-6 cursor-pointer hover:scale-110 transition" alt="Apple" /></a>
+          <a href="https://x.com/"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-6 h-6 cursor-pointer hover:scale-110 transition" alt="X" /></a>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div style="border-radius: 25px;" class="w-[260px] h-[500px] overflow-hidden">
+        <img src="../images/BG-Signup.png" alt="Right Panel Background" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <p class="font-semibold" style="font-size: 20px; line-height: 1; margin-top: 90px; margin-bottom: 50px;">
+    <a href="../pages/signup.html">Don't Have An Account Yet?</a>
+  </p>
+
+  <!-- External Script -->
+  <script src="../js/signinup.js"></script>
+</body>
+</html>

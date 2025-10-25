@@ -10,6 +10,13 @@
     body { font-family: 'Poppins', sans-serif; background: radial-gradient(circle at top,#4f1c51 58%,#210f37 100%); color: #fff; }
     .no-scrollbar::-webkit-scrollbar{ display:none } .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none }
     a { text-decoration: none }
+    #productModal{display:none;position:fixed;inset:0;z-index:60;align-items:center;justify-content:center}
+    #productModal.active{display:flex}
+    #productModal .backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.5)}
+    #productModal .panel{position:relative;z-index:10;background:#FAF4EE;color:#2e0f3f;border-radius:16px;max-width:900px;width:100%;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+    #productModal .media{width:48%;min-width:200px}
+    #productModal .meta{width:52%;padding-left:18px}
+    @media(max-width:900px){#productModal .media,#productModal .meta{width:100%;padding-left:0}}
 </style>
 </head>
 <body class="min-h-screen">
@@ -59,9 +66,40 @@
             </div>
         </div>
     </nav>
+    <!-- Sort & Filter -->
+    <section class="w-full flex flex-col items-center mt-10 font-[Quicksand] text-[#DCA06D]">
+
+<section class="max-w-6xl mx-auto mt-12 flex flex-col md:flex-row items-center justify-between gap-6 bg-[#FAF4EE] text-[#8f5e57] rounded-3xl px-8 py-6 shadow-lg">
+    <!-- SORT -->
+    <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+        <h2 class="font-semibold text-lg text-[#4f1c51]">Sort By:</h2>
+        <div class="flex flex-wrap gap-3 *:px-3 *:py-1">
+            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Best Seller</button>
+            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">A-Z</button>
+            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Z-A</button>
+            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Lowest Price</button>
+            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Highest Price</button>
+        </div>
+    </div>
+
+    <!-- CATEGORY -->
+    <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+        <h2 class="font-semibold text-lg text-[#4f1c51]">Category:</h2>
+        <div class="flex items-center border-2 border-[#DCA06D] rounded-3xl px-5 py-2 w-full sm:w-80 justify-between">
+            <input 
+                type="text" 
+                placeholder="Select category..." 
+                class="bg-transparent text-[#DCA06D] placeholder-[#DCA06D] outline-none w-full"
+            />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#DCA06D" class="w-5 h-5 ml-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </div>
+    </div>
+</section>
 
 <!-- Page header -->
-<section class="max-w-5xl mx-auto mt-8 px-6">
+<section class="max-w-5xl mx-auto mt-8 px-6 text-center">
     <h1 class="text-3xl font-semibold text-[#FAF4EE] mb-2">All Product</h1>
     <p class="text-[#f3dede]">Browse our full catalog. Click a product to see details.</p>
 </section>
@@ -75,57 +113,118 @@
 <footer class="fixed bottom-6 left-6 text-sm text-[#f3dede]"></footer>
 
 <script>
-    // sample products (same structure used on index)
-    const products = [
-    { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 1", spec: "Name|Material|Size|Color|Contents|Care" },
-    { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 2", spec: "Name|Material|Size|Color|Contents|Care" },
-    { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 3", spec: "Name|Material|Size|Color|Contents|Care" },
-    { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 4", spec: "Name|Material|Size|Color|Contents|Care" },
-    { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 5", spec: "Name|Material|Size|Color|Contents|Care" },
-    { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 6", spec: "Name|Material|Size|Color|Contents|Care" }
-    ];
+    // buat produk dummy yang isinya sama (misal 12 item)
+    const sampleProduct = {
+        image: "../images/product.png",
+        name: "Lorem Ipsum Dolor Sic Amet ...",
+        price: 45,
+        desc: "Sample description for this product",
+        spec: "Name|Material|Size|Color|Contents|Care"
+    };
+
+    // buat array berisi produk sama, tapi jumlahnya banyak
+    const products = Array.from({ length: 12 }, (_, i) => ({
+        ...sampleProduct,
+    }));
 
     const grid = document.getElementById('productGrid');
 
     function createCard(p){
-    const card = document.createElement('div');
-    card.className = 'group w-full max-w-[250px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1';
-    card.innerHTML = `
-        <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden">
-        <div class="overflow-hidden">
-            <img src="${p.image}" alt="${p.name}" class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:-translate-y-4" />
-        </div>
-        </div>
-        <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
-        <p class="font-bold text-[#4f1c51]">$${p.price}</p>
-        <div class="mt-4 flex items-center justify-center gap-2">
-        <button class="buy-now-btn flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md">BUY NOW</button>
-        <button class="cart-btn bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full hover:scale-110 transition-all duration-300" aria-label="Add to cart"><i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-    `;
+        const card = document.createElement('div');
+        card.className = 'group w-full max-w-[250px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1';
+        card.innerHTML = `
+            <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden">
+                <div class="overflow-hidden">
+                    <img src="${p.image}" alt="${p.name}" class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:scale-110" />
+                </div>
+            </div>
+            <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
+            <p class="font-bold text-[#4f1c51]">$${p.price}</p>
+            <div class="mt-4 flex items-center justify-center gap-2">
+                <button class="buy-now-btn flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md">BUY NOW</button>
+                <button class="cart-btn bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full hover:scale-110 transition-all duration-300" aria-label="Add to cart">
+                    <img src="../images/icons/cart.svg" alt="cart" class="w-4 h-4" />
+                </button>
+            </div>
+        `;
 
-    // navigate to product detail page when clicking the card (but not when clicking buy or cart)
-    card.addEventListener('click', (e) => {
-        if(e.target.closest('.buy-now-btn') || e.target.closest('.cart-btn')) return;
-        const qs = new URLSearchParams({ name: p.name, price: p.price, img: p.image, desc: p.desc, spec: p.spec });
-        window.location.href = `product.html?${qs.toString()}`;
-    });
+        // modal open
+        card.addEventListener('click', (e) => {
+            if(e.target.closest('.buy-now-btn') || e.target.closest('.cart-btn')) return;
+            showProductModal(p);
+        });
 
-    // buy button action (stop propagation)
-    card.querySelector('.buy-now-btn').addEventListener('click', (ev) => {
-        ev.stopPropagation();
-        const btn = ev.currentTarget;
-        btn.classList.add('scale-95');
-        btn.innerText = 'Added!';
-        setTimeout(() => { btn.classList.remove('scale-95'); btn.innerHTML = 'BUY NOW'; }, 1500);
-    });
+        // buy now
+        card.querySelector('.buy-now-btn').addEventListener('click', (ev) => {
+            ev.stopPropagation();
+            const btn = ev.currentTarget;
+            btn.classList.add('scale-95');
+            btn.innerText = 'Added!';
+            setTimeout(() => { btn.classList.remove('scale-95'); btn.innerHTML = 'BUY NOW'; }, 1500);
+        });
 
-    grid.appendChild(card);
+        // cart
+        const cartBtn = card.querySelector('.cart-btn');
+        if(cartBtn){
+            cartBtn.addEventListener('click', (ev)=>{
+                ev.stopPropagation();
+                addToCart(p);
+            });
+        }
+
+        grid.appendChild(card);
     }
 
     products.forEach(createCard);
 
+    // add to cart (localStorage)
+    function addToCart(product){
+        const key = 'cartItems';
+        const items = JSON.parse(localStorage.getItem(key) || '[]');
+        const existing = items.find(i => i.name === product.name);
+        if(existing) existing.qty += 1;
+        else items.push({ ...product, id: Date.now(), qty: 1 });
+        localStorage.setItem(key, JSON.stringify(items));
+    }
+
+    // modal
+    function showProductModal(p){
+        let modal = document.getElementById('productModal');
+        if(!modal){
+            modal = document.createElement('div');
+            modal.id = 'productModal';
+            modal.innerHTML = `
+                <div class="backdrop"></div>
+                <div class="panel mx-4 md:flex">
+                    <div class="media flex-shrink-0">
+                        <img id="modalImg" src="" alt="" class="w-3/4 mx-auto rounded-xl object-contain" />
+                    </div>
+                    <div class="meta">
+                        <div class="flex justify-between items-start">
+                            <h2 id="modalName" class="text-2xl font-semibold"></h2>
+                            <button id="modalClose" aria-label="Close">✕</button>
+                        </div>
+                        <p id="modalPrice" class="text-xl font-bold mt-2"></p>
+                        <p id="modalDesc" class="mt-4 text-sm text-[#4f1c51]"></p>
+                        <div id="modalSpec" class="mt-4 text-sm text-[#4f1c51]"></div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.querySelector('.backdrop').addEventListener('click', ()=> modal.classList.remove('active'));
+            modal.querySelector('#modalClose').addEventListener('click', ()=> modal.classList.remove('active'));
+        }
+
+        modal.querySelector('#modalImg').src = p.image;
+        modal.querySelector('#modalName').textContent = p.name;
+        modal.querySelector('#modalPrice').textContent = `$${p.price}`;
+        modal.querySelector('#modalDesc').textContent = p.desc;
+        modal.querySelector('#modalSpec').innerHTML = p.spec.split('|').map(s=>`<div>• ${s}</div>`).join('');
+
+        modal.classList.add('active');
+    }
 </script>
+
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
