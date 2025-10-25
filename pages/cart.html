@@ -16,14 +16,12 @@
   .cart-container{background:var(--cream);color:var(--text);border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,0.18)}
   .cart-item{display:flex;align-items:center;gap:20px;padding:16px;border-radius:14px}
   .cart-item + .cart-item{border-top:1px solid rgba(0,0,0,0.04);margin-top:6px;padding-top:18px}
-  /* responsive layout for cart-item columns */
   .cart-item .col-item{width:40%}
   .cart-item .col-price{width:18%;text-align:center}
   .cart-item .col-qty{width:22%;text-align:center}
   .cart-item .col-total{width:20%;text-align:right}
     .thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex-shrink:0}
   .info{flex:1;min-width:0}
-  /* keep product title to a single line with ellipsis if too long */
   .name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
     .tag{display:inline-block;background:var(--accent);color:var(--text);padding:4px 8px;border-radius:8px;font-size:12px;margin-top:6px}
     .qty{display:flex;align-items:center;gap:8px;border-radius:14px;padding:6px 8px;background:transparent}
@@ -33,7 +31,6 @@
     .empty{background:rgba(255,255,255,0.06);padding:24px;border-radius:12px;text-align:center}
     .footer{position:fixed;right:24px;left:24px;bottom:24px;max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
     .checkout{background:var(--accent);color:var(--text);padding:12px 20px;border-radius:14px;font-weight:700}
-    /* ensure the checkout button is above any accidental overlays */
     #checkoutBtn{position:relative;z-index:40}
     @media(min-width:768px){.cart-wrap{margin-top:72px}}
   </style>
@@ -85,9 +82,7 @@
         </div>
     </nav>
 
-  <!-- Cart layout: centered list and summary below -->
   <section class="max-w-6xl mx-auto px-6 mb-[200px]">
-    <!-- Improved header: title + subtitle + item-count badge -->
     <div class="mb-6 text-center">
       <h1 class="text-3xl md:text-4xl font-semibold text-[#FAF4EE]">Your Cart</h1>
       <p class="text-sm md:text-base text-[#e9b886] mt-2">Review the items below before you checkout</p>
@@ -98,7 +93,6 @@
 
     <div class="mx-auto max-w-4xl">
       <div class="cart-container">
-        <!-- table header (center items vertically to match row content) -->
         <div class="hidden md:flex items-center text-[#8f5e57] text-sm font-medium mb-4 px-2 py-2">
           <div class="w-1/3">Item</div>
           <div class="w-1/3 text-center">Price</div>
@@ -107,7 +101,6 @@
         </div>
 
         <div id="list" class="space-y-0">
-          <!-- JS will inject cart items here (rows will be .cart-item) -->
         </div>
       </div>
 
@@ -115,7 +108,6 @@
         <div class="empty text-sm">Your cart is empty.</div>
       </div>
 
-      <!-- summary centered below list -->
       <div class="mx-auto max-w-6xl mt-8">
         <div class="rounded-2xl bg-[#FAF4EE] text-[#2e0f3f] px-6 py-6 shadow-md">
           <div class="flex items-center justify-between mb-3">
@@ -138,7 +130,6 @@
     </div>
   </section>
 
-  <!-- Checkout modal (in-page module) -->
   <div id="checkoutModal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
     <div id="checkoutBackdrop" class="absolute inset-0 bg-black/50"></div>
     <div class="relative bg-[#FAF4EE] text-[#2e0f3f] rounded-2xl w-full max-w-md mx-4 p-6 shadow-lg z-10">
@@ -234,183 +225,155 @@
     </div>
 </footer>
 
-  <script>
-    // sample cart items to match the mock
-    const sampleCart = [
-      { id: 1, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
-      { id: 2, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
-      { id: 3, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 },
-      { id: 4, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor\nSic Amet', price: 45, tag: 'Pink', qty: 1 }
-    ];
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const STORAGE_KEY = 'cartItems';
+  const TAX_RATE = 0.08;
+  const sampleCart = [
+    { id: 1, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor Sic Amet', price: 45, tag: 'Pink', qty: 1 },
+    { id: 2, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor Sic Amet', price: 45, tag: 'Pink', qty: 1 },
+    { id: 3, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor Sic Amet', price: 45, tag: 'Pink', qty: 1 },
+    { id: 4, image: '../images/cat.jpg', name: 'Lorem Ipsum Dolor Sic Amet', price: 45, tag: 'Pink', qty: 1 }
+  ];
 
-  const list = document.getElementById('list');
-  const subtotalAmount = document.getElementById('subtotalAmount');
-  const taxAmount = document.getElementById('taxAmount');
-  const grandTotal = document.getElementById('grandTotal');
-  const itemCount = document.getElementById('itemCount');
-    const emptyBox = document.getElementById('empty');
+  const els = {
+    list: document.getElementById('list'),
+    empty: document.getElementById('empty'),
+    subtotal: document.getElementById('subtotalAmount'),
+    tax: document.getElementById('taxAmount'),
+    grand: document.getElementById('grandTotal'),
+    itemCount: document.getElementById('itemCount'),
+    checkoutBtn: document.getElementById('checkoutBtn'),
+    modal: document.getElementById('checkoutModal'),
+    backdrop: document.getElementById('checkoutBackdrop'),
+    close: document.getElementById('checkoutClose'),
+    cancel: document.getElementById('cancelCheckout'),
+    confirm: document.getElementById('confirmCheckout'),
+    msg: document.getElementById('checkoutMessage'),
+    modalSubtotal: document.getElementById('modalSubtotal'),
+    modalTax: document.getElementById('modalTax'),
+    modalGrand: document.getElementById('modalGrand')
+  };
 
-    const STORAGE_KEY = 'cartItems';
-    // load cart from localStorage if present, otherwise use sampleCart
-    let cart;
-    try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      cart = raw ? JSON.parse(raw) : sampleCart.slice();
-    }catch(err){
-      cart = sampleCart.slice();
+  let cart;
+  try {
+    cart = JSON.parse(localStorage.getItem(STORAGE_KEY)) || sampleCart.slice();
+  } catch {
+    cart = sampleCart.slice();
+  }
+
+  const saveCart = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+
+  function render() {
+    const { list, empty, itemCount } = els;
+    list.innerHTML = '';
+
+    if (!cart.length) {
+      empty.classList.remove('hidden');
+      updateSummary(0, 0, 0);
+      if (itemCount) itemCount.textContent = '0 items';
+      return;
     }
 
-    function saveCart(){
-      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }catch(e){}
-    }
-
-    function render(){
-      list.innerHTML = '';
-  if(cart.length === 0){ emptyBox.classList.remove('hidden'); if(subtotalAmount) subtotalAmount.textContent = '$0.00'; if(taxAmount) taxAmount.textContent = '$0.00'; if(grandTotal) grandTotal.textContent = '$0.00'; if(itemCount) itemCount.textContent = '0 items'; return }
-      emptyBox.classList.add('hidden');
-      cart.forEach(item => {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'cart-item';
-        // ensure product name is one line: replace newline characters with spaces
-        const safeName = (item.name || '').split('\\n').join(' ');
-        wrapper.innerHTML = `
-          <div class="col-item flex items-center gap-4">
-            <img src="${item.image}" class="thumb" alt="${safeName}">
-            <div class="info">
-              <div class="name">${safeName}</div>
-              <div class="tag">${item.tag}</div>
-            </div>
+    empty.classList.add('hidden');
+    cart.forEach(item => {
+      const total = (item.price * item.qty).toFixed(2);
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <div class="col-item flex items-center gap-4">
+          <img src="${item.image}" class="thumb" alt="${item.name}">
+          <div class="info">
+            <div class="name">${item.name}</div>
+            <div class="tag">${item.tag}</div>
           </div>
-          <div class="col-price">
-            <div class="text-sm text-[#8f5e57]">$${item.price.toFixed(2)}</div>
-          </div>
-          <div class="col-qty">
-            <div class="qty" data-id="${item.id}">
-              <button class="dec">-</button>
-              <div class="qtd inline-block mx-3">${item.qty}</div>
-              <button class="inc">+</button>
-            </div>
-          </div>
-          <div class="col-total">
-            <div class="price">$${(item.price * item.qty).toFixed(2)}</div>
-          </div>
-          <button class="remove" data-id="${item.id}" aria-label="Remove">✕</button>
-        `;
-
-        // attach handlers
-        wrapper.querySelector('.inc').addEventListener('click', (e)=>{
-          e.stopPropagation();
-          changeQty(item.id, item.qty + 1);
-        });
-        wrapper.querySelector('.dec').addEventListener('click', (e)=>{
-          e.stopPropagation();
-          if(item.qty > 1) changeQty(item.id, item.qty -1);
-        });
-        wrapper.querySelector('.remove').addEventListener('click', (e)=>{
-          e.stopPropagation();
-          removeItem(item.id);
-        });
-
-          list.appendChild(wrapper);
-        });
-  // update item-count badge
-  if(itemCount) itemCount.textContent = `${cart.length} items`;
-        updateSummary();
-    }
-
-    function changeQty(id, qty){
-      cart = cart.map(i => i.id === id ? {...i, qty } : i);
-      saveCart();
-      render();
-    }
-    function removeItem(id){
-      cart = cart.filter(i => i.id !== id);
-      saveCart();
-      render();
-    }
-    function updateSummary(){
-      const subtotal = cart.reduce((s,i)=> s + i.price * i.qty, 0);
-      const taxRate = 0.08; // example tax rate 8%
-      const tax = subtotal * taxRate;
-      const grand = subtotal + tax;
-      if(subtotalAmount) subtotalAmount.textContent = `$${subtotal.toFixed(2)}`;
-      if(taxAmount) taxAmount.textContent = `$${tax.toFixed(2)}`;
-      if(grandTotal) grandTotal.textContent = `$${grand.toFixed(2)}`;
-    }
-
-    render();
-  </script>
-  <script>
-    // Checkout modal module: open modal, populate totals, confirm/cancel actions
-    document.addEventListener('DOMContentLoaded', function () {
-      const checkoutBtn = document.getElementById('checkoutBtn');
-      const checkoutModal = document.getElementById('checkoutModal');
-      const checkoutBackdrop = document.getElementById('checkoutBackdrop');
-      const checkoutClose = document.getElementById('checkoutClose');
-      const cancelCheckout = document.getElementById('cancelCheckout');
-      const confirmCheckout = document.getElementById('confirmCheckout');
-      const modalSubtotal = document.getElementById('modalSubtotal');
-      const modalTax = document.getElementById('modalTax');
-      const modalGrand = document.getElementById('modalGrand');
-      const checkoutMessage = document.getElementById('checkoutMessage');
-
-      function openCheckoutModal(){
-        if(modalSubtotal) modalSubtotal.textContent = subtotalAmount ? subtotalAmount.textContent : '$0.00';
-        if(modalTax) modalTax.textContent = taxAmount ? taxAmount.textContent : '$0.00';
-        if(modalGrand) modalGrand.textContent = grandTotal ? grandTotal.textContent : '$0.00';
-        if(checkoutModal) checkoutModal.classList.remove('hidden');
-      }
-      function closeCheckoutModal(){
-        if(checkoutModal) checkoutModal.classList.add('hidden');
-        if(checkoutMessage) checkoutMessage.classList.add('hidden');
-      }
-
-      if(checkoutBtn){
-        // attach event listener and also set onclick fallback for environments
-        checkoutBtn.addEventListener('click', function (e){
-          e.preventDefault();
-          openCheckoutModal();
-        });
-        // fallback: assign onclick in case addEventListener didn't attach
-        try{ checkoutBtn.onclick = function(e){ e && e.preventDefault(); openCheckoutModal(); }; }catch(err){}
-      }
-
-      [checkoutBackdrop, checkoutClose, cancelCheckout].forEach(el => {
-        if(el) el.addEventListener('click', closeCheckoutModal);
-      });
-
-      if(confirmCheckout){
-        confirmCheckout.addEventListener('click', function (){
-          // save total and show confirmation message
-          try { localStorage.setItem('checkoutTotal', grandTotal ? grandTotal.textContent.trim() : '$0.00'); } catch (err) { }
-          if(checkoutMessage){
-            checkoutMessage.textContent = 'Thank you — your order was successful.';
-            checkoutMessage.classList.remove('hidden');
-          }
-
-          // Prevent closing for a minimum duration (15 seconds)
-          const MIN_SHOW = 15000;
-          // disable confirm and cancel/close controls while showing
-          confirmCheckout.disabled = true;
-          confirmCheckout.classList.add('opacity-60','cursor-not-allowed');
-          if(cancelCheckout) { cancelCheckout.disabled = true; cancelCheckout.classList.add('opacity-60','cursor-not-allowed'); }
-          if(checkoutClose) { checkoutClose.disabled = true; checkoutClose.classList.add('opacity-60'); }
-          // make backdrop non-interactive so clicks won't close the modal
-          if(checkoutBackdrop) checkoutBackdrop.style.pointerEvents = 'none';
-
-          // after MIN_SHOW, re-enable controls and close modal
-          setTimeout(()=>{
-            if(checkoutBackdrop) checkoutBackdrop.style.pointerEvents = '';
-            if(cancelCheckout) { cancelCheckout.disabled = false; cancelCheckout.classList.remove('opacity-60','cursor-not-allowed'); }
-            if(checkoutClose) { checkoutClose.disabled = false; checkoutClose.classList.remove('opacity-60'); }
-            confirmCheckout.disabled = false;
-            confirmCheckout.classList.remove('opacity-60','cursor-not-allowed');
-            // close modal now
-            closeCheckoutModal();
-          }, MIN_SHOW);
-        });
-      }
+        </div>
+        <div class="col-price text-[#8f5e57]">$${item.price.toFixed(2)}</div>
+        <div class="col-qty flex items-center">
+          <button class="dec">-</button>
+          <div class="qtd mx-3">${item.qty}</div>
+          <button class="inc">+</button>
+        </div>
+        <div class="col-total">$${total}</div>
+        <button class="remove text-red-500" data-id="${item.id}">✕</button>
+      `;
+      list.appendChild(div);
     });
-  </script>
+
+    if (itemCount) itemCount.textContent = `${cart.length} items`;
+    updateSummary();
+  }
+
+  function updateSummary() {
+    const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const tax = subtotal * TAX_RATE;
+    const grand = subtotal + tax;
+
+    if (els.subtotal) els.subtotal.textContent = `$${subtotal.toFixed(2)}`;
+    if (els.tax) els.tax.textContent = `$${tax.toFixed(2)}`;
+    if (els.grand) els.grand.textContent = `$${grand.toFixed(2)}`;
+  }
+
+  function changeQty(id, diff) {
+    cart = cart.map(i => i.id === id ? { ...i, qty: Math.max(1, i.qty + diff) } : i);
+    saveCart();
+    render();
+  }
+
+  function removeItem(id) {
+    cart = cart.filter(i => i.id !== id);
+    saveCart();
+    render();
+  }
+
+  els.list.addEventListener('click', e => {
+    const item = e.target.closest('.cart-item');
+    if (!item) return;
+    const id = +item.querySelector('.remove')?.dataset?.id;
+    if (!id) return;
+    if (e.target.classList.contains('inc')) changeQty(id, +1);
+    if (e.target.classList.contains('dec')) changeQty(id, -1);
+    if (e.target.classList.contains('remove')) removeItem(id);
+  });
+
+  const openModal = () => {
+    els.modal?.classList.remove('hidden');
+    els.modalSubtotal.textContent = els.subtotal.textContent;
+    els.modalTax.textContent = els.tax.textContent;
+    els.modalGrand.textContent = els.grand.textContent;
+  };
+
+  const closeModal = () => {
+    els.modal?.classList.add('hidden');
+    els.msg?.classList.add('hidden');
+  };
+
+  els.checkoutBtn?.addEventListener('click', e => {
+    e.preventDefault();
+    openModal();
+  });
+
+  [els.backdrop, els.close, els.cancel].forEach(el =>
+    el?.addEventListener('click', closeModal)
+  );
+
+  els.confirm?.addEventListener('click', () => {
+    localStorage.setItem('checkoutTotal', els.grand?.textContent?.trim() || '$0.00');
+    els.msg.textContent = 'Thank you — your order was successful.';
+    els.msg.classList.remove('hidden');
+    els.confirm.disabled = true;
+    els.confirm.classList.add('opacity-60', 'cursor-not-allowed');
+
+    setTimeout(() => {
+      els.confirm.disabled = false;
+      els.confirm.classList.remove('opacity-60', 'cursor-not-allowed');
+      closeModal();
+    }, 15000);
+  });
+
+  render();
+});
+</script>
+
 </body>
 </html>
