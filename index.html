@@ -104,103 +104,156 @@
 </head>
 
 <body class="min-h-screen">
-<nav class="relative flex items-center justify-center py-5 mb-[20px]">
-  <div class="absolute left-40 flex items-center">
-    <a href="../index.html">
-      <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
-    </a>
-  </div>
+    <nav class="w-full flex items-center justify-between max-w-6xl mx-auto">
+        <div class="flex-shrink-0">
+            <a href="index.html">
+            <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
+            </a>
+        </div>
 
-  <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-between shadow-lg w-[580px]">
-    <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
-      <li><a href="index.html" class="hover:font-bold transition-all duration-150">Home</a></li>
-      <li><a href="pages/category.html" class="hover:font-bold transition-all duration-150">Category</a></li>
-      <li><a href="pages/products.html" class="hover:font-bold transition-all duration-150">All Products</a></li>
-      <li><a href="#" class="hover:font-bold transition-all duration-150">Contact Us</a></li>
-    </ul>
+        <div class="bg-[#FAF4EE] rounded-2xl px-10 py-3 flex items-center justify-between shadow-lg w-4/5">
+            <ul class="flex gap-10 text-[#8f5e57] font-medium text-[15px]">
+            <li class="relative group">
+                <a href="index.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                Home
+                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </li>
+            <li class="relative group">
+                <a href="pages/category.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                Category
+                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </li>
+            <li class="relative group">
+                <a href="pages/products.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                All Products
+                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </li>
+            <li class="relative group">
+                <a href="#" class="transition-all duration-300 group-hover:text-[#7F2549]">
+                Contact Us
+                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </li>
+            </ul>
 
-    <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
-      <a href="pages/cart.html" class="hover:opacity-80 transition-all duration-150 ">
-        <img src="images/icons/cart.svg" alt="Cart" class="w-[20px] h-[20px]" />
-      </a>
-      <a href="pages/favorite.html" class="hover:opacity-80 transition-all duration-150">
-        <img src="images/icons/star.svg" alt="Star" class="w-[20px] h-[20px]" />
-      </a>
-      <a href="pages/signup.html" class="hover:opacity-80 transition-all duration-150">
-        <img src="images/icons/user.svg" alt="User" class="w-[20px] h-[20px]" />
-      </a>
-  </div>
+            <!-- Right: Icons -->
+            <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
+            <a href="pages/cart.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+                <img src="images/icons/cart.svg" alt="Cart" class="w-5 h-5" />
+            </a>
+            <a href="#" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+                <img src="images/icons/star.svg" alt="Star" class="w-5 h-5" />
+            </a>
+            <a href="pages/profile.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+                <img src="images/icons/user.svg" alt="User" class="w-5 h-5" />
+            </a>
+            </div>
+        </div>
+    </nav>
 
-  </div>
-</nav>
-
-    <!-- Section Utama (Highlight Produk) -->
-    <section
-    class="mx-auto mt-10 max-w-5xl bg-[#FAF4EE]/80 rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up"
-    >
-    <img
-        src="images/BAN-BackToSchool.webp"
-        alt="Product Highlight"
-        class="w-full md:w-1/2 rounded-xl object-cover"
-    />
-
-    <div class="flex flex-col justify-center w-full md:w-1/2">
-        <ul class="space-y-3 text-[#4F1C51]">
-        <li><a href="#" class="underline hover:text-white">PPULBATU Keychain Pre-Order</a></li>
-        <li><a href="#" class="underline hover:text-white">Hapa Kristin Back To School</a></li>
-        <li><a href="#" class="underline hover:text-white">Hapa Kristin Jang Wonyoung PC Event</a></li>
-        <li><a href="#" class="underline hover:text-white">TOMORROW X TOGETHER Collab</a></li>
-        </ul>
-    </div>
+    <section class="mx-auto max-w-6xl bg-[#FAF4EE]/80 rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up">
+        <img src="images/event-1.png" alt="Product Highlight" class="w-full md:w-1/2 rounded-xl object-cover"/>
+        <div class="flex flex-col justify-center w-full md:w-1/2">
+            <ul class="space-y-3 text-[#4F1C51]">
+            <li><a href="#" class="underline hover:text-white">PPULBATU Keychain Pre-Order</a></li>
+            <li><a href="#" class="underline hover:text-white">Hapa Kristin Back To School</a></li>
+            <li><a href="#" class="underline hover:text-white">Hapa Kristin Jang Wonyoung PC Event</a></li>
+            <li><a href="#" class="underline hover:text-white">TOMORROW X TOGETHER Collab</a></li>
+            </ul>
+        </div>
     </section>
-<!-- EVENT Section -->
-<section class="mx-auto mt-16 max-w-6xl fade-up">
-    <div class="flex justify-between items-center mb-6">
-    <div class="flex items-center space-x-4">
-        <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">EVENT</span>
-        <a href="#" class="text-[#f9e4e4] hover:text-white font-medium">See All</a>
-    </div>
-    </div>
 
-    <!-- Scrollable Cards -->
-    <div class="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-1">
-    <!-- Card 1 -->
-    <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
-        <img src="images/BAN-Ppulbatu.png" alt="PPULBATU Keychain Event" class="w-full h-52 object-cover" />
-        <div class="p-6 text-center">
-        <h3 class="text-lg font-semibold mb-3 text-white">PPULBATU Keychain Pre-Order Event</h3>
-        <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
+    <section class="mx-auto mt-16 max-w-6xl fade-up">
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex items-center space-x-4">
+            <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">EVENT</span>
+            </div>
         </div>
-    </div>
+        <div class="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-1">
+            <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
+            <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#4f1c51]/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
+                <div class="overflow-hidden">
+                <img src="images/event-2.png" alt="Hapa Kristin Event"
+                    class="w-full h-60 object-cover transition-transform duration-700 ease-in-out hover:scale-110" />
+                </div>
+                <div
+                class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
+                </div>
+                <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
+                Hapa Kristin Jang Wonyoung PC Event
+                </div>
+            </div>
+            <div
+                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
+                SEE DETAILS
+            </div>
+            </div>
+            <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
+            <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#4f1c51]/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
+                <div class="overflow-hidden">
+                <img src="images/event-3.png" alt="Third Event"
+                    class="w-full h-60 object-cover transition-transform duration-700 ease-in-out hover:scale-110" />
+                </div>
+                <div
+                class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
+                </div>
+                <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
+                Third Event Promotion
+                </div>
+            </div>
+            <div
+                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
+                SEE DETAILS
+            </div>
+            </div>
+            <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
+            <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#4f1c51]/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
+                <div class="overflow-hidden">
+                <img src="images/event-4.png" alt="PPULBATU Keychain Event"
+                    class="w-full h-60 object-cover transition-transform duration-700 ease-in-out hover:scale-110" />
+                </div>
+                <div
+                class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
+                </div>
+                <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
+                PPULBATU Keychain Pre-Order Event
+                </div>
+            </div>
+            <div
+                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
+                SEE DETAILS
+            </div>
+            </div>
+            <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
+        <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#4f1c51]/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
+            <!-- Image Wrapper -->
+            <div class="overflow-hidden">
+            <img src="images/event-1.png" alt="Back To School Event"
+                class="w-full h-60 object-cover transition-transform duration-700 ease-in-out hover:scale-110" />
+            </div>
 
-    <!-- Card 2 -->
-    <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
-        <img src="images/BAN-WonyoungPC.webp" alt="Hapa Kristin Event" class="w-full h-52 object-cover" />
-        <div class="p-6 text-center">
-        <h3 class="text-lg font-semibold mb-3 text-white">Hapa Kristin Jang Wonyoung PC Event</h3>
-        <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
-        </div>
-    </div>
+            <!-- Gradient Overlay -->
+            <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
+            </div>
 
-    <!-- Card 3 -->
-    <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
-        <img src="images/BAN-Bamgeut.png" alt="PPULBATU Bamgeut Set Event" class="w-full h-52 object-cover" />
-        <div class="p-6 text-center">
-        <h3 class="text-lg font-semibold mb-3 text-white">PPULBATU Bamgeut Set Promo</h3>
-        <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
+            <!-- Text -->
+            <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
+            Back To School
+            </div>
         </div>
-    </div>
+        <div
+            class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
+            SEE DETAILS
+        </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Card 4 -->
-    <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
-        <img src="images/BAN-BackToSchool.webp" alt="Back To School Event" class="w-full h-52 object-cover" />
-        <div class="p-6 text-center">
-        <h3 class="text-lg font-semibold mb-3 text-white">Back To School Edition Event</h3>
-        <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
-        </div>
-    </div>
-    </div>
-</section>
+
 
 <!-- PRE-ORDER Section -->
 <section class="mx-auto mt-20 max-w-6xl fade-up ">
