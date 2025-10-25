@@ -5,48 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Midnight Fiction - Profile</title>
     <link rel="icon" type="image/png" href="images/midfic.png">
-    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font -->
-    <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <style>
     body {
         font-family: "Poppins", sans-serif;
         background: radial-gradient(circle at top, #4f1c51 58%, #210f37 100%);
         color: #fff;
     }
-    /* avatar positioned absolute so it sits centered in the empty space */
     .avatar-container {
     position: absolute;
-    top: 45px;            /* atur vertikal sesuai kebutuhan */
-    right: 95px;          /* geser lebih ke kiri dengan meningkatkan nilai ini */
+    top: 45px;
+    right: 95px;
     margin-left: 0;
     z-index: 20;
     display: inline-block;
     transform: translateY(0);
     }
-
     .nav-link {
         color: #e5cfcf;
         transition: color 0.3s;
     }
     .nav-link:hover { color: #fff; }
-
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
     html { scroll-behavior: smooth; }
-
-    /* profile specific */
     .panel-bg { background: linear-gradient(180deg,#f6e9df 0%, #f3e6db 100%); }
-    .soft-border { border: 3px solid rgba(96,165,250,0.15); } /* soft bluish outline */
+    .soft-border { border: 3px solid rgba(96,165,250,0.15); }
     .peach { background: #d89e77; }
     .peach-dark { background: #c9885f; }
-    /* pill-shaped username / inputs to match design */
     .input-style {
         background: transparent;
         border: 3px solid #e6b79b;
@@ -56,7 +43,6 @@
         font-weight:600;
     }
     .label-style { color: #b35a2f; font-weight:600; }
-    /* avatar ~30% larger */
     .avatar-wrap { width:125px; height:125px; border-radius:9999px; overflow:hidden; border:5px solid #fff; box-shadow:0 0px 15px rgba(0,0,0,0.28); display:block; }
     .camera-badge {
         width:40px; height:40px; border-radius:9999px;
@@ -67,37 +53,29 @@
         border:4px solid rgba(230,183,155,0.95);
         cursor: pointer;
     }
-    /* custom select arrow moved left so it isn't flush to the far right */
     select.input-style {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236b3a2d' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
-        background-position: calc(100% - 28px) center; /* move arrow left from edge */
-        padding-right: 3.5rem; /* space for the arrow */
+        background-position: calc(100% - 28px) center;
+        padding-right: 3.5rem; 
     }
-
-    /* input date: don't inject an inline background-icon (we use a visible trigger button) */
     input[type="date"].input-style {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
         background: transparent;
-        padding-right: 4.5rem; /* give room for the circular trigger button */
+        padding-right: 4.5rem;
     }
-    /* hide native picker indicator (we open picker via the .date-trigger) */
     input[type="date"]::-webkit-calendar-picker-indicator { display: none; }
-
-    /* fallback for small screens */
     @media (max-width: 640px) {
         input[type="date"].input-style {
         background-position: calc(100% - 20px) center;
         padding-right: 2.75rem;
         }
     }
-
-    /* date trigger button overlay (opens native picker) */
     .date-input-wrapper { position: relative; display: block; }
     .date-trigger {
         position: absolute;
@@ -113,10 +91,7 @@
         cursor: pointer;
     }
     .date-trigger svg { display: block; stroke: #6b3a2d; width:18px; height:18px; }
-    /* ensure input has enough right padding so text doesn't overlap the trigger */
     .input-style.date-with-trigger { padding-right: 5.25rem; }
-
-    /* modal for password change */
     .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -141,8 +116,6 @@
     .btn-muted { background:transparent; border:1px solid #d6a58f; color:#8d5848; padding:8px 12px; border-radius:8px; cursor:pointer; }
     .btn-primary { background:#9a5448; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
     .input-modal { width:100%; padding:10px 12px; border-radius:8px; border:2px solid #e6b79b; box-sizing:border-box; }
-
-    /* Footer — match design exactly */
     footer.site-footer {
     background: #FAF4EE;
     color: #2e0f3f;
@@ -170,8 +143,6 @@
     footer.site-footer .policy-links { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; }
     footer.site-footer .info-links ul { padding:0; margin:0; list-style:none; font-size:13px; line-height:1.55; color:#2e0f3f; }
     footer.site-footer .info-links ul li a { color: #2e0f3f; opacity:0.95; text-decoration:none; }
-
-    /* right column: logo + copyright + socials */
     .footer-brand { display:flex; flex-direction:column; align-items:flex-end; gap:10px; text-align:right; }
     .footer-brand img.logo { height:56px; object-fit:contain; }
     .footer-brand .copyright { font-size:12px; color:#2e0f3f; opacity:0.95; }
@@ -181,10 +152,7 @@
     border-radius:9999px; background:#4F1C51; color:#fff; text-decoration:none;
     box-shadow: 0 6px 14px rgba(79,28,81,0.12);
     }
-
-    /* make footer area visually match the wave above */
     .footer-wave-spacer { margin-top: -90px; pointer-events:none; }
-
     @media (max-width: 960px) {
     footer.site-footer .footer-inner { grid-template-columns: 1fr; text-align:center; }
     .footer-brand { align-items:center; }
@@ -193,127 +161,69 @@
     </style>
 </head>
 <body class="min-h-screen">
-<!-- Navbar -->
-    <nav class="relative flex items-center justify-center py-5 mb-[20px]">
-        <div class="absolute left-40 flex items-center">
-            <a href="../index.html">
-            <img src="../images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
-            </a>
-        </div>
-        <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-around shadow-lg w-[580px]">
-            <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
-                <li class="relative group">
-                    <a href="../index.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                    Home
-                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </li>
-                <li class="relative group">
-                    <a href="category.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                    Category
-                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </li>
-                <li class="relative group">
-                    <a href="products.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                    All Products
-                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </li>
-                <li class="relative group">
-                    <a href="#" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                    Contact Us
-                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </li>
-            </ul>
-            <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg *:*:w-[20px] h-[20px]">
-                <a href="cart.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                    <img src="../images/icons/cart.svg" alt="Cart" class="" />
-                </a>
-                <a href="#" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                    <img src="../images/icons/star.svg" alt="Star" class="" />
-                </a>
-                <a href="profile.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                    <img src="../images/icons/user.svg" alt="User" class="" />
-                </a>
-            </div>
-        </div>
-    </nav>
+	<nav class="w-full flex items-center justify-between max-w-6xl mx-auto">
+		<div class="flex-shrink-0">
+			<a href="../index.html">
+			<img src="../images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
+			</a>
+		</div>
+		<div class="bg-[#FAF4EE] rounded-2xl px-10 py-3 flex items-center justify-between shadow-lg w-4/5">
+			<ul class="flex gap-10 text-[#8f5e57] font-medium text-[15px]">
+				<li class="relative group">
+					<a href="products.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+					All Products
+					<span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+					</a>
+				</li>
+				<li class="relative group">
+					<a href="signin.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+					Sign In
+					<span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+					</a>
+				</li>
+				<li class="relative group">
+					<a href="signup.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
+					Sign Up
+					<span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
+					</a>
+				</li>
+			</ul>
+			<div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
+			<a href="cart.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+				<img src="../images/icons/cart.svg" alt="Cart" class="w-5 h-5" />
+			</a>
+			<a href="profile.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
+				<img src="../images/icons/user.svg" alt="User" class="w-5 h-5" />
+			</a>
+			</div>
+		</div>
+	</nav>
 <main class="max-w-6xl mx-auto px-6 pb-12 mb-[140px]">
     <div class="flex gap-8">
-    <!-- Left Sidebar -->
-    <aside style="height: 250px;" class="w-36 bg-[#e9ae83] py-4 flex flex-col rounded-[2rem] items-center justify-center text-center space-y-4 shadow-md">
-        <!-- Active tab -->
-        <div class="w-full bg-[#9a5448] text-white font-semibold py-2">
-        Account Information
-        </div>
-
-        <!-- Other tabs -->
-        <div class="text-white/90 font-medium">Order</div>
-        <div class="text-white/90 font-medium">Address</div>
-        <div class="text-white/90 font-medium">Notification</div>
-    </aside>
-
-
-
-    <!-- profile card -->
     <section class="flex-1">
         <div class="panel-bg rounded-3xl p-8 soft-border relative">
-        <!-- Title and avatar -->
         <div class="flex items-start justify-between gap-6">
-            <!-- left: title + username -->
             <div class="flex-1">
-            <h2 class="text-2xl font-semibold text-[#8d5848]">Account Information</h2>
-            <div class="mt-4 max-w-lg">
-                <label class="label-style block mb-2">Username</label>
-                <!-- maxlength=11 (1 for '@' + up to 10 chars) -->
-                <input id="usernameInput" maxlength="11" class="input-style w-full" value="@jangwony" />
-            </div>
-            </div>
-
-            <!-- right: avatar -->
-            <div class="flex items-center gap-4">
-            <div class="avatar-container">
-                <div class="avatar-wrap">
-                <img id="profileAvatar" src="../images/profile.jpeg" alt="avatar" class="w-full h-full object-cover">
+                <h2 class="text-2xl font-semibold text-[#8d5848]">Account Information</h2>
+                <div class="mt-4 max-w-lg">
+                    <label class="label-style block mb-2">Username</label>
+                    <input id="usernameInput" maxlength="11" class="input-style w-full" value="@jangwony" />
                 </div>
-                <!-- hidden file input for avatar upload -->
-                <input id="avatarInput" type="file" accept="image/*" style="display:none" />
-                <!-- camera badge centered at bottom of avatar -->
-                <button id="avatarButton" class="camera-badge" type="button" aria-label="Change profile photo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b3a2d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="3"></circle></svg>
-                </button>
-                <!-- JS to handle upload & preview -->
-                <script>
-                (function(){
-                    const btn = document.getElementById('avatarButton');
-                    const input = document.getElementById('avatarInput');
-                    const img = document.getElementById('profileAvatar');
-                    let currentObjectURL = null;
-
-                    btn.addEventListener('click', () => input.click());
-
-                    input.addEventListener('change', (e) => {
-                    const file = e.target.files && e.target.files[0];
-                    if (!file) return;
-                    if (!file.type.startsWith('image/')) return alert('Pilih file gambar.');
-                    // optional: limit size to 5MB
-                    if (file.size > 5 * 1024 * 1024) return alert('Maks 5MB.');
-                    if (currentObjectURL) URL.revokeObjectURL(currentObjectURL);
-                    currentObjectURL = URL.createObjectURL(file);
-                    img.src = currentObjectURL;
-                    });
-                })();
-                </script>
             </div>
+            <div class="flex items-center gap-4">
+                <div class="avatar-container">
+                    <div class="avatar-wrap">
+                    <img id="profileAvatar" src="../images/profile.jpeg" alt="avatar" class="w-full h-full object-cover">
+                    </div>
+                    <input id="avatarInput" type="file" accept="image/*" style="display:none" />
+                    <button id="avatarButton" class="camera-badge" type="button" aria-label="Change profile photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b3a2d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- form -->
         <form id="profileForm" class="mt-8 grid grid-cols-1 gap-6">
-            <!-- Username moved above title to align directly under heading -->
-            <!-- Name row -->
             <div class="grid grid-cols-2 gap-4">
             <div>
                 <label class="label-style block mb-2">First Name</label>
@@ -325,13 +235,11 @@
             </div>
             </div>
 
-            <!-- Email -->
             <div>
             <label class="label-style block mb-2">Email</label>
             <input id="emailInput" class="input-style w-full" value="wonyoung@gmail.com" />
             </div>
 
-            <!-- Password -->
             <div>
             <label class="label-style block mb-2">Password
                 <button 
@@ -345,7 +253,6 @@
             <input id="passwordPreview" type="text" readonly class="input-style w-full" value="jangwony" />
             </div>
 
-            <!-- Gender select -->
             <div>
             <label class="label-style block mb-2">Gender</label>
             <select id="genderSelect" class="input-style w-full">
@@ -355,7 +262,6 @@
             </select>
             </div>
             
-            <!-- D.O.B. -->
             <div>
             <label class="label-style block mb-2">D.O.B.</label>
             <div class="date-input-wrapper">
@@ -366,10 +272,8 @@
             </div>
             </div>
 
-            <!-- Phone Number -->
             <div>
             <label class="label-style block mb-2">Phone Number</label>
-            <!-- immutable country prefix +62 -->
             <input 
                 id="phoneInput" 
                 class="input-style w-full" 
@@ -378,12 +282,10 @@
             />
             </div> 
 
-            <!-- Country -->
             <div>
             <label class="label-style block mb-2">Country</label>
             <select id="countrySelect" class="input-style w-full"></select>
             </div>
-            <!-- action buttons -->
             <div class="pt-4 flex flex-col gap-3">
             <button type="button" id="saveBtn" class="w-full px-6 py-3 rounded-md bg-[#9a5448] text-white font-semibold shadow">SAVE CHANGES</button>
             <button type="button" id="deleteBtn" class="w-full px-6 py-3 rounded-md border-2 border-[#c84b49] text-[#c84b49] font-semibold bg-transparent">DELETE ACCOUNT</button>
@@ -395,7 +297,6 @@
     </div>
 </main>
 
-<!-- Password change modal -->
 <div id="passwordModal" class="modal-backdrop" role="dialog" aria-hidden="true" aria-labelledby="pwdModalTitle">
     <div class="modal-panel" role="document">
     <h3 id="pwdModalTitle">Change Password</h3>
@@ -417,92 +318,95 @@
     </form>
     </div>
 </div>
-
-<!-- Wave above footer (keeps same shape) -->
-<section class="relative bg-[#210F37] z-0 footer-wave-spacer">
-    <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+<section class="relative bg-[#210F37] z-0">
+    <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FAF4EE" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,202.7C384,224,480,224,576,208C672,192,768,160,864,160C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     </div>
 </section>
 
-<footer class="site-footer">
-    <div class="footer-inner">
-    <!-- left: policy links -->
-    <div class="policy-links" aria-label="policy links">
-        <a href="#">Terms of Use</a>
-        <a href="#">Terms for Paid Service</a>
-        <a href="#">Child & Youth Policy</a>
-        <a href="#">Privacy Policy</a>
-    </div>
-
-    <!-- center: info links (stacked) -->
-    <div class="info-links">
-        <ul>
-        <li><a href="#">Who is Midnight Fiction?</a></li>
-        <li><a href="#">Gift Cards</a></li>
-        <li><a href="#">Store Locator</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Returns & Refunds</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">Wholesale</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Refund policy</a></li>
-        </ul>
-    </div>
-
-    <!-- right: brand + socials -->
-    <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
-        <img src="../images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
-        <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
-        <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
-<!-- Instagram -->
-<a href="https://www.instagram.com/midnightfiction" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    title="Instagram — MidnightFiction" 
-    aria-label="Instagram — MidnightFiction"
-    class="hover:opacity-80 transition-opacity duration-200">
-    <img src="../images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
-</a>
-
-<!-- Facebook -->
-<a href="https://www.facebook.com/midnightfiction" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    title="Facebook — MidnightFiction" 
-    aria-label="Facebook — MidnightFiction"
-    class="hover:opacity-80 transition-opacity duration-200">
-    <img src="../images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
-</a>
-
-<!-- TikTok -->
-<a href="https://www.tiktok.com/@midnightfiction" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    title="TikTok — @MidnightFiction" 
-    aria-label="TikTok — MidnightFiction"
-    class="hover:opacity-80 transition-opacity duration-200">
-    <img src="../images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
-</a>
-
-<!-- Twitter -->
-<a href="https://twitter.com/midnightfiction" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    title="Twitter — MidnightFiction" 
-    aria-label="Twitter — MidnightFiction"
-    class="hover:opacity-80 transition-opacity duration-200">
-    <img src="../images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
-</a>
-</div>
-
-
-    </div>
+<footer class="site-footer bg-[#FAF4EE] text-[#2d1b1b] py-10">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="policy-links flex flex-wrap justify-between items-center gap-8 text-sm font-medium mb-8">
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Terms of Use</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Terms for Paid Service</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Child & Youth Policy</a>
+            <a href="#" class="hover:text-[#6a4058] transition-colors">Privacy Policy</a>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <ul class="space-y-1 text-sm leading-relaxed mb-8 md:mb-0">
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Who is Midnight Fiction?</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Gift Cards</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Store Locator</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">FAQ</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Returns & Refunds</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Shipping</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Wholesale</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Events</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Search</a></li>
+                <li><a href="#" class="hover:text-[#6a4058] transition-colors">Refund Policy</a></li>
+            </ul>
+            <div style="margin-top: -55px;" class="footer-brand" aria-label="brand and socials">
+                <img src="../images/1.png" alt="Midnight Fiction Logo" style="height: 250px;" class="logo" />
+                <div style="margin-top: -80px;" class="copyright font-semibold">2025 © Midnight Fiction All Rights Reserved</div>
+                    <div class="footer-socials flex justify-center md:justify-end gap-5 mt-4">
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Instagram — MidnightFiction" 
+                            aria-label="Instagram — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="../images/icons/instagram.svg" alt="Instagram" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Facebook — MidnightFiction" 
+                            aria-label="Facebook — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="../images/icons/facebook.svg" alt="Facebook" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="TikTok — @MidnightFiction" 
+                            aria-label="TikTok — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="../images/icons/tiktok.svg" alt="TikTok" class="w-5 h-5" />
+                        </a>
+                        <a href="#" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="Twitter — MidnightFiction" 
+                            aria-label="Twitter — MidnightFiction"
+                            class="hover:opacity-80 transition-opacity duration-200">
+                            <img src="../images/icons/twitter.svg" alt="Twitter" class="w-5 h-5" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
+<script src="../js/index.js"></script>
+<script>
+(function(){
+    const btn = document.getElementById('avatarButton');
+    const input = document.getElementById('avatarInput');
+    const img = document.getElementById('profileAvatar');
+    let currentObjectURL = null;
 
+    btn.addEventListener('click', () => input.click());
 
-<script src="js/index.js"></script>
+    input.addEventListener('change', (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) return alert('Pilih file gambar.');
+    if (file.size > 5 * 1024 * 1024) return alert('Maks 5MB.');
+    if (currentObjectURL) URL.revokeObjectURL(currentObjectURL);
+    currentObjectURL = URL.createObjectURL(file);
+    img.src = currentObjectURL;
+    });
+})();
+</script>
 </body>
 </html>
