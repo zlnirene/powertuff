@@ -375,3 +375,4 @@ document.getElementById('deleteBtn').addEventListener('click', () => {
     alert('🗑️ Account data deleted.');
   }
 });
+
