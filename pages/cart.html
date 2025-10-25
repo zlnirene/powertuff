@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cart - Midnight Fiction</title>
+  <title>Cart | Midnight Fiction</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -23,8 +23,9 @@
   .cart-item .col-qty{width:22%;text-align:center}
   .cart-item .col-total{width:20%;text-align:right}
     .thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex-shrink:0}
-    .info{flex:1}
-    .name{font-weight:600}
+  .info{flex:1;min-width:0}
+  /* keep product title to a single line with ellipsis if too long */
+  .name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
     .tag{display:inline-block;background:var(--accent);color:var(--text);padding:4px 8px;border-radius:8px;font-size:12px;margin-top:6px}
     .qty{display:flex;align-items:center;gap:8px;border-radius:14px;padding:6px 8px;background:transparent}
     .qty button{width:28px;height:28px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text);font-weight:700}
@@ -33,6 +34,8 @@
     .empty{background:rgba(255,255,255,0.06);padding:24px;border-radius:12px;text-align:center}
     .footer{position:fixed;right:24px;left:24px;bottom:24px;max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
     .checkout{background:var(--accent);color:var(--text);padding:12px 20px;border-radius:14px;font-weight:700}
+    /* ensure the checkout button is above any accidental overlays */
+    #checkoutBtn{position:relative;z-index:40}
     @media(min-width:768px){.cart-wrap{margin-top:72px}}
   </style>
 </head>
@@ -84,10 +87,10 @@
 
     <div class="mx-auto max-w-4xl">
       <div class="cart-container">
-        <!-- table header -->
-        <div class="hidden md:flex text-[#8f5e57] text-sm font-medium mb-4 px-2">
+        <!-- table header (center items vertically to match row content) -->
+        <div class="hidden md:flex items-center text-[#8f5e57] text-sm font-medium mb-4 px-2 py-2">
           <div class="w-1/3">Item</div>
-          <div class="w-1/6 text-center">Price</div>
+          <div class="w-1/3 text-center">Price</div>
           <div class="w-1/4 text-center">Quantity</div>
           <div class="w-1/6 text-right">Total</div>
         </div>
@@ -118,11 +121,33 @@
             <div id="grandTotal" class="text-xl font-semibold">$0.00</div>
           </div>
 
-          <a id="checkoutBtn" href="../pages/checkout.html" class="w-full inline-block text-center bg-[#e9b886] text-[#2e0f3f] px-5 py-3 rounded-lg shadow-sm font-semibold">Checkout</a>
+          <button id="checkoutBtn" type="button" class="w-full inline-block text-center bg-[#e9b886] text-[#2e0f3f] px-5 py-3 rounded-lg shadow-sm font-semibold">Checkout</button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Checkout modal (in-page module) -->
+  <div id="checkoutModal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+    <div id="checkoutBackdrop" class="absolute inset-0 bg-black/50"></div>
+    <div class="relative bg-[#FAF4EE] text-[#2e0f3f] rounded-2xl w-full max-w-md mx-4 p-6 shadow-lg z-10">
+      <div class="flex justify-between items-start mb-4">
+        <h3 class="text-lg font-semibold">Checkout</h3>
+        <button id="checkoutClose" aria-label="Close checkout" class="text-[#2e0f3f]">✕</button>
+      </div>
+      <div class="mb-4">
+        <div class="flex justify-between text-sm text-[#8f5e57]"><span>Subtotal</span><span id="modalSubtotal">$0.00</span></div>
+        <div class="flex justify-between text-sm text-[#8f5e57]"><span>Sales Tax</span><span id="modalTax">$0.00</span></div>
+        <hr class="my-3 border-t border-[#e6dcd8]" />
+        <div class="flex justify-between font-semibold text-xl"><span>Grand total</span><span id="modalGrand">$0.00</span></div>
+      </div>
+      <div class="flex gap-3">
+        <button id="confirmCheckout" class="flex-1 bg-[#4f1c51] text-[#FAF4EE] px-4 py-2 rounded-lg font-semibold">Confirm Purchase</button>
+        <button id="cancelCheckout" class="flex-1 bg-transparent border border-[#e6dcd8] text-[#2e0f3f] px-4 py-2 rounded-lg">Cancel</button>
+      </div>
+      <p id="checkoutMessage" class="text-sm text-[#4f1c51] mt-3 hidden"></p>
+    </div>
+  </div>
 
   <!-- Wave + Footer -->
   <section class="relative bg-[#210F37] z-0">
@@ -194,11 +219,13 @@
       cart.forEach(item => {
   const wrapper = document.createElement('div');
   wrapper.className = 'cart-item';
+        // ensure product name is one line: replace newline characters with spaces
+        const safeName = (item.name || '').split('\\n').join(' ');
         wrapper.innerHTML = `
           <div class="col-item flex items-center gap-4">
-            <img src="${item.image}" class="thumb" alt="${item.name}">
+            <img src="${item.image}" class="thumb" alt="${safeName}">
             <div class="info">
-              <div class="name">${item.name.replace('\n','<br>')}</div>
+              <div class="name">${safeName}</div>
               <div class="tag">${item.tag}</div>
             </div>
           </div>
@@ -260,35 +287,75 @@
     render();
   </script>
   <script>
-    // Robust checkout handler: wait for DOM, prevent default anchor navigation,
-    // save grand total to localStorage synchronously, then navigate.
+    // Checkout modal module: open modal, populate totals, confirm/cancel actions
     document.addEventListener('DOMContentLoaded', function () {
       const checkoutBtn = document.getElementById('checkoutBtn');
-      if (!checkoutBtn) return;
+      const checkoutModal = document.getElementById('checkoutModal');
+      const checkoutBackdrop = document.getElementById('checkoutBackdrop');
+      const checkoutClose = document.getElementById('checkoutClose');
+      const cancelCheckout = document.getElementById('cancelCheckout');
+      const confirmCheckout = document.getElementById('confirmCheckout');
+      const modalSubtotal = document.getElementById('modalSubtotal');
+      const modalTax = document.getElementById('modalTax');
+      const modalGrand = document.getElementById('modalGrand');
+      const checkoutMessage = document.getElementById('checkoutMessage');
 
-      checkoutBtn.addEventListener('click', function (e) {
-        // prevent the anchor's default navigation so we can save first
-        e.preventDefault();
+      function openCheckoutModal(){
+        if(modalSubtotal) modalSubtotal.textContent = subtotalAmount ? subtotalAmount.textContent : '$0.00';
+        if(modalTax) modalTax.textContent = taxAmount ? taxAmount.textContent : '$0.00';
+        if(modalGrand) modalGrand.textContent = grandTotal ? grandTotal.textContent : '$0.00';
+        if(checkoutModal) checkoutModal.classList.remove('hidden');
+      }
+      function closeCheckoutModal(){
+        if(checkoutModal) checkoutModal.classList.add('hidden');
+        if(checkoutMessage) checkoutMessage.classList.add('hidden');
+      }
 
-        const grandEl = document.getElementById('grandTotal');
-        const grandTotal = grandEl ? grandEl.textContent.trim() : '$0.00';
-        try {
-          localStorage.setItem('checkoutTotal', grandTotal);
-        } catch (err) {
-          // ignore storage errors (e.g. privacy mode) — still navigate
-          console.warn('Could not write checkoutTotal to localStorage', err);
-        }
+      if(checkoutBtn){
+        // attach event listener and also set onclick fallback for environments
+        checkoutBtn.addEventListener('click', function (e){
+          e.preventDefault();
+          openCheckoutModal();
+        });
+        // fallback: assign onclick in case addEventListener didn't attach
+        try{ checkoutBtn.onclick = function(e){ e && e.preventDefault(); openCheckoutModal(); }; }catch(err){}
+      }
 
-        // small visual feedback (optional)
-        checkoutBtn.classList.add('opacity-90');
-
-        // Navigate explicitly to the anchor's href (or fallback)
-        const href = checkoutBtn.getAttribute('href') || './checkout.html';
-        // short delay so the storage write completes and user sees feedback
-        setTimeout(() => {
-          window.location.href = href;
-        }, 50);
+      [checkoutBackdrop, checkoutClose, cancelCheckout].forEach(el => {
+        if(el) el.addEventListener('click', closeCheckoutModal);
       });
+
+      if(confirmCheckout){
+        confirmCheckout.addEventListener('click', function (){
+          // save total and show confirmation message
+          try { localStorage.setItem('checkoutTotal', grandTotal ? grandTotal.textContent.trim() : '$0.00'); } catch (err) { }
+          if(checkoutMessage){
+            checkoutMessage.textContent = 'Thank you — your order was successful.';
+            checkoutMessage.classList.remove('hidden');
+          }
+
+          // Prevent closing for a minimum duration (15 seconds)
+          const MIN_SHOW = 15000;
+          // disable confirm and cancel/close controls while showing
+          confirmCheckout.disabled = true;
+          confirmCheckout.classList.add('opacity-60','cursor-not-allowed');
+          if(cancelCheckout) { cancelCheckout.disabled = true; cancelCheckout.classList.add('opacity-60','cursor-not-allowed'); }
+          if(checkoutClose) { checkoutClose.disabled = true; checkoutClose.classList.add('opacity-60'); }
+          // make backdrop non-interactive so clicks won't close the modal
+          if(checkoutBackdrop) checkoutBackdrop.style.pointerEvents = 'none';
+
+          // after MIN_SHOW, re-enable controls and close modal
+          setTimeout(()=>{
+            if(checkoutBackdrop) checkoutBackdrop.style.pointerEvents = '';
+            if(cancelCheckout) { cancelCheckout.disabled = false; cancelCheckout.classList.remove('opacity-60','cursor-not-allowed'); }
+            if(checkoutClose) { checkoutClose.disabled = false; checkoutClose.classList.remove('opacity-60'); }
+            confirmCheckout.disabled = false;
+            confirmCheckout.classList.remove('opacity-60','cursor-not-allowed');
+            // close modal now
+            closeCheckoutModal();
+          }, MIN_SHOW);
+        });
+      }
     });
   </script>
 </body>
