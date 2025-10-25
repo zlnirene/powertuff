@@ -66,23 +66,21 @@
             </div>
         </div>
     </nav>
-    <!-- Sort & Filter -->
+
     <section class="w-full flex flex-col items-center mt-10 font-[Quicksand] text-[#DCA06D]">
 
-<section class="max-w-6xl mx-auto mt-12 flex flex-col md:flex-row items-center justify-between gap-6 bg-[#FAF4EE] text-[#8f5e57] rounded-3xl px-8 py-6 shadow-lg">
-    <!-- SORT -->
-    <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
-        <h2 class="font-semibold text-lg text-[#4f1c51]">Sort By:</h2>
-        <div class="flex flex-wrap gap-3 *:px-3 *:py-1">
-            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Best Seller</button>
-            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">A-Z</button>
-            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Z-A</button>
-            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Lowest Price</button>
-            <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Highest Price</button>
+    <section class="max-w-6xl mx-auto mt-12 flex flex-col md:flex-row items-center justify-between gap-6 bg-[#FAF4EE] text-[#8f5e57] rounded-3xl px-8 py-6 shadow-lg">
+        <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+            <h2 class="font-semibold text-lg text-[#4f1c51]">Sort By:</h2>
+            <div class="flex flex-wrap gap-3 *:px-3 *:py-1">
+                <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Best Seller</button>
+                <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">A-Z</button>
+                <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Z-A</button>
+                <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Lowest Price</button>
+                <button class="border-2 border-[#DCA06D] text-[#DCA06D] font-semibold rounded-2xl hover:bg-[#DCA06D] hover:text-[#FAF4EE] transition">Highest Price</button>
+            </div>
         </div>
-    </div>
 
-    <!-- CATEGORY -->
     <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
         <h2 class="font-semibold text-lg text-[#4f1c51]">Category:</h2>
         <div class="flex items-center border-2 border-[#DCA06D] rounded-3xl px-5 py-2 w-full sm:w-80 justify-between">
@@ -96,24 +94,20 @@
             </svg>
         </div>
     </div>
-</section>
+    </section>
 
-<!-- Page header -->
-<section class="max-w-5xl mx-auto mt-8 px-6 text-center">
-    <h1 class="text-3xl font-semibold text-[#FAF4EE] mb-2">All Product</h1>
-    <p class="text-[#f3dede]">Browse our full catalog. Click a product to see details.</p>
-</section>
+    <section class="max-w-5xl mx-auto mt-8 px-6 text-center">
+        <h1 class="text-3xl font-semibold text-[#FAF4EE] mb-2">All Product</h1>
+        <p class="text-[#f3dede]">Browse our full catalog. Click a product to see details.</p>
+    </section>
 
-<!-- Products grid -->
-<section class="max-w-6xl mx-auto px-6 mt-8 mb-24">
-    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center"></div>
-</section>
+    <section class="max-w-6xl mx-auto px-6 mt-8 mb-24">
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center"></div>
+    </section>
 
-<!-- Footer link back -->
-<footer class="fixed bottom-6 left-6 text-sm text-[#f3dede]"></footer>
+    <footer class="fixed bottom-6 left-6 text-sm text-[#f3dede]"></footer>
 
 <script>
-    // buat produk dummy yang isinya sama (misal 12 item)
     const sampleProduct = {
         image: "../images/product.png",
         name: "Lorem Ipsum Dolor Sic Amet ...",
@@ -122,7 +116,6 @@
         spec: "Name|Material|Size|Color|Contents|Care"
     };
 
-    // buat array berisi produk sama, tapi jumlahnya banyak
     const products = Array.from({ length: 12 }, (_, i) => ({
         ...sampleProduct,
     }));
@@ -148,13 +141,11 @@
             </div>
         `;
 
-        // modal open
         card.addEventListener('click', (e) => {
             if(e.target.closest('.buy-now-btn') || e.target.closest('.cart-btn')) return;
             showProductModal(p);
         });
 
-        // buy now
         card.querySelector('.buy-now-btn').addEventListener('click', (ev) => {
             ev.stopPropagation();
             const btn = ev.currentTarget;
@@ -163,7 +154,6 @@
             setTimeout(() => { btn.classList.remove('scale-95'); btn.innerHTML = 'BUY NOW'; }, 1500);
         });
 
-        // cart
         const cartBtn = card.querySelector('.cart-btn');
         if(cartBtn){
             cartBtn.addEventListener('click', (ev)=>{
@@ -177,7 +167,6 @@
 
     products.forEach(createCard);
 
-    // add to cart (localStorage)
     function addToCart(product){
         const key = 'cartItems';
         const items = JSON.parse(localStorage.getItem(key) || '[]');
@@ -187,7 +176,6 @@
         localStorage.setItem(key, JSON.stringify(items));
     }
 
-    // modal
     function showProductModal(p){
         let modal = document.getElementById('productModal');
         if(!modal){
@@ -224,7 +212,6 @@
         modal.classList.add('active');
     }
 </script>
-
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
