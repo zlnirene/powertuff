@@ -104,58 +104,42 @@
 </head>
 
 <body class="min-h-screen">
-    <nav class="relative flex items-center justify-center py-5 mb-[20px]">
-        <div class="absolute left-40 flex items-center">
-            <a href="index.html">
-            <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
-            </a>
-        </div>
-        <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-around shadow-lg w-[580px]">
-            <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
-                <li class="relative group">
-                    <a href="index.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                    Home
-                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </li>
-                <li class="relative group">
-                    <a href="pages/category.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                    Category
-                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </li>
-                <li class="relative group">
-                    <a href="pages/products.html" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                    All Products
-                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </li>
-                <li class="relative group">
-                    <a href="#" class="transition-all duration-300 group-hover:text-[#7F2549]">
-                    Contact Us
-                    <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[#7F2549] transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </li>
-            </ul>
-            <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg *:*:w-[20px] h-[20px]">
-                <a href="pages/cart.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                    <img src="images/icons/cart.svg" alt="Cart" class="" />
-                </a>
-                <a href="#" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                    <img src="images/icons/star.svg" alt="Star" class="" />
-                </a>
-                <a href="pages/profile.html" class="transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                    <img src="images/icons/user.svg" alt="User" class="" />
-                </a>
-            </div>
-        </div>
-    </nav>
+<nav class="relative flex items-center justify-center py-5 mb-[20px]">
+  <div class="absolute left-40 flex items-center">
+    <a href="../index.html">
+      <img src="images/2.png" alt="Midnight Fiction Logo" class="h-32 object-contain" />
+    </a>
+  </div>
+
+  <div class="bg-[#FAF4EE] rounded-full px-8 py-3 flex items-center justify-between shadow-lg w-[580px]">
+    <ul class="flex gap-6 items-center justify-center text-[#8f5e57] font-medium text-[15px]">
+      <li><a href="index.html" class="hover:font-bold transition-all duration-150">Home</a></li>
+      <li><a href="pages/category.html" class="hover:font-bold transition-all duration-150">Category</a></li>
+      <li><a href="pages/products.html" class="hover:font-bold transition-all duration-150">All Products</a></li>
+      <li><a href="#" class="hover:font-bold transition-all duration-150">Contact Us</a></li>
+    </ul>
+
+    <div class="flex items-center gap-4 ml-6 text-[#8f5e57] text-lg">
+      <a href="pages/cart.html" class="hover:opacity-80 transition-all duration-150 ">
+        <img src="images/icons/cart.svg" alt="Cart" class="w-[20px] h-[20px]" />
+      </a>
+      <a href="pages/favorite.html" class="hover:opacity-80 transition-all duration-150">
+        <img src="images/icons/star.svg" alt="Star" class="w-[20px] h-[20px]" />
+      </a>
+      <a href="pages/signup.html" class="hover:opacity-80 transition-all duration-150">
+        <img src="images/icons/user.svg" alt="User" class="w-[20px] h-[20px]" />
+      </a>
+  </div>
+
+  </div>
+</nav>
+
     <!-- Section Utama (Highlight Produk) -->
     <section
     class="mx-auto mt-10 max-w-5xl bg-[#FAF4EE]/80 rounded-2xl p-6 flex flex-col md:flex-row gap-6 fade-up"
     >
     <img
-        src="product.jpg"
+        src="images/BAN-BackToSchool.webp"
         alt="Product Highlight"
         class="w-full md:w-1/2 rounded-xl object-cover"
     />
@@ -182,7 +166,7 @@
     <div class="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-1">
     <!-- Card 1 -->
     <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
-        <img src="event1.jpg" alt="PPULBATU Keychain Event" class="w-full h-52 object-cover" />
+        <img src="images/BAN-Ppulbatu.png" alt="PPULBATU Keychain Event" class="w-full h-52 object-cover" />
         <div class="p-6 text-center">
         <h3 class="text-lg font-semibold mb-3 text-white">PPULBATU Keychain Pre-Order Event</h3>
         <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
@@ -191,7 +175,7 @@
 
     <!-- Card 2 -->
     <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
-        <img src="event2.jpg" alt="Hapa Kristin Event" class="w-full h-52 object-cover" />
+        <img src="images/BAN-WonyoungPC.webp" alt="Hapa Kristin Event" class="w-full h-52 object-cover" />
         <div class="p-6 text-center">
         <h3 class="text-lg font-semibold mb-3 text-white">Hapa Kristin Jang Wonyoung PC Event</h3>
         <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
@@ -200,18 +184,18 @@
 
     <!-- Card 3 -->
     <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
-        <img src="event3.jpg" alt="Third Event" class="w-full h-52 object-cover" />
+        <img src="images/BAN-Bamgeut.png" alt="PPULBATU Bamgeut Set Event" class="w-full h-52 object-cover" />
         <div class="p-6 text-center">
-        <h3 class="text-lg font-semibold mb-3 text-white">Third Event Promotion</h3>
+        <h3 class="text-lg font-semibold mb-3 text-white">PPULBATU Bamgeut Set Promo</h3>
         <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
         </div>
     </div>
 
     <!-- Card 4 -->
     <div class="flex-none w-[45%] md:w-[40%] bg-white/10 rounded-2xl overflow-hidden shadow-lg snap-start">
-        <img src="event4.jpg" alt="Fourth Event" class="w-full h-52 object-cover" />
+        <img src="images/BAN-BackToSchool.webp" alt="Back To School Event" class="w-full h-52 object-cover" />
         <div class="p-6 text-center">
-        <h3 class="text-lg font-semibold mb-3 text-white">Fourth Limited Edition Event</h3>
+        <h3 class="text-lg font-semibold mb-3 text-white">Back To School Edition Event</h3>
         <a href="#" class="block bg-[#f9e4e4] text-[#4f1c51] font-semibold rounded-full py-2 hover:bg-[#f1d6d6] transition">SEE DETAILS</a>
         </div>
     </div>
