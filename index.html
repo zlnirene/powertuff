@@ -4,11 +4,103 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Midnight Fiction</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="images/midfic.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Font -->
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+    />
+
+    <style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: radial-gradient(
+        circle at top,
+        #4f1c51 58%,
+        #210f37 100%
+        );
+        color: #fff;
+    }
+
+
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    #productScroll {
+        transition: scroll-left 0.4s ease-in-out;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* Footer — match design exactly */
+    footer.site-footer {
+    background: #FAF4EE;
+    color: #2e0f3f;
+    position: relative;
+    padding-top: 64px;
+    padding-bottom: 48px;
+    }
+    footer.site-footer .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 320px;
+    gap: 24px;
+    align-items: start;
+    }
+    footer.site-footer .policy-links a,
+    footer.site-footer .info-links a {
+    font-size: 12px;
+    color: #2e0f3f;
+    opacity: 0.95;
+    text-decoration: none;
+    margin-right: 12px;
+    }
+    footer.site-footer .policy-links { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; }
+    footer.site-footer .info-links ul { padding:0; margin:0; list-style:none; font-size:13px; line-height:1.55; color:#2e0f3f; }
+    footer.site-footer .info-links ul li a { color: #2e0f3f; opacity:0.95; text-decoration:none; }
+
+    /* right column: logo + copyright + socials */
+    .footer-brand { display:flex; flex-direction:column; align-items:flex-end; gap:10px; text-align:right; }
+    .footer-brand img.logo { height:56px; object-fit:contain; }
+    .footer-brand .copyright { font-size:12px; color:#2e0f3f; opacity:0.95; }
+    .footer-socials { display:flex; gap:10px; justify-content:flex-end; }
+    .footer-socials a {
+    width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center;
+    border-radius:9999px; background:#4F1C51; color:#fff; text-decoration:none;
+    box-shadow: 0 6px 14px rgba(79,28,81,0.12);
+    }
+
+    /* make footer area visually match the wave above */
+    .footer-wave-spacer { margin-top: -90px; pointer-events:none; }
+
+    @media (max-width: 960px) {
+    footer.site-footer .footer-inner { grid-template-columns: 1fr; text-align:center; }
+    .footer-brand { align-items:center; }
+    .footer-socials { justify-content:center; }
+    }
+    </style>
 </head>
 
 <body class="min-h-screen">
@@ -57,6 +149,7 @@
             </div>
         </div>
     </nav>
+
     <section class="mx-auto max-w-6xl bg-gradient-to-r from-[#FAF4EE] to-[#F7E3D5] rounded-3xl p-8 flex flex-col md:flex-row items-center gap-10 shadow-lg fade-up">
         <div class="relative w-full md:w-1/2 group overflow-hidden rounded-2xl">
             <img src="images/event-1.png" alt="Event Highlight" class="w-full h-full object-cover rounded-2xl transform transition-transform duration-500 group-hover:scale-110"/>
@@ -87,9 +180,9 @@
                 <a href="#" class="underline hover:text-[#9a5448] transition-colors">TOMORROW X TOGETHER Collab</a>
             </li>
             </ul>
-            <button class="mt-6 bg-[#DCA06D] text-[#4F1C51] px-6 py-3 rounded-full font-semibold shadow-md hover:bg-[#e9b886] transition-colors duration-300">View All Events</button>
         </div>
     </section>
+
     <section class="mx-auto mt-16 max-w-6xl fade-up">
         <div class="flex justify-between items-center mb-6">
             <div class="flex items-center space-x-4">
@@ -110,9 +203,14 @@
                 Hapa Kristin Jang Wonyoung PC Event
                 </div>
             </div>
-            <div
-                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
-                SEE DETAILS
+            <div>
+                <div
+                    class="see-details-btn bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer"
+                    data-title="Hapa Kristin Jang Wonyoung PC Event"
+                    data-description="Join the Hapa Kristin special photocard event featuring Jang Wonyoung! Purchase any Hapa Kristin product during the event period to receive exclusive limited-edition photocards."
+                    data-image="images/event-2.png">
+                    SEE DETAILS
+                </div>
             </div>
             </div>
             <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
@@ -125,12 +223,17 @@
                 class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
                 </div>
                 <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
-                Third Event Promotion
+                PPULBATU Bamgeut Day
                 </div>
             </div>
-            <div
-                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
-                SEE DETAILS
+            <div>
+                <div
+                    class="see-details-btn bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer"
+                    data-title="PPULBATU Bamgeut Day"
+                    data-description="Celebrate PPULBATU Bamgeut Day with us! Enjoy special discounts and exclusive offers on all PPULBATU Bamgeut products for one day only. Don't miss out on the fun and savings!"
+                    data-image="images/event-3.png">
+                    SEE DETAILS
+                </div>
             </div>
             </div>
             <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
@@ -146,49 +249,372 @@
                 PPULBATU Keychain Pre-Order Event
                 </div>
             </div>
-            <div
-                class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
-                SEE DETAILS
+            <div>
+                <div
+                    class="see-details-btn bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer"
+                    data-title="PPULBATU Keychain Pre-Order Event"
+                    data-description="Be one of the first to get the exclusive PPULBATU Keychain by pre-ordering now! Limited stock available."
+                    data-image="images/event-4.png">
+                    SEE DETAILS
+                </div>
             </div>
             </div>
-                <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
-                <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#4f1c51]/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
+            <div class="flex-none w-[85%] sm:w-[60%] md:w-[45%] snap-start space-y-4">
+            <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#4f1c51]/30 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
                 <div class="overflow-hidden">
-                <img src="images/event-1.png" alt="Back To School Event"
+                <img src="images/event-1.png" alt="PPULBATU Keychain Event"
                     class="w-full h-60 object-cover transition-transform duration-700 ease-in-out hover:scale-110" />
-            </div>
-
-            <div
+                </div>
+                <div
                 class="absolute inset-0 bg-gradient-to-b from-transparent to-[#210F37]/50 pointer-events-none">
+                </div>
+                <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
+                Hapa Kristin Back To School Event
+                </div>
             </div>
-            <div class="absolute bottom-4 left-5 text-white font-semibold text-lg leading-tight drop-shadow-md">
-                Back To School
+            <div>
+                <div
+                    class="see-details-btn bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer"
+                    data-title="Hapa Kristin Back To School Event"
+                    data-description="Join the Hapa Kristin special photocard event featuring Jang Wonyoung! Purchase any Hapa Kristin product during the event period to receive exclusive limited-edition photocards."
+                    data-image="images/event-1.png">
+                    SEE DETAILS
+                </div>
             </div>
-        </div>
-
-        <div
-            class="bg-[#f9e4e4] text-[#4f1c51] font-semibold text-center py-3 text-base rounded-2xl hover:bg-[#f1d6d6] transition cursor-pointer">
-            SEE DETAILS
-        </div>
-        </div>
+            </div>
         </div>
     </section>
 
-    <section class="mx-auto mt-20 max-w-6xl fade-up mb-[180px]">
-    <div class="flex items-center justify-between mb-8">
-        <div>
-        <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
-            PRE-ORDER
-        </span>
-        </div>
-        <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
+
+
+<!-- PRE-ORDER Section -->
+<section class="mx-auto mt-20 max-w-6xl fade-up ">
+<!-- Header -->
+<div class="flex items-center justify-between mb-8">
+    <div>
+    <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
+        PRE-ORDER
+    </span>
+    </div>
+    <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
+</div>
+
+<!-- Scrollable Product Cards -->
+<div
+    class="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pt-[20px] pb-[70px] px-2 scroll-smooth"
+>
+    <!-- Product Card -->
+    <div
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+    <div
+        class="bg-[#e9b886] rounded-2xl p-6 mb-4 transition-transform duration-300 hover:scale-105"
+    >
+        <img
+        src="images/cat.jpg"
+        alt="Keychain 1"
+        class="w-28 h-28 mx-auto object-contain select-none"
+        />
     </div>
 
+    <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+
+    <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+        BUY NOW
+        </button>
+        <button
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+        <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    </div>
+    </div>
+
+    <!-- Product Card 2 -->
     <div
-        id="preOrderProducts"
-        class="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pt-[20px] pb-[70px] px-2 scroll-smooth"
-    ></div>
-    </section>
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+    <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+        <img
+        src="images/cat.jpg"
+        alt="Keychain 2"
+        class="w-28 h-28 mx-auto object-contain"
+        />
+    </div>
+    <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+        BUY NOW
+        </button>
+        <button
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+        <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    </div>
+    </div>
+
+    <!-- Product Card 3 -->
+    <div
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+    <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+        <img
+        src="images/cat.jpg"
+        alt="Keychain 3"
+        class="w-28 h-28 mx-auto object-contain"
+        />
+    </div>
+    <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+        BUY NOW
+        </button>
+        <button
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+        <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    </div>
+    </div>
+
+    <!-- Product Card 4 -->
+    <div
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+    <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+        <img
+        src="images/cat.jpg"
+        alt="Keychain 4"
+        class="w-28 h-28 mx-auto object-contain"
+        />
+    </div>
+    <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+        BUY NOW
+        </button>
+        <button
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+        <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    </div>
+    </div>
+
+    <!-- Product Card 5 -->
+    <div
+    class="flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
+    >
+    <div class="bg-[#e9b886] rounded-2xl p-6 mb-4">
+        <img
+        src="images/cat.jpg"
+        alt="Keychain 5"
+        class="w-28 h-28 mx-auto object-contain"
+        />
+    </div>
+    <h3 class="text-[#4f1c51] font-medium mb-1">
+        Lorem Ipsum Dolor Sic Amet ...
+    </h3>
+    <p class="font-bold text-[#4f1c51]">$45</p>
+    <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+        class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+        BUY NOW
+        </button>
+        <button
+        class="bg-[#e9b886] text-[#4f1c51] px-3 py-2 rounded-full shadow-md hover:bg-[#f1d6d6] hover:scale-110 transition-transform duration-300"
+        >
+        <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    </div>
+    </div>
+</div>
+</section>
+<!-- ALL PRODUCT Section -->
+<section class="mx-auto mt-12 mb-32 max-w-6xl fade-up mb-[200px]">
+<!-- Header -->
+<div class="flex items-center justify-between mb-8 px-2">
+    <div>
+    <span class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full">
+        ALL PRODUCT
+    </span>
+    </div>
+    <div class="flex-1 border-b border-[#f9e4e4] ml-4"></div>
+</div>
+
+<!-- Product Grid -->
+<div
+    id="allProducts"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center"
+></div>
+
+<!-- See All Button -->
+<div class="flex justify-center mt-12">
+    <button
+    class="bg-[#f9e4e4] text-[#4f1c51] font-semibold px-6 py-2 rounded-full shadow-md hover:bg-[#4f1c51] hover:text-white transition-all duration-300"
+    >
+    See All
+    </button>
+</div>
+</section>
+
+<!-- FontAwesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+// === Bagian 1: Produk Statis ===
+const products = [
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+    { image: "images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45 },
+];
+
+const containerStatic = document.getElementById("allProducts");
+
+if (containerStatic) {
+    products.forEach((product) => {
+    const card = document.createElement("div");
+    card.className =
+        "group w-full max-w-[250px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1";
+
+    card.innerHTML = `
+        <!-- Gambar Produk -->
+        <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden">
+        <div class="overflow-hidden">
+            <img
+            src="${product.image}"
+            alt="${product.name}"
+            class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:-translate-y-4"
+            />
+        </div>
+        </div>
+
+        <!-- Nama & Harga -->
+        <h3 class="text-[#4f1c51] font-medium mb-1">${product.name}</h3>
+        <p class="font-bold text-[#4f1c51]">$${product.price}</p>
+
+        <!-- Tombol Buy + Cart -->
+        <div class="mt-4 flex items-center justify-center gap-2">
+        <button
+            class="buyBtn flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
+        >
+            <span>BUY NOW</span>
+        </button>
+        <button
+            class="bg-[#e9b886] px-3 py-2 rounded-full hover:scale-110 transition-all duration-300"
+        >
+            <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+        </div>
+    `;
+    containerStatic.appendChild(card);
+    });
+}
+
+// === Bagian 2: Produk Dinamis (scrollable section) ===
+const makeProducts = (id, start) => {
+    const container = document.getElementById(id);
+    if (!container) return;
+
+    const products = Array.from({ length: 10 }).map((_, i) => ({
+    name: `Product ${i + start}`,
+    price: `$${(Math.random() * 50 + 10).toFixed(2)}`,
+    img: `images/cat${((i + start) % 3) + 1}.jpg`,
+    }));
+
+    products.forEach((p) => {
+    const card = document.createElement("div");
+    card.className =
+        "min-w-[250px] snap-start bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 flex-shrink-0 transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl";
+    card.innerHTML = `
+        <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 flex items-center justify-center">
+        <img src="${p.img}" alt="${p.name}" class="w-28 h-28 object-contain" />
+        </div>
+        <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
+        <p class="font-bold text-[#4f1c51]">${p.price}</p>
+        <button
+        class="mt-4 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition-all duration-300"
+        >
+        BUY NOW
+        </button>
+    `;
+    container.appendChild(card);
+    });
+};
+
+makeProducts("productScroll1", 1);
+makeProducts("productScroll2", 11);
+
+// === Scroll Button Function ===
+document.querySelectorAll(".scroll-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+    const container = document.getElementById(btn.dataset.target);
+    const scrollValue = 320;
+    const direction = btn.dataset.direction === "left" ? -1 : 1;
+    container.scrollBy({ left: direction * scrollValue, behavior: "smooth" });
+    });
+});
+
+// === Shadow Animation ===
+const container1 = document.getElementById("productScroll1");
+const leftShadow = document.getElementById("leftShadow");
+const rightShadow = document.getElementById("rightShadow");
+
+if (container1 && leftShadow && rightShadow) {
+    const handleShadow = () => {
+    const { scrollLeft, scrollWidth, clientWidth } = container1;
+    leftShadow.style.opacity = scrollLeft > 20 ? "1" : "0";
+    rightShadow.style.opacity =
+        scrollLeft + clientWidth < scrollWidth - 20 ? "1" : "0";
+    };
+
+    container1.addEventListener("scroll", handleShadow);
+    handleShadow();
+}
+
+// === Tombol Buy Animation ===
+document.querySelectorAll(".buyBtn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+    btn.classList.add("scale-95");
+    btn.innerHTML = "Added!";
+    setTimeout(() => {
+        btn.classList.remove("scale-95");
+        btn.innerHTML = "<span>BUY NOW</span>";
+    }, 2000);
+    });
+});
+});
+</script>
+
 
 <section class="relative bg-[#210F37] z-0 footer-wave-spacer">
     <div class="absolute bottom-[-90px] left-0 w-full overflow-hidden leading-none" aria-hidden="true">
@@ -260,52 +686,50 @@
     </div>
 </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const preOrderContainer = document.getElementById("preOrderProducts");
 
-  const products = Array.from({ length: 8 }).map((_, i) => ({
-    name: "Lorem Ipsum Dolor Sic Amet ...",
-    price: 45,
-    image: "images/product.png",
-  }));
 
-  products.forEach((product) => {
-    const card = document.createElement("div");
-    card.className =
-      "flex-none w-[22%] min-w-[220px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 snap-start transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1";
 
-    card.innerHTML = `
-      <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden group">
-        <img
-          src="${product.image}"
-          alt="${product.name}"
-          class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:scale-110"
-        />
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-50"></div>
-      </div>
+        <script>
+    // Animasi saat scroll (fade-up)
+    const observer = new IntersectionObserver(
+        (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+            }
+        });
+        },
+        { threshold: 0.2 }
+    );
 
-      <h3 class="text-[#4f1c51] font-medium mb-1">${product.name}</h3>
-      <p class="font-bold text-[#4f1c51]">$${product.price}</p>
+    document.querySelectorAll(".fade-up").forEach((el) => {
+        el.classList.add(
+        "opacity-0",
+        "translate-y-5",
+        "transition-all",
+        "duration-700"
+        );
+        observer.observe(el);
+    });
+    </script>
+<!-- Modal -->
+<div id="eventModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+  <div class="bg-[#FAF4EE] text-[#210F37] rounded-2xl shadow-2xl w-[90%] sm:w-[500px] overflow-hidden relative">
+    <!-- Tombol Close -->
+    <button id="closeModal" class="absolute top-3 right-3 text-[#A55B4B] text-2xl font-bold hover:text-[#8a4b3f]">&times;</button>
 
-      <div class="mt-4 flex items-center justify-center gap-2">
-        <button
-          class="flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md"
-        >
-          BUY NOW
-        </button>
-        <button
-          class="bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:scale-110 transition-transform duration-300"
-          aria-label="Add to cart"
-        >
-          <img src="images/icons/cart.svg" alt="Cart" class="w-4 h-4" />
-        </button>
-      </div>
-    `;
-    preOrderContainer.appendChild(card);
-  });
-});
-</script>
+    <!-- Gambar Modal -->
+    <img id="modalImage" src="" alt="Event Image" class="w-full h-60 object-cover rounded-t-2xl" />
 
+    <!-- Konten Modal -->
+    <div class="p-6 space-y-3">
+      <h2 id="modalTitle" class="text-2xl font-extrabold text-[#A55B4B]"></h2>
+      <p id="modalDescription" class="text-[#4f1c51] leading-relaxed"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Script -->
+<script src="js/eventModal.js"></script>
 </body>
 </html>
