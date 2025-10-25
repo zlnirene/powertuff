@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products - Midnight Fiction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: radial-gradient(circle at top,#4f1c51 58%,#210f37 100%); color: #fff; }
+    .no-scrollbar::-webkit-scrollbar{ display:none } .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none }
+    a { text-decoration: none }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Simple navbar (reuse style from index) -->
+  <nav class="flex items-center justify-between px-6 py-6">
+    <div class="flex items-center gap-4">
+      <a href="../index.html"><img src="../images/2.png" alt="Midnight Fiction Logo" class="h-16 md:h-20" style="object-fit:contain" /></a>
+    </div>
+
+    <div class="mx-auto max-w-3xl w-full">
+      <div class="bg-[#FAF4EE]/100 rounded-full px-6 py-3 flex items-center justify-between shadow-md">
+        <ul class="flex gap-8 items-center justify-center mx-auto text-[#4f1c51] font-medium">
+          <li><a href="../index.html" class="px-2 py-1 rounded-full bg-transparent text-[#8f5e57] font-semibold">Home</a></li>
+          <li><a href="./products.html" class="px-2 py-1">Product</a></li>
+          <li><a href="#" class="px-2 py-1">New Arrivals</a></li>
+          <li><a href="#" class="px-2 py-1">Contact Us</a></li>
+        </ul>
+
+        <div class="flex items-center gap-4 ml-6">
+          <button class="text-[#4f1c51]">🛒</button>
+          <button class="text-[#4f1c51]">⭐</button>
+          <button class="text-[#4f1c51]">☺</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:36px"></div>
+  </nav>
+
+  <!-- Page header -->
+  <section class="max-w-5xl mx-auto mt-8 px-6">
+    <h1 class="text-3xl font-semibold text-[#FAF4EE] mb-2">All Product</h1>
+    <p class="text-[#f3dede]">Browse our full catalog. Click a product to see details.</p>
+  </section>
+
+  <!-- Products grid -->
+  <section class="max-w-6xl mx-auto px-6 mt-8 mb-24">
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center"></div>
+  </section>
+
+  <!-- Footer link back -->
+  <footer class="fixed bottom-6 left-6 text-sm text-[#f3dede]"></footer>
+
+  <script>
+    // sample products (same structure used on index)
+    const products = [
+      { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 1", spec: "Name|Material|Size|Color|Contents|Care" },
+      { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 2", spec: "Name|Material|Size|Color|Contents|Care" },
+      { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 3", spec: "Name|Material|Size|Color|Contents|Care" },
+      { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 4", spec: "Name|Material|Size|Color|Contents|Care" },
+      { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 5", spec: "Name|Material|Size|Color|Contents|Care" },
+      { image: "../images/cat.jpg", name: "Lorem Ipsum Dolor Sic Amet ...", price: 45, desc: "Sample description for product 6", spec: "Name|Material|Size|Color|Contents|Care" }
+    ];
+
+    const grid = document.getElementById('productGrid');
+
+    function createCard(p){
+      const card = document.createElement('div');
+      card.className = 'group w-full max-w-[250px] bg-white rounded-3xl overflow-hidden text-center shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1';
+      card.innerHTML = `
+        <div class="bg-[#e9b886] rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="overflow-hidden">
+            <img src="${p.image}" alt="${p.name}" class="w-28 h-28 mx-auto object-contain select-none transition-transform duration-500 group-hover:-translate-y-4" />
+          </div>
+        </div>
+        <h3 class="text-[#4f1c51] font-medium mb-1">${p.name}</h3>
+        <p class="font-bold text-[#4f1c51]">$${p.price}</p>
+        <div class="mt-4 flex items-center justify-center gap-2">
+          <button class="buy-now-btn flex gap-2 border-2 border-[#e9b886] text-[#e9b886] font-semibold px-8 py-2 rounded-full hover:bg-[#e9b886] hover:text-[#4f1c51] transition duration-300 shadow-sm hover:shadow-md">BUY NOW</button>
+          <button class="cart-btn bg-[#e9b886] text-[#4f1c51] w-10 h-10 flex items-center justify-center rounded-full hover:scale-110 transition-all duration-300" aria-label="Add to cart"><i class="fa-solid fa-cart-shopping"></i></button>
+        </div>
+      `;
+
+      // navigate to product detail page when clicking the card (but not when clicking buy or cart)
+      card.addEventListener('click', (e) => {
+        if(e.target.closest('.buy-now-btn') || e.target.closest('.cart-btn')) return;
+        const qs = new URLSearchParams({ name: p.name, price: p.price, img: p.image, desc: p.desc, spec: p.spec });
+        window.location.href = `product.html?${qs.toString()}`;
+      });
+
+      // buy button action (stop propagation)
+      card.querySelector('.buy-now-btn').addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const btn = ev.currentTarget;
+        btn.classList.add('scale-95');
+        btn.innerText = 'Added!';
+        setTimeout(() => { btn.classList.remove('scale-95'); btn.innerHTML = 'BUY NOW'; }, 1500);
+      });
+
+      grid.appendChild(card);
+    }
+
+    products.forEach(createCard);
+
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
